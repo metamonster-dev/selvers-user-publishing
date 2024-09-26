@@ -1,6 +1,7 @@
-// import DrawerMenu from "@components/ui/drawerMenu";
-
+import { userState } from "@/store/UserState";
+import { useRecoilValue } from "recoil";
 import { Link } from "react-router-dom";
+import MobileMenu from "./mobileMenu";
 import {
   MobileHeaderWrap,
   TopMenu,
@@ -13,8 +14,16 @@ import {
 } from "./headerStyle";
 import Logo from "@/assets/logo_w.svg?react";
 import MenuIcon from "@/assets/icon/menu.svg?react";
+import { useState } from "react";
 
 const MobileHeader = () => {
+  const user = useRecoilValue(userState);
+  const loginState = user.isLogin;
+
+  const [toggle, setToggle] = useState(false);
+  const menuOpenHandler = () => {
+    setToggle(true);
+  };
   return (
     <MobileHeaderWrap>
       <TopMenu>
@@ -26,7 +35,7 @@ const MobileHeader = () => {
             <button>행사등록</button>
             <button>AI챗봇</button>
           </DescBtn>
-          <button>
+          <button onClick={() => menuOpenHandler()}>
             <MenuIcon />
           </button>
         </BtnArea>
@@ -48,7 +57,44 @@ const MobileHeader = () => {
           </NavItem>
         </Nav>
       </NavWrap>
-      {/* <DrawerMenu>aadf</DrawerMenu> */}
+      {/* 로그아웃 상태 */}
+      {!loginState && toggle && (
+        <MobileMenu setClose={setToggle}>
+          <ul>
+            <li>
+              <Link to={"/login"}>로그인</Link>
+            </li>
+            <li>
+              <Link to={"/login"}>회원가입</Link>
+            </li>
+          </ul>
+        </MobileMenu>
+      )}
+      {/* 로그인 상태 */}
+      {loginState && toggle && (
+        <MobileMenu setClose={setToggle}>
+          <ul>
+            <li>
+              <Link to={""}>신청 행사</Link>
+            </li>
+            <li>
+              <Link to={""}>취소 내역</Link>
+            </li>
+            <li>
+              <Link to={""}>관심 행사</Link>
+            </li>
+            <li>
+              <Link to={""}>지난 행사</Link>
+            </li>
+            <li>
+              <Link to={""}>내 정보 수정</Link>
+            </li>
+            <li>
+              <Link to={""}>로그아웃</Link>
+            </li>
+          </ul>
+        </MobileMenu>
+      )}
     </MobileHeaderWrap>
   );
 };

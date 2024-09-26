@@ -2,9 +2,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
-import { EventSliderWrap, TitleBox, SliderArea } from "./eventSliderStyle";
+import { EventSliderWrap, TitleBox, SliderArea } from "./eventSwiperStyle";
 import { MaxFrame } from "@/styles/commonStyle";
-import EventItem from "./eventItem";
+import EventCard from "./eventCard";
 
 type Props = {
   title?: string;
@@ -18,10 +18,11 @@ type Props = {
     dDay: string;
     price: string;
     likeNum: number;
+    like: boolean;
   }[];
 };
 
-const EventSlider = ({ title, subTitle, eventList }: Props) => {
+const EventSwiper = ({ title, subTitle, eventList }: Props) => {
   return (
     <MaxFrame>
       <EventSliderWrap>
@@ -31,17 +32,30 @@ const EventSlider = ({ title, subTitle, eventList }: Props) => {
         </TitleBox>
         <SliderArea>
           <Swiper
-            slidesPerView={4}
-            spaceBetween={24}
+            slidesPerView={2}
+            spaceBetween={10}
             navigation={true}
             modules={[Navigation]}
             loop={true}
+            loopAdditionalSlides={1}
+            observer={true}
+            observeParents={true}
+            breakpoints={{
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 15,
+              },
+              1650: {
+                slidesPerView: 4,
+                spaceBetween: 24,
+              },
+            }}
             className="event_swiper"
           >
             {eventList.map((data) => {
               return (
                 <SwiperSlide key={data.id}>
-                  <EventItem
+                  <EventCard
                     id={data.id}
                     imgUrl={data.imgUrl}
                     title={data.title}
@@ -50,6 +64,7 @@ const EventSlider = ({ title, subTitle, eventList }: Props) => {
                     dDay={data.dDay}
                     price={data.price}
                     likeNum={data.likeNum}
+                    like={data.like}
                   />
                 </SwiperSlide>
               );
@@ -61,4 +76,4 @@ const EventSlider = ({ title, subTitle, eventList }: Props) => {
   );
 };
 
-export default EventSlider;
+export default EventSwiper;

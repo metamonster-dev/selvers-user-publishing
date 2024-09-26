@@ -3,12 +3,18 @@ import styled from "styled-components";
 export const MainSwiperWrap = styled.div`
   & > .main_swiper {
     padding: 45px 0;
+    @media (max-width: 1024px) {
+      padding: 20px 0 0;
+    }
   }
   & > .main_swiper .swiper-slide figure {
     position: relative;
     padding-top: 43.79%;
     overflow: hidden;
     border-radius: 30px;
+    @media (max-width: 1024px) {
+      border-radius: 10px;
+    }
   }
   & > .main_swiper .swiper-slide figure img {
     position: absolute;
@@ -29,6 +35,9 @@ export const MainSwiperWrap = styled.div`
     height: 64px;
     border-radius: 50rem;
     overflow: hidden;
+    @media (max-width: 1024px) {
+      display: none;
+    }
   }
   & > .main_swiper .swiper-button-prev {
     left: var(--swiper-navigation-sides-offset, 139px);
@@ -54,6 +63,9 @@ export const MainSwiperWrap = styled.div`
   /* pagination */
   & > .main_swiper .swiper-pagination {
     bottom: var(--swiper-pagination-bottom, 0);
+    @media (max-width: 1024px) {
+      display: none;
+    }
   }
   & > .main_swiper .swiper-pagination .swiper-pagination-bullet {
     background-color: #fff;

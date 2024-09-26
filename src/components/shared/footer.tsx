@@ -15,6 +15,22 @@ const Footer = () => {
           <p className="logo">
             <Logo />
           </p>
+          <ul className="footer_nav">
+            <li>
+              <Link to={""}>이번주 행사</Link>
+            </li>
+            <li>
+              <Link to={""}>무료 행사</Link>
+            </li>
+            <li>
+              <Link to={""}>온라인 행사</Link>
+            </li>
+            <li>
+              <Link to={""}>메이트 PICK</Link>
+            </li>
+          </ul>
+        </LeftArea>
+        <RightArea>
           <div className="link_area">
             <ul className="sns_link">
               <li>
@@ -44,22 +60,6 @@ const Footer = () => {
               <Link to={""}>사회적기업확인서 받기</Link>
             </div>
           </div>
-        </LeftArea>
-        <RightArea>
-          <ul className="footer_nav">
-            <li>
-              <Link to={""}>이번주 행사</Link>
-            </li>
-            <li>
-              <Link to={""}>무료 행사</Link>
-            </li>
-            <li>
-              <Link to={""}>온라인 행사</Link>
-            </li>
-            <li>
-              <Link to={""}>메이트 PICK</Link>
-            </li>
-          </ul>
           <div className="desc">
             <p>
               마인즈그라운드 주식회사&nbsp;&nbsp;|&nbsp;&nbsp;대표이사 :

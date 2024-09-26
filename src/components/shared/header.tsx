@@ -1,3 +1,5 @@
+import { userState } from "@/store/UserState";
+import { useRecoilValue } from "recoil";
 import { Link } from "react-router-dom";
 import MobileHeader from "./mobileHeader";
 import { MaxFrame } from "@/styles/commonStyle";
@@ -18,13 +20,16 @@ import Calendar from "@/assets/icon/calendar.svg?react";
 import Person from "@/assets/icon/person.svg?react";
 
 const Header = () => {
-  const loginState = false;
+  const user = useRecoilValue(userState);
+  const loginState = user.isLogin;
   return (
     <>
       <MaxFrame>
         <HeaderWrap>
           <LogoImg>
-            <Logo />
+            <Link to={"/"}>
+              <Logo />
+            </Link>
           </LogoImg>
           <NavMenu>
             <NavWrap>

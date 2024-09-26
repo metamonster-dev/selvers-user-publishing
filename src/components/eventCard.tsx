@@ -1,6 +1,6 @@
-import { EventItemWrap, LikeBtn, Thumbnail, TextBox } from "./eventItemStyle";
+import { EventItemWrap, LikeBtn, Thumbnail, TextBox } from "./eventCardStyle";
 import LikeIcon from "@/assets/icon/heart_fill.svg?react";
-// import UnLikeIcon from "@/assets/icon/heart_strok.svg?react";
+import UnLikeIcon from "@/assets/icon/heart_strok.svg?react";
 
 type Props = {
   id: number;
@@ -11,9 +11,10 @@ type Props = {
   dDay: string;
   price: string;
   likeNum: number;
+  like: boolean;
 };
 
-const EventItem = ({
+const EventCard = ({
   imgUrl,
   title,
   date,
@@ -21,12 +22,15 @@ const EventItem = ({
   dDay,
   price,
   likeNum,
+  like,
 }: Props) => {
   return (
     <EventItemWrap>
       <LikeBtn>
         <span>{likeNum}</span>
-        <LikeIcon />
+        <span className="heart_icon">
+          {like ? <LikeIcon /> : <UnLikeIcon />}
+        </span>
       </LikeBtn>
       <Thumbnail>
         <img src={imgUrl} />
@@ -49,4 +53,4 @@ const EventItem = ({
   );
 };
 
-export default EventItem;
+export default EventCard;

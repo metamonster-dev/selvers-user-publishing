@@ -2,26 +2,34 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { Navigation, Pagination } from "swiper/modules";
-// import "./swiperStyle.css";
-import { MainSwiperWrap } from "./swiperStyle";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { MainSwiperWrap } from "./mainSwiperStyle";
 
 type ImgsProps = {
   bannerImgs?: string[];
   ImageArr?: string[];
 };
 
-export const MainSwiper = ({ bannerImgs }: ImgsProps) => {
+const MainSwiper = ({ bannerImgs }: ImgsProps) => {
   return (
     <MainSwiperWrap>
       <Swiper
-        slidesPerView={1.1}
+        slidesPerView={1.05}
         centeredSlides={true}
-        spaceBetween={24}
+        spaceBetween={5}
         navigation={true}
         pagination={true}
-        modules={[Navigation, Pagination]}
+        modules={[Autoplay, Navigation, Pagination]}
         loop={true}
+        autoplay={{
+          delay: 5000,
+          disableOnInteraction: false,
+        }}
+        breakpoints={{
+          1024: {
+            spaceBetween: 24,
+          },
+        }}
         className="main_swiper"
       >
         {bannerImgs &&
@@ -38,3 +46,5 @@ export const MainSwiper = ({ bannerImgs }: ImgsProps) => {
     </MainSwiperWrap>
   );
 };
+
+export default MainSwiper;

@@ -2,19 +2,19 @@ import styled from "styled-components";
 
 // pc header
 export const HeaderWrap = styled.header`
-  padding: 64px 140px 60px;
+  padding: 72px 140px 55px;
   background-color: #000;
   display: flex;
   align-items: center;
 
-  @media (max-width: 1470px) {
-    padding: 64px 100px 60px;
+  @media (max-width: 1420px) {
+    padding: 72px 120px 55px;
   }
   @media (max-width: 1300px) {
-    padding: 64px 50px 60px;
+    padding: 72px 80px 55px;
   }
-  @media (max-width: 1190px) {
-    padding: 64px 20px 60px;
+  @media (max-width: 1170px) {
+    padding: 72px 50px 55px;
   }
   @media (max-width: 1024px) {
     display: none;
@@ -24,29 +24,37 @@ export const HeaderWrap = styled.header`
 // mobile header
 export const MobileHeaderWrap = styled.header`
   display: none;
-  padding: 12px 16px 13px;
+  padding: 0 16px;
   @media (max-width: 1024px) {
     display: block;
   }
 `;
+// mobile
 export const TopMenu = styled.div`
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  height: 60px;
 `;
 
 export const LogoImg = styled.h1`
-  margin-right: 80px;
+  margin-right: 97px;
   max-width: 208px;
-  & > svg {
+  & svg {
     width: 100%;
     height: auto;
   }
-  @media (max-width: 1470px) {
-    margin-right: 30px;
+  @media (max-width: 1420px) {
+    margin-right: 60px;
   }
   @media (max-width: 1300px) {
     margin-right: 20px;
-    max-width: 180px;
+  }
+  @media (max-width: 1170px) {
+    max-width: 190px;
+  }
+  @media (max-width: 1024px) {
+    max-width: 130px;
   }
 `;
 
@@ -60,16 +68,20 @@ export const NavWrap = styled.nav``;
 export const Nav = styled.ul`
   display: flex;
   align-items: center;
+  gap: 16px;
+  @media (max-width: 1420px) {
+    gap: 14px;
+  }
+  @media (max-width: 1170px) {
+    gap: 8px;
+  }
+  @media (max-width: 1024px) {
+    padding: 10px 0 25px;
+  }
 `;
 export const NavItem = styled.li`
-  padding: 0 16px;
   color: #fff;
-  @media (max-width: 1470px) {
-    padding: 0 10px;
-  }
-  @media (max-width: 1300px) {
-    margin-right: 0 5px;
-  }
+  font-weight: 700;
 `;
 export const BtnArea = styled.div`
   display: flex;
@@ -82,11 +94,8 @@ export const AuthBtn = styled.div<{ $loginState?: boolean }>`
   margin-right: 35px;
   & > div {
     padding: ${(props) => (props.$loginState ? "0 15px" : "0 18px")};
-    @media (max-width: 1470px) {
-      padding: ${(props) => (props.$loginState ? "0 10px" : "0 13px")};
-    }
-    @media (max-width: 1300px) {
-      padding: ${(props) => (props.$loginState ? "0 5px" : "0 7px")};
+    @media (max-width: 1420px) {
+      padding: ${(props) => (props.$loginState ? "0 10px" : "0 14px")};
     }
   }
   & > div:first-child {
@@ -113,11 +122,25 @@ export const DescBtn = styled.div`
   display: flex;
   gap: 18px;
   align-items: center;
+  @media (max-width: 1470px) {
+    gap: 10px;
+  }
+  @media (max-width: 1300px) {
+    gap: 5px;
+  }
+  @media (max-width: 1024px) {
+    gap: 10px;
+    margin-right: 15px;
+  }
   & > button {
     padding: 10px 20px;
     border-radius: 50rem;
     font-weight: 700;
     font-size: 16px;
+    @media (max-width: 1024px) {
+      padding: 6px 8px;
+      font-size: 12px;
+    }
   }
   & > button:first-child {
     background-color: #fff;
@@ -126,11 +149,5 @@ export const DescBtn = styled.div`
   & > button:last-child {
     background-color: #235ef3;
     color: #fff;
-  }
-  @media (max-width: 1470px) {
-    gap: 10px;
-  }
-  @media (max-width: 1300px) {
-    gap: 5px;
   }
 `;
