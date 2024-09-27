@@ -411,10 +411,10 @@ Error generating stack: `+o.message+`
     background-repeat: no-repeat;
   }
   & > .main_swiper .swiper-button-prev::after {
-    background-image: url("src/assets/icon/arrow_prev_main.svg");
+    background-image: url("/src/assets/icon/arrow_prev_main.svg");
   }
   & > .main_swiper .swiper-button-next::after {
-    background-image: url("src/assets/icon/arrow_next_main.svg");
+    background-image: url("/src/assets/icon/arrow_next_main.svg");
   }
   /* pagination */
   & > .main_swiper .swiper-pagination {
@@ -728,10 +728,10 @@ Error generating stack: `+o.message+`
     }
   }
   & > .event_swiper .swiper-button-prev::after {
-    background-image: url("src/assets/icon/arrow_prev.svg");
+    background-image: url("/src/assets/icon/arrow_prev.svg");
   }
   & > .event_swiper .swiper-button-next::after {
-    background-image: url("src/assets/icon/arrow_next.svg");
+    background-image: url("/src/assets/icon/arrow_next.svg");
   }
 `,L_=Te.div`
   position: relative;
