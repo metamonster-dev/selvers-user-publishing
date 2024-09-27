@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import PrevIcon from "@/assets/icon/arrow_prev.svg";
+import NextIcon from "@/assets/icon/arrow_next.svg";
 
 export const EventSliderWrap = styled.div`
   padding: 160px 0 0;
@@ -126,9 +128,9 @@ export const SliderArea = styled.div`
     }
   }
   & > .event_swiper .swiper-button-prev::after {
-    background-image: url("src/assets/icon/arrow_prev.svg");
+    background-image: url(${PrevIcon});
   }
   & > .event_swiper .swiper-button-next::after {
-    background-image: url("src/assets/icon/arrow_next.svg");
+    background-image: url(${NextIcon});
   }
 `;

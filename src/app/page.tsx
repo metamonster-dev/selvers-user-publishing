@@ -1,7 +1,7 @@
 import MainSwiper from "@components/mainSwiper";
 import SearchBar from "@components/searchBar";
 import EventSwiper from "@components/eventSwiper";
-import SubBanner from "@components/subBanner";
+import SubBanner from "@components/shared/subBanner";
 const bannerImgs = [
   "./banner_1.png",
   "./banner_2.png",
