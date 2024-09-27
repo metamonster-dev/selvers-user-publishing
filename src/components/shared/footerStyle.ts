@@ -21,6 +21,7 @@ export const FooterWrap = styled.footer`
   @media (max-width: 1024px) {
     padding: 0 20px;
     height: 280px;
+    margin-bottom: 40px;
   }
 `;
 
@@ -105,7 +106,7 @@ export const RightArea = styled.div`
     width: 80%;
     color: #b0b8c1;
     font-size: 14px;
-    line-height: 1.3;
+    line-height: 1.5;
     @media (max-width: 1240px) {
       width: 100%;
       font-size: 10px;

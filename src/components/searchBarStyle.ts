@@ -65,7 +65,6 @@ export const FilterWrap = styled.div`
   width: 924px;
   padding: 34px 25px;
   position: absolute;
-  display: flex;
   background-color: #000;
   border-radius: 10px;
   left: 50%;
@@ -81,9 +80,10 @@ export const FilterWrap = styled.div`
     right: 0;
     bottom: 0;
     left: 0;
+    border-radius: 0;
     transform: translateX(0);
     flex-direction: column;
-    padding: 85px 25px;
+    padding: 60px 0;
   }
   & .back_btn {
     position: absolute;
@@ -100,7 +100,16 @@ export const FilterWrap = styled.div`
     flex: 0 0 auto;
   }
 `;
-export const SearchHeader = styled.div``;
+export const FilterContent = styled.div`
+  display: flex;
+
+  @media (max-width: 1024px) {
+    padding: 25px;
+    flex-direction: column;
+    overflow-y: scroll;
+    height: 90vh;
+  }
+`;
 export const SearchHistory = styled.div`
   width: 50%;
   border-right: 1px solid rgba(255, 255, 255, 0.3);
@@ -143,10 +152,11 @@ export const SearchHistory = styled.div`
   }
   & ul {
     display: flex;
+    flex-wrap: wrap;
     padding-top: 20px;
-    gap: 32px;
+    column-gap: 32px;
+    row-gap: 20px;
     @media (max-width: 1024px) {
-      flex-direction: column;
       padding: 25px 0;
     }
   }
@@ -157,19 +167,19 @@ export const SearchHistory = styled.div`
 export const SearchCategory = styled.div`
   width: 50%;
   display: flex;
-  padding-left: 50px;
-  padding-top: 30px;
+  padding: 30px 0 0 50px;
   @media (max-width: 1024px) {
     width: 100%;
     flex-direction: column;
-    padding-left: 0;
-    padding-top: 25px;
+    padding: 25px 0 0 0;
   }
   & ul {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    padding-left: 35px;
+    padding-left: 32px;
+    row-gap: 20px;
+    padding-bottom: 20px;
     @media (max-width: 1024px) {
       padding-left: 0;
       padding: 25px 0;
@@ -182,7 +192,7 @@ export const SearchCategory = styled.div`
   }
   & .category li {
     width: 50%;
-    padding-bottom: 20px;
+    /* padding-bottom: 20px; */
   }
   & .category li:first-child {
     width: 100%;

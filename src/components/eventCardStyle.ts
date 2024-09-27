@@ -23,14 +23,18 @@ export const LikeBtn = styled.button`
     right: 25px;
   }
   @media (max-width: 1024px) {
-    top: 20px;
-    right: 20px;
+    top: 15px;
+    right: 15px;
     font-size: 10px;
     gap: 5px;
+    padding: 6px 6px;
   }
   & .heart_icon {
     width: 13px;
     height: 13px;
+    @media (max-width: 1024px) {
+      width: 12px;
+    }
   }
   & .heart_icon svg {
     width: 100%;
@@ -97,7 +101,7 @@ export const TextBox = styled.div`
     color: #b0b8c1;
     line-height: 1.2;
     @media (max-width: 1024px) {
-      font-size: 10px;
+      font-size: 9px;
     }
   }
   & .dday {
@@ -112,9 +116,10 @@ export const TextBox = styled.div`
       font-size: 20px;
     }
     @media (max-width: 1024px) {
-      padding: 4px 11px;
+      padding: 7px 5px;
       font-size: 14px;
       border-radius: 4px;
+      min-width: 62px;
     }
   }
   & .price {

@@ -86,6 +86,14 @@ export const NavItem = styled.li`
 export const BtnArea = styled.div`
   display: flex;
   align-items: center;
+  & .toggle_menu {
+    width: 30px;
+    height: 30px;
+    & svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
 `;
 export const AuthBtn = styled.div<{ $loginState?: boolean }>`
   display: flex;
@@ -138,7 +146,7 @@ export const DescBtn = styled.div`
     font-weight: 700;
     font-size: 16px;
     @media (max-width: 1024px) {
-      padding: 6px 8px;
+      padding: 8px 10px;
       font-size: 12px;
     }
   }

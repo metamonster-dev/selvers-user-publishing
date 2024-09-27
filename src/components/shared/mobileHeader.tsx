@@ -35,7 +35,7 @@ const MobileHeader = () => {
             <button>행사등록</button>
             <button>AI챗봇</button>
           </DescBtn>
-          <button onClick={() => menuOpenHandler()}>
+          <button onClick={() => menuOpenHandler()} className="toggle_menu">
             <MenuIcon />
           </button>
         </BtnArea>
