@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import PrevIcon from "@/assets/icon/arrow_prev_main.svg";
-import NextIcon from "@/assets/icon/arrow_next_main.svg";
 
 export const MainSwiperWrap = styled.div`
   & > .main_swiper {
@@ -57,10 +55,10 @@ export const MainSwiperWrap = styled.div`
     background-repeat: no-repeat;
   }
   & > .main_swiper .swiper-button-prev::after {
-    background-image: url(${PrevIcon});
+    background-image: url("./arrow_prev_main.svg");
   }
   & > .main_swiper .swiper-button-next::after {
-    background-image: url(${NextIcon});
+    background-image: url("./arrow_next_main.svg");
   }
   /* pagination */
   & > .main_swiper .swiper-pagination {
