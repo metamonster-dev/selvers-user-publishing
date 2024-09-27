@@ -5,10 +5,10 @@ import SubBanner from "@components/shared/subBanner";
 const bannerImgs = [
   "./banner_1.png",
   "./banner_2.png",
-  "./banner_3.jpg",
+  "./banner_3.png",
   "./banner_1.png",
   "./banner_2.png",
-  "./banner_3.jpg",
+  "./banner_3.png",
 ];
 
 const eventList = [

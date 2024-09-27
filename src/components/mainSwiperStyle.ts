@@ -18,6 +18,7 @@ export const MainSwiperWrap = styled.div`
   }
   & > .main_swiper .swiper-slide figure img {
     position: absolute;
+    width: 100%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
