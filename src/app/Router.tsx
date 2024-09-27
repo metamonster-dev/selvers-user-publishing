@@ -1,10 +1,10 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RouterProvider, createHashRouter } from "react-router-dom";
 import Layout from "@components/shared/layout";
 import Main from "@/app/page";
 import Join from "@/app/auth/join/page";
 import EmailJoin from "@/app/auth/join/email/page";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: <Layout />,

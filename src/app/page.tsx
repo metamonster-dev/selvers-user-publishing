@@ -3,18 +3,18 @@ import SearchBar from "@components/searchBar";
 import EventSwiper from "@components/eventSwiper";
 import SubBanner from "@components/subBanner";
 const bannerImgs = [
-  "/banner_1.png",
-  "/banner_2.png",
-  "/banner_3.jpg",
-  "/banner_1.png",
-  "/banner_2.png",
-  "/banner_3.jpg",
+  "./banner_1.png",
+  "./banner_2.png",
+  "./banner_3.jpg",
+  "./banner_1.png",
+  "./banner_2.png",
+  "./banner_3.jpg",
 ];
 
 const eventList = [
   {
     id: 0,
-    imgUrl: "/card_1.png",
+    imgUrl: "./card_1.png",
     title:
       "제 1회 북앤 콘텐츠 페어 제 1회 북앤 콘텐츠 페어 제 1회 북앤 콘텐츠 페어 제 1회 북앤 콘텐츠 페어 제 1회 북앤 콘텐츠 페어",
     date: "2024/08/24 ~ 2024/08/24",
@@ -26,7 +26,7 @@ const eventList = [
   },
   {
     id: 1,
-    imgUrl: "/card_2.png",
+    imgUrl: "./card_2.png",
     title: "제 1회 북앤 콘텐츠 페어",
     date: "2024/08/24 ~ 2024/08/24",
     location: "송도 컨벤시아",
@@ -37,7 +37,7 @@ const eventList = [
   },
   {
     id: 2,
-    imgUrl: "/card_3.png",
+    imgUrl: "./card_3.png",
     title: "제 1회 북앤 콘텐츠 페어",
     date: "2024/08/24 ~ 2024/08/24",
     location: "송도 컨벤시아",
@@ -48,7 +48,7 @@ const eventList = [
   },
   {
     id: 3,
-    imgUrl: "/card_4.png",
+    imgUrl: "./card_4.png",
     title: "제 1회 북앤 콘텐츠 페어",
     date: "2024/08/24 ~ 2024/08/24",
     location: "송도 컨벤시아",
@@ -59,7 +59,7 @@ const eventList = [
   },
   {
     id: 4,
-    imgUrl: "/card_1.png",
+    imgUrl: "./card_1.png",
     title:
       "제 1회 북앤 콘텐츠 페어 제 1회 북앤 콘텐츠 페어 제 1회 북앤 콘텐츠 페어 제 1회 북앤 콘텐츠 페어 제 1회 북앤 콘텐츠 페어",
     date: "2024/08/24 ~ 2024/08/24",
@@ -71,7 +71,7 @@ const eventList = [
   },
   {
     id: 5,
-    imgUrl: "/card_2.png",
+    imgUrl: "./card_2.png",
     title: "제 1회 북앤 콘텐츠 페어",
     date: "2024/08/24 ~ 2024/08/24",
     location: "송도 컨벤시아",
@@ -82,7 +82,7 @@ const eventList = [
   },
   {
     id: 6,
-    imgUrl: "/card_3.png",
+    imgUrl: "./card_3.png",
     title: "제 1회 북앤 콘텐츠 페어",
     date: "2024/08/24 ~ 2024/08/24",
     location: "송도 컨벤시아",
@@ -93,7 +93,7 @@ const eventList = [
   },
   {
     id: 7,
-    imgUrl: "/card_4.png",
+    imgUrl: "./card_4.png",
     title: "제 1회 북앤 콘텐츠 페어",
     date: "2024/08/24 ~ 2024/08/24",
     location: "송도 컨벤시아",
