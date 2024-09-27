@@ -13,7 +13,7 @@ const SubBannerWrap = styled.div`
 const SubBanner = () => {
   return (
     <SubBannerWrap>
-      <img src="src/assets/sub_banner.png" />
+      <img src="./src/assets/sub_banner.png" />
     </SubBannerWrap>
   );
 };
