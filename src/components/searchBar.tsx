@@ -10,20 +10,26 @@ import {
   FilterContent,
 } from "./searchBarStyle";
 import { Link } from "react-router-dom";
+import { useMediaQuery } from "usehooks-ts";
 
 const SearchBar = () => {
   const [searchText, setSearchText] = useState("");
   const [filter, setFilter] = useState(false);
   const filterBox = useRef<HTMLDivElement>(null);
+  const isMobile = useMediaQuery("(max-width: 1024px)");
 
   const focusOnHandler = () => {
     setFilter(true);
-    document.body.style.overflow = "hidden";
+    if (isMobile === true) {
+      document.body.style.overflow = "hidden";
+    }
   };
 
   const focusOutHandler = () => {
     setFilter(false);
-    document.body.style.overflow = "auto";
+    if (isMobile === true) {
+      document.body.style.overflow = "auto";
+    }
   };
 
   return (
