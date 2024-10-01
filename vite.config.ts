@@ -5,6 +5,8 @@ import svgr from "vite-plugin-svgr";
 // https://vitejs.dev/config/
 export default defineConfig({
   // gh-page
+  // base: "/micemate-front",
+  // dev mode
   base: "",
   plugins: [react(), svgr()],
   resolve: {

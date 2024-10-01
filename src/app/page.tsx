@@ -2,6 +2,8 @@ import MainSwiper from "@components/mainSwiper";
 import SearchBar from "@components/searchBar";
 import EventSwiper from "@components/eventSwiper";
 import SubBanner from "@components/shared/subBanner";
+import { MainPageWrap } from "./pageStyle";
+
 const bannerImgs = [
   "./banner_1.png",
   "./banner_2.png",
@@ -106,7 +108,7 @@ const eventList = [
 
 const MainPage = () => {
   return (
-    <div>
+    <MainPageWrap>
       <SearchBar />
       <MainSwiper bannerImgs={bannerImgs} />
       <EventSwiper
@@ -132,7 +134,7 @@ const MainPage = () => {
         subTitle={"이번 주말, 마이스 메이트가 추천하는 핫한 행사 ✨"}
         eventList={eventList}
       />
-    </div>
+    </MainPageWrap>
   );
 };
 

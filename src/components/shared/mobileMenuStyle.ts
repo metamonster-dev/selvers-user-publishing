@@ -23,10 +23,19 @@ export const MobileMenuHeader = styled.div`
   }
   & .close_btn {
     margin-left: auto;
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    & svg {
+      width: 100%;
+      height: 100%;
+    }
   }
 `;
 export const MobileMenuBody = styled.div`
   padding: 20px 16px;
+  height: calc(100vh - 60px);
+  overflow-y: scroll;
   & li {
     color: #fff;
     font-size: 16px;

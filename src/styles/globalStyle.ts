@@ -71,13 +71,11 @@ const GlobalStyles = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
-  /* html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, menu, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, main, menu, nav, output, ruby, section, summary, time, mark, audio, video {
-    font-size:8px;
-  } */
+
   html{
     background-color:#000;
-    font-family: 'Pretendard';
     font-size:18px;
+    font-family: 'Pretendard';
     @media (max-width: 1024px) {
       font-size: 14px;
     }
@@ -95,6 +93,13 @@ const GlobalStyles = createGlobalStyle`
   }
   input{
     border: none;
+    font-family: 'Pretendard';
+  }
+  .err_msg{
+    color: #F56767;
+    padding:2px 0;
+    font-size: 16px;
+    font-weight: 500;
   }
 `;
 

@@ -23,12 +23,19 @@ const MobileHeader = () => {
   const [toggle, setToggle] = useState(false);
   const menuOpenHandler = () => {
     setToggle(true);
+    document.body.style.overflow = "hidden";
+  };
+  const menuCloseHandler = () => {
+    setToggle(false);
+    document.body.style.overflow = "auto";
   };
   return (
     <MobileHeaderWrap>
       <TopMenu>
         <LogoImg>
-          <Logo />
+          <Link to={"/"}>
+            <Logo />
+          </Link>
         </LogoImg>
         <BtnArea>
           <DescBtn>
@@ -62,10 +69,14 @@ const MobileHeader = () => {
         <MobileMenu setClose={setToggle}>
           <ul>
             <li>
-              <Link to={"/login"}>로그인</Link>
+              <Link to={"/login"} onClick={menuCloseHandler}>
+                로그인
+              </Link>
             </li>
             <li>
-              <Link to={"/login"}>회원가입</Link>
+              <Link to={"/join"} onClick={menuCloseHandler}>
+                회원가입
+              </Link>
             </li>
           </ul>
         </MobileMenu>

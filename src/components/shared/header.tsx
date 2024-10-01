@@ -56,7 +56,7 @@ const Header = () => {
                     <Link to={"/login"}>로그인</Link>
                   </div>
                   <div>
-                    <Link to={"/login"}>회원가입</Link>
+                    <Link to={"/join"}>회원가입</Link>
                   </div>
                 </AuthBtn>
               )}

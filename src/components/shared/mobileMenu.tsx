@@ -19,6 +19,7 @@ const MobileMenu = ({ children, setClose }: Props) => {
 
   const closeHandler = () => {
     setClose(false);
+    document.body.style.overflow = "auto";
   };
   return (
     <MobileMenuWrap>
