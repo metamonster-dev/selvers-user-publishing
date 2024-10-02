@@ -8,7 +8,7 @@ export interface UserStateType {
 export const userState = atom<UserStateType>({
   key: "user",
   default: {
-    isLogin: false,
+    isLogin: true,
     isLoginError: false,
   },
 });

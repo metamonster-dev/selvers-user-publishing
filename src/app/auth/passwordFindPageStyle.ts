@@ -16,6 +16,7 @@ export const TitleBox = styled.div`
   font-size: 24px;
   font-weight: 500;
   @media (max-width: 1024px) {
+    padding: 64px 0 58px;
     font-size: 18px;
   }
   & h2 {

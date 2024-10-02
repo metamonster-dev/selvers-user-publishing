@@ -9,6 +9,7 @@ import Join from "@/app/auth/join/JoinPage";
 import JoinForm from "@/app/auth/join/form/JoinFormPage";
 import Login from "@/app/auth/login/LoginPage";
 import PasswordFindPage from "./auth/passwordFindPage";
+import MyPage from "./mypage/MyPage";
 
 const router = createBrowserRouter(
   [
@@ -36,7 +37,9 @@ const router = createBrowserRouter(
           path: "login/password-find",
           element: <PasswordFindPage />,
         },
+        { path: "mypage", element: <MyPage /> },
       ],
+      errorElement: <div style={{ color: "#fff" }}>없는 페이지 입니다.</div>,
     },
   ],
   { basename: import.meta.env.DEV ? "/" : "/micemate-front" }

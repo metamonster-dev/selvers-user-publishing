@@ -64,13 +64,19 @@ const Header = () => {
               {loginState && (
                 <AuthBtn>
                   <div>
-                    <Cart />
+                    <Link to={""}>
+                      <Cart />
+                    </Link>
                   </div>
                   <div>
-                    <Calendar />
+                    <Link to={""}>
+                      <Calendar />
+                    </Link>
                   </div>
                   <div>
-                    <Person />
+                    <Link to={"/mypage"}>
+                      <Person />
+                    </Link>
                   </div>
                 </AuthBtn>
               )}

@@ -95,6 +95,7 @@ const GlobalStyles = createGlobalStyle`
   input{
     border: none;
     font-family: 'Pretendard';
+    outline: none;
   }
   .err_msg{
     color: #F56767;
