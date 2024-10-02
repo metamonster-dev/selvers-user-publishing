@@ -1,5 +1,7 @@
+import { MyPageWrap } from "./myPageStyled";
+
 const MyPage = () => {
-  return <div>asdf</div>;
+  return <MyPageWrap>content</MyPageWrap>;
 };
 
 export default MyPage;

@@ -97,6 +97,9 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'Pretendard';
     outline: none;
   }
+  table, th, tr, td{
+    font-family: 'Pretendard';
+  }
   .err_msg{
     color: #F56767;
     padding:2px 0;

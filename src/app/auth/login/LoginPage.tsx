@@ -12,7 +12,7 @@ import {
   DescBtn,
   LoginFormWrap,
   SubmitBtn,
-} from "./LoginPageStyle";
+} from "./loginPageStyle";
 import { Link } from "react-router-dom";
 import GoogleIcon from "@/assets/icon/round_google.svg?react";
 import NaverIcon from "@/assets/icon/round_naver.svg?react";

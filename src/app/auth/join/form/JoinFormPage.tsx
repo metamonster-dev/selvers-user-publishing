@@ -15,7 +15,7 @@ import {
   FavoriteListBox,
   AgreeBox,
   SubmitBtn,
-} from "./JoinFormPageStyle";
+} from "./joinFormPageStyle";
 import { FormEvent, useState } from "react";
 import favoriteList from "@/mockData/favoritList.json";
 
@@ -164,7 +164,7 @@ const JoinFormPage = () => {
           <p className="err_msg">{errors.name?.message?.toString()}</p>
         )}
         <TdForm>
-          <SelectBoxA>
+          <SelectBoxA text="관심 분야">
             <FavoriteListBox>
               {favoriteList.favoriteList.map((data) => {
                 return (

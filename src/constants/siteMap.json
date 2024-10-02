@@ -1,0 +1,33 @@
+{
+  "main": [{ "id": 1, "gubun": "메인", "name": "메인페이지", "link": "/" }],
+  "loginJoin": [
+    { "id": 2, "gubun": "로그인&회원가입", "name": "로그인", "link": "/login" },
+    {
+      "id": 3,
+      "gubun": "로그인&회원가입",
+      "name": "회원가입",
+      "link": "/join"
+    },
+    {
+      "id": 4,
+      "gubun": "로그인&회원가입",
+      "name": "회원가입 페이지_이메일 회원가입",
+      "link": "/join/form"
+    }
+  ],
+  "myPage": [
+    { "id": 5, "gubun": "마이페이지", "name": "로그인", "link": "/login" },
+    {
+      "id": 6,
+      "gubun": "마이페이지",
+      "name": "",
+      "link": "/join"
+    },
+    {
+      "id": 7,
+      "gubun": "마이페이지",
+      "name": "",
+      "link": "/join/form"
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-import { JoinPageWrap, ButtonItem } from "./JoinPageStyle";
+import { JoinPageWrap, ButtonItem } from "./joinPageStyle";
 
 import KakaoIcon from "@/assets/icon/kakao.svg?react";
 import NaverIcon from "@/assets/icon/naver.svg?react";
