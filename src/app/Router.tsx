@@ -1,8 +1,11 @@
-// import { RouterProvider, createHashRouter } from "react-router-dom";
+// import { lazy } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Layout from "@components/shared/layout";
+
 import Main from "@/app/page";
 import Join from "@/app/auth/join/JoinPage";
+// const Join = lazy(() => import("@/app/auth/join/JoinPage"));
+
 import JoinForm from "@/app/auth/join/form/JoinFormPage";
 import Login from "@/app/auth/login/LoginPage";
 import PasswordFindPage from "./auth/passwordFindPage";

@@ -48,7 +48,10 @@ const PasswordFindPage = () => {
         <SubmitBtn>임시 비밀번호 받기</SubmitBtn>
       </FindFormWrap>
       {alret && (
-        <AlretModal text="취소가 완료되었습니다." setAlret={setAlret} />
+        <AlretModal
+          text="메일로 임시 비밀번호를 발송했습니다."
+          setAlret={setAlret}
+        />
       )}
     </PasswordFindWrap>
   );

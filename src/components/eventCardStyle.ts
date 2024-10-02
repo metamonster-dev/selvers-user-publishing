@@ -35,10 +35,11 @@ export const LikeBtn = styled.button`
     @media (max-width: 1024px) {
       width: 12px;
     }
-  }
-  & .heart_icon svg {
-    width: 100%;
-    height: 100%;
+    & svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
   }
 `;
 

@@ -6,7 +6,7 @@ export const SelectWrap = styled.div`
   position: relative;
 `;
 
-export const SelectOption = styled.button<{ $isOn: boolean }>`
+export const SelectOption = styled.div<{ $isOn: boolean }>`
   width: 100%;
   padding: 15px 16px;
   background-color: #fff;
@@ -18,6 +18,7 @@ export const SelectOption = styled.button<{ $isOn: boolean }>`
   border-bottom: ${(props) => props.$isOn && "1px solid #fff;"};
   text-align: left;
   font-weight: 500;
+  cursor: pointer;
   & > span {
     position: absolute;
     display: block;

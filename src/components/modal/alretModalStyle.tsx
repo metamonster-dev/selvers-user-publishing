@@ -20,6 +20,13 @@ export const Alret = styled.div`
   transform: translate(-50%, -50%);
   border-radius: 3px;
   border: 1px solid #ccc;
+  @media (max-width: 1024px) {
+    width: auto;
+    right: 16px;
+    left: 16px;
+    transform: none;
+    transform: translateY(-50%);
+  }
   & .alret_header {
     height: 50px;
     border-bottom: 1px solid #e6e6e6;
@@ -38,10 +45,14 @@ export const Alret = styled.div`
     }
   }
   & .desc {
+    word-break: keep-all;
     padding: 25px 0 30px;
     text-align: center;
     font-size: 16px;
     font-weight: 700;
+    @media (max-width: 400px) {
+      font-size: 15px;
+    }
   }
   & .btn_area {
     text-align: center;
@@ -52,6 +63,11 @@ export const Alret = styled.div`
       font-weight: 500;
       border-radius: 10px;
       border-radius: 2px solid #09338c;
+      @media (max-width: 400px) {
+        width: 100px;
+        padding: 8px;
+        font-size: 15px;
+      }
     }
     & .primary {
       background-color: #09338c;

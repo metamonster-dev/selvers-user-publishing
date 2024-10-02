@@ -28,7 +28,7 @@ export const InputCheckboxWrapA = styled.div`
     border-radius: 3px;
   }
   & input[type="checkbox"]:checked ~ label::before {
-    background-image: url(./chk.svg);
+    background-image: url("./chk.svg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 60%;
@@ -59,10 +59,10 @@ export const InputCheckboxWrapB = styled.div`
     transform: translateY(-50%);
     width: 17px;
     height: 17px;
-    background-image: url("../round_chk.svg");
+    background-image: url("./round_chk.svg");
     background-size: cover;
   }
   & input[type="checkbox"]:checked ~ label::before {
-    background-image: url("../round_chk_on.svg");
+    background-image: url("./round_chk_on.svg");
   }
 `;

@@ -3,7 +3,7 @@ import reset from "styled-reset";
 
 const GlobalStyles = createGlobalStyle`
   ${reset};
-  /*===== FONTS =====*/
+  /* Pretendard */
   @font-face {
     font-family: 'Pretendard';
     font-weight: 900;
@@ -90,6 +90,7 @@ const GlobalStyles = createGlobalStyle`
     border: none;
     cursor: pointer;
     background-color: transparent;
+    color:#000;
   }
   input{
     border: none;

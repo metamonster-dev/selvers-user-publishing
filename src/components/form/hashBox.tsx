@@ -12,10 +12,10 @@ const HashBox = ({ hashList, onClick }: Props) => {
       {hashList.map((data, index) => {
         return (
           <HashItem key={index}>
-            <button onClick={() => onClick(data.id)}>
+            <span onClick={() => onClick(data.id)} className="close_btn">
               <DeleteIcon />
-            </button>
-            <span>{data.label}</span>
+            </span>
+            <span className="label">{data.label}</span>
           </HashItem>
         );
       })}
