@@ -19,7 +19,7 @@ const SideMenu = () => {
         { id: "00-03", path: "/mypage/past-list", name: "지난 행사" },
       ],
     },
-    { id: "01", path: "/mypage/edit-infomation", name: "내 정보 수정" },
+    { id: "01", path: "/mypage/user-modify", name: "내 정보 수정" },
     { id: "02", name: "로그아웃", type: "button" },
   ];
 
@@ -33,7 +33,7 @@ const SideMenu = () => {
         {sideMenuItems.map((data) => {
           if (data.type === "toggleButton") {
             return (
-              <>
+              <div key={data.id}>
                 {/* 메인 토글 버튼 */}
                 <MenuItem onClick={toggleDropdown} $isOn={isOn}>
                   참여 행사 관리
@@ -46,24 +46,30 @@ const SideMenu = () => {
                   {data.subMenu &&
                     data.subMenu.map((data) => {
                       return (
-                        <MenuItem $target={location.pathname === data.path}>
+                        <MenuItem
+                          $target={location.pathname === data.path}
+                          key={data.id}
+                        >
                           <Link to={data.path}>{data.name}</Link>
                         </MenuItem>
                       );
                     })}
                 </OptionBox>
-              </>
+              </div>
             );
           } else {
             // 메인 메뉴
             if (data.type !== "button") {
               return (
-                <MenuItem $target={location.pathname === data.path}>
+                <MenuItem
+                  $target={location.pathname === data.path}
+                  key={data.id}
+                >
                   <Link to={data.path as string}>{data.name}</Link>
                 </MenuItem>
               );
             } else {
-              return <MenuItem>{data.name}</MenuItem>;
+              return <MenuItem key={data.id}>{data.name}</MenuItem>;
             }
           }
         })}

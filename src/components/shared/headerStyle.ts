@@ -7,14 +7,11 @@ export const HeaderWrap = styled.header`
   display: flex;
   align-items: center;
 
-  @media (max-width: 1420px) {
-    padding: 72px 120px 55px;
+  @media (max-width: 1400px) {
+    padding: 72px 70px 55px;
   }
-  @media (max-width: 1300px) {
-    padding: 72px 80px 55px;
-  }
-  @media (max-width: 1170px) {
-    padding: 72px 50px 55px;
+  @media (max-width: 1200px) {
+    padding: 72px 40px 55px;
   }
   @media (max-width: 1024px) {
     display: none;
@@ -38,23 +35,24 @@ export const TopMenu = styled.div`
 `;
 
 export const LogoImg = styled.h1`
+  flex: 0 0 auto;
   margin-right: 97px;
-  max-width: 208px;
-  & svg {
-    width: 100%;
-    height: auto;
+  width: 208px;
+  @media (max-width: 1400px) {
+    margin-right: 30px;
   }
-  @media (max-width: 1420px) {
-    margin-right: 60px;
-  }
-  @media (max-width: 1300px) {
+  @media (max-width: 1200px) {
     margin-right: 20px;
   }
-  @media (max-width: 1170px) {
-    max-width: 190px;
-  }
   @media (max-width: 1024px) {
-    max-width: 130px;
+    width: 130px;
+  }
+  & a {
+    display: block;
+    & svg {
+      width: 100%;
+      height: auto;
+    }
   }
 `;
 
@@ -64,16 +62,22 @@ export const NavMenu = styled.div`
   align-items: center;
   justify-content: space-between;
 `;
-export const NavWrap = styled.nav``;
+export const NavWrap = styled.nav`
+  width: 100%;
+  & > div > form {
+    width: 100%;
+    max-width: 666px;
+    & > div {
+      width: 100%;
+    }
+  }
+`;
 export const Nav = styled.ul`
   display: flex;
   align-items: center;
   gap: 16px;
-  @media (max-width: 1420px) {
-    gap: 14px;
-  }
-  @media (max-width: 1170px) {
-    gap: 8px;
+  @media (max-width: 1400px) {
+    gap: 10px;
   }
   @media (max-width: 1024px) {
     padding: 10px 0 25px;
@@ -84,6 +88,7 @@ export const NavItem = styled.li`
   font-weight: 700;
 `;
 export const BtnArea = styled.div`
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   & .toggle_menu {
@@ -102,7 +107,7 @@ export const AuthBtn = styled.div<{ $loginState?: boolean }>`
   margin-right: 35px;
   & > div {
     padding: ${(props) => (props.$loginState ? "0 15px" : "0 18px")};
-    @media (max-width: 1420px) {
+    @media (max-width: 1400px) {
       padding: ${(props) => (props.$loginState ? "0 10px" : "0 14px")};
     }
   }
@@ -119,7 +124,7 @@ export const AuthBtn = styled.div<{ $loginState?: boolean }>`
     right: 0;
     transform: translatey(-50%);
   }
-  @media (max-width: 1470px) {
+  @media (max-width: 1400px) {
     margin-right: 20px;
   }
   @media (max-width: 1300px) {
@@ -130,7 +135,7 @@ export const DescBtn = styled.div`
   display: flex;
   gap: 18px;
   align-items: center;
-  @media (max-width: 1470px) {
+  @media (max-width: 1400px) {
     gap: 10px;
   }
   @media (max-width: 1300px) {

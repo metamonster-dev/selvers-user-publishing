@@ -6,7 +6,7 @@ export const FooterWrap = styled.footer`
   padding: 0 214px;
   justify-content: center;
   height: 376px;
-  @media (max-width: 1470px) {
+  @media (max-width: 1400px) {
     padding: 0 100px;
   }
   @media (max-width: 1350px) {

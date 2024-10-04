@@ -1,5 +1,5 @@
-const EditInfomationPage = () => {
+const UserModifyPage = () => {
   return <div style={{ color: "#fff" }}>EditInfomationPage</div>;
 };
 
-export default EditInfomationPage;
+export default UserModifyPage;
