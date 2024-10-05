@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 export const SideMenuWrap = styled.div`
+  position: absolute;
+  top: 0;
+  left: 56px;
   width: 280px;
   background-color: rgba(41, 46, 55, 0.5);
   border-radius: 20px;

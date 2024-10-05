@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 export const MyPageLayoutWrap = styled.div`
+  position: relative;
   display: flex;
-  padding: 27px 0 0;
+  padding: 0px 140px 0 0;
 `;
 
 export const PageTitle = styled.h3`
@@ -10,4 +11,8 @@ export const PageTitle = styled.h3`
   font-size: 32px;
   color: #fff;
 `;
-export const ContentWrap = styled.div``;
+export const ContentWrap = styled.div`
+  padding-left: 364px;
+  width: 100%;
+  min-height: 90vh;
+`;

@@ -91,6 +91,23 @@ export const BtnArea = styled.div`
   flex: 0 0 auto;
   display: flex;
   align-items: center;
+  & .searh_page_link {
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+    & a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      & svg {
+        width: 100%;
+        height: 100%;
+        & path {
+          fill: #fff;
+        }
+      }
+    }
+  }
   & .toggle_menu {
     width: 30px;
     height: 30px;

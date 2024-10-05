@@ -1,0 +1,92 @@
+{
+  "eventList": [
+    {
+      "id": "0",
+      "imgUrl": "./card_1.png",
+      "title": "제 1회 북앤 콘텐츠 페어 제 1회 북앤 콘텐츠 페어 제 1회 북앤 콘텐츠 페어 제 1회 북앤 콘텐츠 페어 제 1회 북앤 콘텐츠 페어",
+      "date": "2024/08/24 ~ 2024/08/24",
+      "location": "송도 컨벤시아",
+      "dDay": "D-21",
+      "price": "15,000",
+      "likeNum": 1000,
+      "like": true
+    },
+    {
+      "id": "1",
+      "imgUrl": "./card_2.png",
+      "title": "제 1회 북앤 콘텐츠 페어",
+      "date": "2024/08/24 ~ 2024/08/24",
+      "location": "송도 컨벤시아",
+      "dDay": "D-301",
+      "price": "무료",
+      "likeNum": 1000,
+      "like": false
+    },
+    {
+      "id": "2",
+      "imgUrl": "./card_3.png",
+      "title": "제 1회 북앤 콘텐츠 페어",
+      "date": "2024/08/24 ~ 2024/08/24",
+      "location": "송도 컨벤시아",
+      "dDay": "D-1",
+      "price": "10,000원",
+      "likeNum": 1000,
+      "like": true
+    },
+    {
+      "id": "3",
+      "imgUrl": "./card_4.png",
+      "title": "제 1회 북앤 콘텐츠 페어",
+      "date": "2024/08/24 ~ 2024/08/24",
+      "location": "송도 컨벤시아",
+      "dDay": "D-1",
+      "price": "무료",
+      "likeNum": 1000,
+      "like": false
+    },
+    {
+      "id": "4",
+      "imgUrl": "./card_1.png",
+      "title": "제 1회 북앤 콘텐츠 페어 제 1회 북앤 콘텐츠 페어 제 1회 북앤 콘텐츠 페어 제 1회 북앤 콘텐츠 페어 제 1회 북앤 콘텐츠 페어",
+      "date": "2024/08/24 ~ 2024/08/24",
+      "location": "송도 컨벤시아",
+      "dDay": "D-21",
+      "price": "15,000",
+      "likeNum": 1000,
+      "like": true
+    },
+    {
+      "id": "5",
+      "imgUrl": "./card_2.png",
+      "title": "제 1회 북앤 콘텐츠 페어",
+      "date": "2024/08/24 ~ 2024/08/24",
+      "location": "송도 컨벤시아",
+      "dDay": "D-301",
+      "price": "무료",
+      "likeNum": 1000,
+      "like": false
+    },
+    {
+      "id": "6",
+      "imgUrl": "./card_3.png",
+      "title": "제 1회 북앤 콘텐츠 페어",
+      "date": "2024/08/24 ~ 2024/08/24",
+      "location": "송도 컨벤시아",
+      "dDay": "D-1",
+      "price": "10,000원",
+      "likeNum": 1000,
+      "like": true
+    },
+    {
+      "id": "7",
+      "imgUrl": "./card_4.png",
+      "title": "제 1회 북앤 콘텐츠 페어",
+      "date": "2024/08/24 ~ 2024/08/24",
+      "location": "송도 컨벤시아",
+      "dDay": "D-1",
+      "price": "무료",
+      "likeNum": 1000,
+      "like": false
+    }
+  ]
+}

@@ -13,7 +13,7 @@ const SideMenu = () => {
       name: "참여 행사 관리",
       type: "toggleButton",
       subMenu: [
-        { id: "00-00", path: "/mypage", name: "신청 행사" },
+        { id: "00-00", path: "/mypage/apply-list", name: "신청 행사" },
         { id: "00-01", path: "/mypage/cancel-list", name: "취소 내역" },
         { id: "00-02", path: "/mypage/wish-list", name: "관심 행사" },
         { id: "00-03", path: "/mypage/past-list", name: "지난 행사" },

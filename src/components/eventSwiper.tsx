@@ -5,21 +5,12 @@ import { Navigation } from "swiper/modules";
 import { EventSliderWrap, TitleBox, SliderArea } from "./eventSwiperStyle";
 import { MaxFrame } from "@/styles/commonStyle";
 import EventCard from "./eventCard";
+import { EventList } from "@/type";
 
 type Props = {
   title?: string;
   subTitle: string;
-  eventList: {
-    id: number;
-    imgUrl: string;
-    title: string;
-    date: string;
-    location: string;
-    dDay: string;
-    price: string;
-    likeNum: number;
-    like: boolean;
-  }[];
+  eventList: EventList[];
 };
 
 const EventSwiper = ({ title, subTitle, eventList }: Props) => {

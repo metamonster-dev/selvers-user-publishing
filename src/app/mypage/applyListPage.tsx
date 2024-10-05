@@ -1,12 +1,13 @@
-import { MyPageWrap } from "./applyListStyled";
+import { ApplyListPageWrap } from "./applyListStyled";
 import MyEventCard from "@components/myEventCard";
 
-const MyPage = () => {
+const ApplyListPage = () => {
   return (
-    <MyPageWrap>
+    <ApplyListPageWrap>
       <MyEventCard />
-    </MyPageWrap>
+      <MyEventCard />
+    </ApplyListPageWrap>
   );
 };
 
-export default MyPage;
+export default ApplyListPage;

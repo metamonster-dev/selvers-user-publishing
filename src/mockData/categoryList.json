@@ -1,0 +1,60 @@
+{
+  "categoryList": [
+    {
+      "id": "field_00",
+      "label": "전체"
+    },
+    {
+      "id": "field_01",
+      "label": "농축산/식음료"
+    },
+    {
+      "id": "field_02",
+      "label": "에너지/환경"
+    },
+    {
+      "id": "field_03",
+      "label": "섬유/의류"
+    },
+    {
+      "id": "field_04",
+      "label": "보건/의료"
+    },
+    {
+      "id": "field_05",
+      "label": "건설/건축"
+    },
+    {
+      "id": "field_06",
+      "label": "가정용품"
+    },
+    {
+      "id": "field_07",
+      "label": "뷰티/화장품"
+    },
+    {
+      "id": "field_08",
+      "label": "금융/부동산"
+    },
+    {
+      "id": "field_09",
+      "label": "교육"
+    },
+    {
+      "id": "field_10",
+      "label": "임신/출산/육아"
+    },
+    {
+      "id": "field_11",
+      "label": "웨딩"
+    },
+    {
+      "id": "field_12",
+      "label": "문화/예술"
+    },
+    {
+      "id": "field_13",
+      "label": "레저/관광"
+    }
+  ]
+}

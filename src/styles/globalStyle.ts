@@ -91,11 +91,13 @@ const GlobalStyles = createGlobalStyle`
     cursor: pointer;
     background-color: transparent;
     color:#000;
+    font-size: 18px;
   }
   input{
     border: none;
     font-family: 'Pretendard';
     outline: none;
+    font-size: 18px;
   }
   table, th, tr, td{
     font-family: 'Pretendard';

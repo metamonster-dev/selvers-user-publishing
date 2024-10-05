@@ -40,7 +40,7 @@ const Header = () => {
       <MaxFrame>
         <HeaderWrap>
           <LogoImg>
-            <Link to={"/"}>
+            <Link to="/">
               <Logo />
             </Link>
           </LogoImg>
@@ -49,16 +49,16 @@ const Header = () => {
               {mainPage === true && (
                 <Nav>
                   <NavItem>
-                    <Link to={""}>이번주 행사</Link>
+                    <Link to="/list">이번주 행사</Link>
                   </NavItem>
                   <NavItem>
-                    <Link to={""}>무료 행사</Link>
+                    <Link to="/list">무료 행사</Link>
                   </NavItem>
                   <NavItem>
-                    <Link to={""}>온라인 행사</Link>
+                    <Link to="/list">온라인 행사</Link>
                   </NavItem>
                   <NavItem>
-                    <Link to={""}>메이트 PICK</Link>
+                    <Link to="/list">메이트 PICK</Link>
                   </NavItem>
                 </Nav>
               )}
@@ -70,10 +70,10 @@ const Header = () => {
               {!loginState && (
                 <AuthBtn $loginState={loginState}>
                   <div className="login">
-                    <Link to={"/login"}>로그인</Link>
+                    <Link to="/login">로그인</Link>
                   </div>
                   <div>
-                    <Link to={"/join"}>회원가입</Link>
+                    <Link to="/join">회원가입</Link>
                   </div>
                 </AuthBtn>
               )}
@@ -81,17 +81,17 @@ const Header = () => {
               {loginState && (
                 <AuthBtn>
                   <div>
-                    <Link to={""}>
+                    <Link to="/mypage/wish-list">
                       <Cart />
                     </Link>
                   </div>
                   <div>
-                    <Link to={""}>
+                    <Link to="/mypage/apply-list">
                       <Calendar />
                     </Link>
                   </div>
                   <div>
-                    <Link to={"/mypage"}>
+                    <Link to={"/mypage/user-modify"}>
                       <Person />
                     </Link>
                   </div>

@@ -14,6 +14,8 @@ export const HashItem = styled.li`
   background-color: #fff;
   font-weight: 500;
   border-radius: 4px;
+  display: flex;
+  align-items: center;
   & .close_btn {
     position: absolute;
     left: 10px;
