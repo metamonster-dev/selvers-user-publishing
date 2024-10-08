@@ -1404,7 +1404,7 @@ import{r as i,j as e}from"./react-CEomBadl.js";import{c as ke}from"./react-dom-D
       right: 0;
       transform: translateY(-50%);
       background-size: cover;
-      background-image: url("/link_arrow.svg");
+      background-image: url("./link_arrow.svg");
     }
   }
 `,ct=n.button`
@@ -1952,7 +1952,7 @@ import{r as i,j as e}from"./react-CEomBadl.js";import{c as ke}from"./react-dom-D
       border: 2px solid rgba(11, 12, 55, 1);
     }
   }
-`,Xt=({text:t,setConfirm:a,setShowConfirm:s})=>{const[r,l]=i.useState(!1),d=()=>{a(!1),s(!1)},p=()=>{a(!0),l(!0)};return e.jsxs(e.Fragment,{children:[e.jsx(Gt,{children:e.jsxs(qt,{children:[e.jsx("div",{className:"alret_header",children:e.jsx("button",{onClick:d,className:"close_btn",children:e.jsx(be,{})})}),e.jsx("div",{className:"desc",children:t}),e.jsxs("div",{className:"btn_area",children:[e.jsx("button",{onClick:d,className:"secondary",children:"닫기"}),e.jsx("button",{onClick:p,className:"primary",children:"취소하기"})]})]})}),r&&e.jsx(ve,{text:"취소가 완료되었습니다.",setAlret:s})]})},Kt=({applyDate:t,state:a,title:s,date:r,location:l,linkBtn:d})=>{const[p,x]=i.useState(""),[c,j]=i.useState(!1),[m,C]=i.useState(!1);return i.useLayoutEffect(()=>{a==="apply"?x("참가 신청 완료"):a==="cancel"?x("취소 완료"):a==="wish"?x("관심 행사"):a==="past"&&x("종료 행사")},[]),e.jsxs(e.Fragment,{children:[e.jsxs(Tt,{children:[e.jsx(Dt,{children:e.jsxs(o,{to:"/detail/01",children:[(a==="cancel"||a==="past")&&e.jsx("span",{className:"blind",children:p}),e.jsx("img",{src:"/dummy_image_01.png"})]})}),e.jsxs(Wt,{children:[e.jsxs(Yt,{children:[(a==="apply"||a==="cancel")&&e.jsxs("div",{className:"apply",children:[e.jsx("span",{className:"state",children:p}),e.jsxs("span",{className:"date",children:["신청일 : ",t]})]}),e.jsxs("div",{className:"txt_box",children:[e.jsx("span",{className:"title",children:s}),e.jsx("span",{className:"date",children:r}),e.jsx("span",{className:"location",children:l})]})]}),a==="apply"&&e.jsxs(Jt,{children:[e.jsx("button",{children:"수정"}),"  |  ",e.jsx("button",{onClick:()=>{C(!0)},children:"취소"})]}),d&&e.jsxs(Ut,{children:[d==="AI 추천 부스 받기"&&e.jsx(o,{to:"/mypage/apply-list/booth-select/01",children:d}),d==="AI 추천 부스 확인"&&e.jsx(o,{to:"/mypage/apply-list/booth-check/01",children:d})]}),p.length<=0&&e.jsx(Qt,{children:e.jsx("button",{children:e.jsx(ue,{})})})]})]}),m&&e.jsx(Xt,{text:"취소하시겠습니까? 취소 확정 후에는 복구하실 수 없습니다.",setConfirm:j,setShowConfirm:C})]})},_t=n.div`
+`,Xt=({text:t,setConfirm:a,setShowConfirm:s})=>{const[r,l]=i.useState(!1),d=()=>{a(!1),s(!1)},p=()=>{a(!0),l(!0)};return e.jsxs(e.Fragment,{children:[e.jsx(Gt,{children:e.jsxs(qt,{children:[e.jsx("div",{className:"alret_header",children:e.jsx("button",{onClick:d,className:"close_btn",children:e.jsx(be,{})})}),e.jsx("div",{className:"desc",children:t}),e.jsxs("div",{className:"btn_area",children:[e.jsx("button",{onClick:d,className:"secondary",children:"닫기"}),e.jsx("button",{onClick:p,className:"primary",children:"취소하기"})]})]})}),r&&e.jsx(ve,{text:"취소가 완료되었습니다.",setAlret:s})]})},Kt=({applyDate:t,state:a,title:s,date:r,location:l,linkBtn:d})=>{const[p,x]=i.useState(""),[c,j]=i.useState(!1),[m,C]=i.useState(!1);return i.useLayoutEffect(()=>{a==="apply"?x("참가 신청 완료"):a==="cancel"?x("취소 완료"):a==="wish"?x("관심 행사"):a==="past"&&x("종료 행사")},[]),e.jsxs(e.Fragment,{children:[e.jsxs(Tt,{children:[e.jsx(Dt,{children:e.jsxs(o,{to:"/detail/01",children:[(a==="cancel"||a==="past")&&e.jsx("span",{className:"blind",children:p}),e.jsx("img",{src:"./dummy_image_01.png"})]})}),e.jsxs(Wt,{children:[e.jsxs(Yt,{children:[(a==="apply"||a==="cancel")&&e.jsxs("div",{className:"apply",children:[e.jsx("span",{className:"state",children:p}),e.jsxs("span",{className:"date",children:["신청일 : ",t]})]}),e.jsxs("div",{className:"txt_box",children:[e.jsx("span",{className:"title",children:s}),e.jsx("span",{className:"date",children:r}),e.jsx("span",{className:"location",children:l})]})]}),a==="apply"&&e.jsxs(Jt,{children:[e.jsx("button",{children:"수정"}),"  |  ",e.jsx("button",{onClick:()=>{C(!0)},children:"취소"})]}),d&&e.jsxs(Ut,{children:[d==="AI 추천 부스 받기"&&e.jsx(o,{to:"/mypage/apply-list/booth-select/01",children:d}),d==="AI 추천 부스 확인"&&e.jsx(o,{to:"/mypage/apply-list/booth-check/01",children:d})]}),p.length<=0&&e.jsx(Qt,{children:e.jsx("button",{children:e.jsx(ue,{})})})]})]}),m&&e.jsx(Xt,{text:"취소하시겠습니까? 취소 확정 후에는 복구하실 수 없습니다.",setConfirm:j,setShowConfirm:C})]})},_t=n.div`
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -2346,10 +2346,10 @@ import{r as i,j as e}from"./react-CEomBadl.js";import{c as ke}from"./react-dom-D
     }
   }
   & > .booth_list_swiper .swiper-button-prev::after {
-    background-image: url("/arrow_prev_main.svg");
+    background-image: url("./arrow_prev_main.svg");
   }
   & > .booth_list_swiper .swiper-button-next::after {
-    background-image: url("/arrow_next_main.svg");
+    background-image: url("./arrow_next_main.svg");
   }
 `,Ai=n.div`
   padding: 60px 120px 0;
