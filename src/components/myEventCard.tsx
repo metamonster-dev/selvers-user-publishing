@@ -21,7 +21,7 @@ const MyEventCard = ({
   linkBtn,
 }: MyEventListType) => {
   const [eventState, setEventState] = useState("");
-  const [confirm, setConfirm] = useState(false);
+  const [_confirm, setConfirm] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
   useLayoutEffect(() => {
     if (state === "apply") {
@@ -44,7 +44,7 @@ const MyEventCard = ({
               <span className="blind">{eventState}</span>
             )}
 
-            <img src="/dummy_image_01.png" />
+            <img src="./dummy_image_01.png" />
           </Link>
         </ThumbnailArea>
         <InfoArea>

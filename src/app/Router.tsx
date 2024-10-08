@@ -1,4 +1,5 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+// import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RouterProvider, createHashRouter } from "react-router-dom";
 
 import Layout from "@components/shared/layout";
 import MyPageLayout from "@components/shared/myPageLayout";
@@ -19,7 +20,7 @@ import BoothCheckPage from "@/app/mypage/boothCheckPage";
 
 import LinkPage from "./link";
 
-const router = createBrowserRouter(
+const router = createHashRouter(
   [
     {
       path: "/",

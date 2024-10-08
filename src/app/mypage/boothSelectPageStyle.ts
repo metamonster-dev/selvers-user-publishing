@@ -187,10 +187,10 @@ export const BoothListSwiper = styled.div`
     }
   }
   & > .booth_list_swiper .swiper-button-prev::after {
-    background-image: url("/arrow_prev_main.svg");
+    background-image: url("./arrow_prev_main.svg");
   }
   & > .booth_list_swiper .swiper-button-next::after {
-    background-image: url("/arrow_next_main.svg");
+    background-image: url("./arrow_next_main.svg");
   }
 `;
 

@@ -100,7 +100,7 @@ export const AgreeBox = styled.div`
       right: 0;
       transform: translateY(-50%);
       background-size: cover;
-      background-image: url("/link_arrow.svg");
+      background-image: url("./link_arrow.svg");
     }
   }
 `;

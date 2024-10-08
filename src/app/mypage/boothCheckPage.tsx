@@ -4,7 +4,7 @@ import {
   RecommendBoothBtn,
   SelectBoothList,
 } from "./boothCheckPageStyle";
-import BoothSearchBar from "@components/boothsearchBar";
+import BoothSearchBar from "@/components/boothSearchBar";
 import DeleteIcon from "@/assets/icon/close.svg?react";
 
 const BoothCheckPage = () => {
