@@ -2,12 +2,18 @@ import styled from "styled-components";
 
 export const SideMenuWrap = styled.div`
   position: absolute;
-  top: 0;
+  top: 52px;
   left: 56px;
   width: 280px;
   background-color: rgba(41, 46, 55, 0.5);
   border-radius: 20px;
   padding: 30px 20px;
+  @media (max-width: 1600px) {
+    width: 250px;
+  }
+  @media (max-width: 1400px) {
+    left: 20px;
+  }
   & h2 {
     color: #fff;
     font-weight: 700;

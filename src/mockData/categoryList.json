@@ -18,42 +18,46 @@
     },
     {
       "id": "field_04",
-      "label": "보건/의료"
+      "label": "금속/기계"
     },
     {
       "id": "field_05",
-      "label": "건설/건축"
+      "label": "보건/의료"
     },
     {
       "id": "field_06",
-      "label": "가정용품"
+      "label": "건설/건축"
     },
     {
       "id": "field_07",
-      "label": "뷰티/화장품"
+      "label": "가정용품"
     },
     {
       "id": "field_08",
-      "label": "금융/부동산"
+      "label": "뷰티/화장품"
     },
     {
       "id": "field_09",
-      "label": "교육"
+      "label": "금융/부동산"
     },
     {
       "id": "field_10",
-      "label": "임신/출산/육아"
+      "label": "교육"
     },
     {
       "id": "field_11",
-      "label": "웨딩"
+      "label": "임신/출산/육아"
     },
     {
       "id": "field_12",
-      "label": "문화/예술"
+      "label": "웨딩"
     },
     {
       "id": "field_13",
+      "label": "문화/예술"
+    },
+    {
+      "id": "field_14",
       "label": "레저/관광"
     }
   ]

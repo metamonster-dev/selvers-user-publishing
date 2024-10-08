@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { SideMenuWrap, OptionBox, MenuList, MenuItem } from "./sideMenuStyle";
 import ToggleIcon from "@/assets/icon/arrow_toggle.svg?react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const SideMenu = () => {
   const [isOn, setIsOn] = useState(false);
@@ -26,6 +26,13 @@ const SideMenu = () => {
   const toggleDropdown = () => {
     setIsOn((prev) => !prev);
   };
+
+  useEffect(() => {
+    if (location.pathname !== "/mypage/user-modify") {
+      setIsOn(true);
+    }
+  }, [location.pathname]);
+
   return (
     <SideMenuWrap>
       <h2>마이페이지</h2>
@@ -47,7 +54,11 @@ const SideMenu = () => {
                     data.subMenu.map((data) => {
                       return (
                         <MenuItem
-                          $target={location.pathname === data.path}
+                          $target={
+                            location.pathname.indexOf(data.path) >= 0
+                              ? true
+                              : false
+                          }
                           key={data.id}
                         >
                           <Link to={data.path}>{data.name}</Link>

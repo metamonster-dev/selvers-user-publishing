@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 // pc header
 export const HeaderWrap = styled.header`
-  padding: 72px 140px 55px;
+  padding: 72px 110px 55px;
   background-color: #000;
   display: flex;
   align-items: center;
@@ -46,6 +46,9 @@ export const LogoImg = styled.h1`
   }
   @media (max-width: 1024px) {
     width: 130px;
+  }
+  @media (max-width: 400px) {
+    width: 80px;
   }
   & a {
     display: block;
@@ -95,6 +98,11 @@ export const BtnArea = styled.div`
     width: 30px;
     height: 30px;
     margin-right: 20px;
+    @media (max-width: 400px) {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+    }
     & a {
       display: block;
       width: 100%;
@@ -111,6 +119,10 @@ export const BtnArea = styled.div`
   & .toggle_menu {
     width: 30px;
     height: 30px;
+    @media (max-width: 400px) {
+      width: 20px;
+      height: 20px;
+    }
     & svg {
       width: 100%;
       height: 100%;
@@ -161,6 +173,10 @@ export const DescBtn = styled.div`
   @media (max-width: 1024px) {
     gap: 10px;
     margin-right: 15px;
+  }
+  @media (max-width: 400px) {
+    gap: 5px;
+    margin-right: 5px;
   }
   & > button {
     padding: 10px 20px;

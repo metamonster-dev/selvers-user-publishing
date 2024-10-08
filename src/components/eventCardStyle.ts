@@ -56,7 +56,7 @@ export const Thumbnail = styled.figure`
     transform: translate(-50%, -50%);
   }
   @media (max-width: 1024px) {
-    border-radius: 12px;
+    border-radius: 10px;
   }
 `;
 

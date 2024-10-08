@@ -20,16 +20,20 @@ import { useMediaQuery } from "usehooks-ts";
 const EventListPage = () => {
   const [filterOn, setFilterOn] = useState(false);
   const isMobile = useMediaQuery("(max-width: 1024px)");
-
   const filterHandler = () => {
     setFilterOn((prev) => !prev);
+    if (isMobile && !filterOn) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
   };
   return (
     <EventListPageWrap>
       {isMobile && <SearchBar />}
       <CategoryList categoryList={categoryList.categoryList} />
       <ContentWrap>
-        <PageInfo>
+        <PageInfo className="maxframe">
           <h2>검색결과</h2>
           <FilterWrap $filterOn={filterOn}>
             <button onClick={filterHandler} className="filter_btn">
@@ -121,7 +125,7 @@ const EventListPage = () => {
             />
           </FilterWrap>
         </PageInfo>
-        <EventListWrap>
+        <EventListWrap className="maxframe">
           {eventList.eventList.map((data) => {
             return (
               <EventCard

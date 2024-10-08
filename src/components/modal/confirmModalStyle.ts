@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const AlretModalWrap = styled.div`
+export const ConfirmModalWrap = styled.div`
   position: fixed;
   top: 0;
   right: 0;
@@ -10,7 +10,7 @@ export const AlretModalWrap = styled.div`
   z-index: 10;
 `;
 
-export const Alret = styled.div`
+export const Confirm = styled.div`
   position: fixed;
   width: 595px;
   /* height: 181px; */
@@ -58,6 +58,10 @@ export const Alret = styled.div`
   }
   & .btn_area {
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
     padding-bottom: 30px;
     & button {
       width: 134px;
@@ -65,11 +69,15 @@ export const Alret = styled.div`
       font-size: 16px;
       font-weight: 500;
       border-radius: 10px;
+
       @media (max-width: 400px) {
         width: 100px;
         padding: 8px;
         font-size: 15px;
       }
+    }
+    & .secondary {
+      border: 2px solid rgba(9, 51, 140, 1);
     }
     & .primary {
       background-color: #09338c;

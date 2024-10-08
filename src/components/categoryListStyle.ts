@@ -5,9 +5,19 @@ export const CategoryListWrap = styled.ul`
   justify-content: space-around;
 `;
 
+export const CategorySwiper = styled.div`
+  & .swiper-slide {
+    /* width: auto !important; */
+  }
+`;
+
 export const CateItem = styled.li`
-  padding: 30px 0;
   font-size: 16px;
   font-weight: 700;
   color: #fff;
+  text-align: center;
+  padding: 30px 0;
+  @media (max-width: 1024px) {
+    padding: 16px 0;
+  }
 `;

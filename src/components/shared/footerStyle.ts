@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const FooterWrap = styled.footer`
   display: flex;
   flex-direction: column;
-  padding: 0 214px;
+  padding: 0 200px;
   justify-content: center;
   height: 376px;
   @media (max-width: 1400px) {

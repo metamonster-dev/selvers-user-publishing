@@ -14,6 +14,8 @@ import PastListPage from "./mypage/pastListPage";
 import UserModifyPage from "./mypage/userModifyPage";
 import EventListPage from "@/app/eventList/eventListPage";
 import EventDetailPage from "@/app/eventDetail/eventDetailPage";
+import BoothSelectPage from "@/app/mypage/boothSelectPage";
+import BoothCheckPage from "@/app/mypage/boothCheckPage";
 
 import LinkPage from "./link";
 
@@ -47,7 +49,15 @@ const router = createBrowserRouter(
           path: "mypage",
           element: <MyPageLayout />,
           children: [
-            { path: "apply-list", element: <ApplyListPage /> },
+            {
+              path: "apply-list",
+              element: <ApplyListPage />,
+            },
+            {
+              path: "apply-list/booth-select/:id",
+              element: <BoothSelectPage />,
+            },
+            { path: "apply-list/booth-check/:id", element: <BoothCheckPage /> },
             { path: "cancel-list", element: <CancelListPage /> },
             { path: "wish-list", element: <WishListPage /> },
             { path: "past-list", element: <PastListPage /> },
@@ -55,7 +65,7 @@ const router = createBrowserRouter(
           ],
         },
         { path: "/list", element: <EventListPage /> },
-        { path: "/detail", element: <EventDetailPage /> },
+        { path: "/detail/:id", element: <EventDetailPage /> },
       ],
       errorElement: <div style={{ color: "#fff" }}>없는 페이지 입니다.</div>,
     },

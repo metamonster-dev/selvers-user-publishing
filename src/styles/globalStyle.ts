@@ -80,6 +80,11 @@ const GlobalStyles = createGlobalStyle`
       font-size: 14px;
     }
   }
+  /* body{
+    @media (max-width: 390px) {
+      width: 390px;
+    }
+  } */
   a {
     color: inherit;
     text-decoration: inherit;
@@ -108,6 +113,11 @@ const GlobalStyles = createGlobalStyle`
     font-size: 16px;
     font-weight: 500;
   }
+  .maxframe{
+    max-width: 1920px;
+    margin: 0 auto;
+  }
+
 `;
 
 export default GlobalStyles;

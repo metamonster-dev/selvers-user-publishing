@@ -24,7 +24,7 @@ export const SearchForm = styled.form<{ $filter?: boolean }>`
   }
   & input {
     width: 100%;
-    background-color: #292e37;
+    background-color: rgba(41, 46, 55, 0.7);
     padding: 21px 63px 21px 33px;
     font-size: 18px;
     color: #fff;

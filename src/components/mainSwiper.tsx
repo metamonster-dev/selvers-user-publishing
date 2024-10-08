@@ -4,8 +4,6 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { MainSwiperWrap } from "./mainSwiperStyle";
-// import PrevIcon from "@/assets/icon/arrow_prev_main.svg?react";
-// import NextIcon from "@/assets/icon/arrow_next_main.svg?react";
 
 type ImgsProps = {
   bannerImgs?: string[];

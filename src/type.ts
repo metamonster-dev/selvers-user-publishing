@@ -15,3 +15,14 @@ export interface Category {
   id: string;
   label: string;
 }
+
+//나의 이벤트 리스트
+export interface MyEventListType {
+  id?: string;
+  state: string;
+  applyDate: string;
+  title: string;
+  date: string;
+  location: string;
+  linkBtn?: string;
+}

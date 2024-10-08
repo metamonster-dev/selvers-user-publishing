@@ -11,8 +11,6 @@ export const ContentWrap = styled.div`
 `;
 export const PageInfo = styled.div`
   position: relative;
-  max-width: 1920px;
-  margin: 0 auto;
   padding: 60px 40px 0;
   @media (max-width: 1024px) {
     padding: 24px 16px 0;
@@ -24,6 +22,7 @@ export const PageInfo = styled.div`
     padding-bottom: 40px;
     @media (max-width: 1024px) {
       font-size: 18px;
+      padding-bottom: 25px;
     }
   }
 `;
@@ -31,12 +30,15 @@ export const PageInfo = styled.div`
 export const FilterWrap = styled.div<{ $filterOn: boolean }>`
   padding-bottom: 50px;
   display: flex;
+  @media (max-width: 1024px) {
+    padding-bottom: 35px;
+  }
   & .filter_btn {
     margin-right: 20px;
     display: flex;
     gap: 20px;
     align-items: center;
-    padding: 6px 13px;
+    padding: 5px 15px;
     font-weight: 500;
     font-size: 22px;
     color: #fff;
@@ -49,12 +51,25 @@ export const FilterWrap = styled.div<{ $filterOn: boolean }>`
       top: 20px;
       right: 16px;
       margin-right: 0;
+      gap: 10px;
+      font-size: 13px;
+      & svg {
+        width: 13px;
+      }
     }
   }
+  /* HashBox */
   & > ul {
     gap: 16px;
+    @media (max-width: 1024px) {
+      gap: 12px;
+    }
     & > li {
       font-size: 22px;
+      @media (max-width: 1024px) {
+        font-size: 16px;
+        padding: 11px 12px;
+      }
       & .close_btn {
         width: 13px;
         height: 13px;
@@ -84,6 +99,11 @@ export const Filter = styled.div`
     bottom: 0;
     right: 0;
     width: 100%;
+    padding: 30px 16px;
+    border: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    overflow-y: scroll;
   }
   & .title_area {
     display: flex;
@@ -121,6 +141,9 @@ export const Filter = styled.div`
   & .btn_box {
     display: flex;
     padding-top: 40px;
+    @media (max-width: 1024px) {
+      padding-top: 50px;
+    }
     & button {
       margin-left: auto;
       border-radius: 10px;
@@ -141,8 +164,6 @@ export const EventListWrap = styled.div`
   column-gap: 24px;
   row-gap: 80px;
   grid-template-columns: repeat(4, 1fr);
-  max-width: 1920px;
-  margin: 0 auto;
   @media (max-width: 1650px) {
     padding: 0 30px 80px;
     grid-template-columns: repeat(3, 1fr);
