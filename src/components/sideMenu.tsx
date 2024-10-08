@@ -73,7 +73,11 @@ const SideMenu = () => {
             if (data.type !== "button") {
               return (
                 <MenuItem
-                  $target={location.pathname === data.path}
+                  $target={
+                    data.path && location.pathname.indexOf(data.path) >= 0
+                      ? true
+                      : false
+                  }
                   key={data.id}
                 >
                   <Link to={data.path as string}>{data.name}</Link>

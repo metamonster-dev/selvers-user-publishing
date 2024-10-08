@@ -38,6 +38,8 @@ const MyPageLayout = () => {
         title: "신청 행사",
         subTitle: "2024 케이펫페어 서울",
       });
+    } else if (location.pathname === `/mypage/user-modify/with-draw`) {
+      setPageTitle({ title: "탈퇴하기" });
     } else {
       setPageTitle({});
     }

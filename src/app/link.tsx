@@ -122,6 +122,20 @@ const LinkPage = () => {
           <tr>
             <td colSpan={4} className="space"></td>
           </tr>
+          {siteMap.review.map((data) => {
+            return (
+              <tr key={data.id}>
+                <td>{data.id}</td>
+                <td>{data.gubun}</td>
+                <td>{data.name}</td>
+                <td>
+                  <Link to={data.link} target="_blank">
+                    바로가기
+                  </Link>
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </LinkPageWrap>

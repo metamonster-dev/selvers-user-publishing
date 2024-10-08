@@ -17,6 +17,9 @@ import EventListPage from "@/app/eventList/eventListPage";
 import EventDetailPage from "@/app/eventDetail/eventDetailPage";
 import BoothSelectPage from "@/app/mypage/boothSelectPage";
 import BoothCheckPage from "@/app/mypage/boothCheckPage";
+import WithdrawPage from "@/app/mypage/withdrawPage";
+import WithdrawFinishPage from "@/app/mypage/withdrawFinishPage";
+import EditReviewPage from "@/app//review/editReviewPage";
 
 import LinkPage from "./link";
 
@@ -63,16 +66,23 @@ const router = createHashRouter(
             { path: "wish-list", element: <WishListPage /> },
             { path: "past-list", element: <PastListPage /> },
             { path: "user-modify", element: <UserModifyPage /> },
+            { path: "user-modify/with-draw", element: <WithdrawPage /> },
           ],
         },
         { path: "/list", element: <EventListPage /> },
         { path: "/detail/:id", element: <EventDetailPage /> },
+        { path: "/with-draw-finish", element: <WithdrawFinishPage /> },
       ],
       errorElement: <div style={{ color: "#fff" }}>없는 페이지 입니다.</div>,
     },
     {
       path: "/link",
       element: <LinkPage />,
+      errorElement: <div style={{ color: "#fff" }}>없는 페이지 입니다.</div>,
+    },
+    {
+      path: "/edit-review",
+      element: <EditReviewPage />,
       errorElement: <div style={{ color: "#fff" }}>없는 페이지 입니다.</div>,
     },
   ]

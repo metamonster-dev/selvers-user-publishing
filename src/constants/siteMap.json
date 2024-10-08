@@ -71,13 +71,16 @@
       "id": 14,
       "gubun": "마이페이지",
       "name": "마이페이지 > 내 정보 수정 > 탈퇴",
-      "link": "/mypage/user-modify"
+      "link": "/mypage/user-modify/with-draw"
     },
     {
       "id": 15,
       "gubun": "마이페이지",
       "name": "마이페이지 > 내 정보 수정 > 탈퇴 > 완료",
-      "link": "/mypage/user-modify"
+      "link": "/with-draw-finish"
     }
+  ],
+  "review": [
+    { "id": 16, "gubun": "리뷰", "name": "리뷰 남기기", "link": "/edit-review" }
   ]
 }

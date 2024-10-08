@@ -69,7 +69,7 @@ const UserModifyPage = () => {
         </div>
         <ButtonArea>
           <button className="submit_btn">저장</button>
-          <Link to="">마이스 메이트 탈퇴하기</Link>
+          <Link to="/mypage/user-modify/with-draw">마이스 메이트 탈퇴하기</Link>
         </ButtonArea>
       </FormTable>
     </UserModifyPageWrap>

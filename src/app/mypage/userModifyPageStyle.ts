@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const UserModifyPageWrap = styled.div`
   position: relative;
-  padding: 48px 20px 86px 140px;
+  padding: 50px 20px 86px 140px;
   color: #fff;
   background-color: rgba(41, 46, 55, 0.5);
   border-radius: 20px;
@@ -50,7 +50,10 @@ export const FormTable = styled.form`
     align-items: center;
     & .label {
       min-width: 120px;
-      font-size: 16px;
+      font-size: 18px;
+      @media (max-width: 1024px) {
+        gap: 16px;
+      }
     }
     & > div {
       width: auto;
