@@ -12,7 +12,7 @@ const BoothCheckPage = () => {
     <BoothCheckPageWrap>
       <BoothSearchBar />
       <BoothMap>
-        <img src="/booth.png" />
+        <img src="./booth.png" />
       </BoothMap>
       <RecommendBoothBtn>
         <button>AI 추천 부스 확인</button>

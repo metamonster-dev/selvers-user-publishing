@@ -46,3 +46,37 @@ export const InputTextWrapB = styled.input`
     }
   }
 `;
+
+export const InputTextWrapC = styled.div`
+  display: flex;
+  flex-direction: column;
+  & label {
+    font-size: 18px;
+    @media (max-width: 1024px) {
+      width: 100%;
+      font-size: 16px;
+    }
+  }
+  & input {
+    width: 412px;
+    margin-top: 15px;
+    padding: 15px 20px;
+    font-size: 16px;
+    background-color: transparent;
+    border-radius: 10px;
+    border: 1px solid #fff;
+    color: #fff;
+    font-weight: 500;
+    @media (max-width: 1024px) {
+      width: 100%;
+      padding: 15px;
+    }
+    &::placeholder {
+      color: #fff;
+      font-size: 16px;
+    }
+  }
+  & input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+  }
+`;

@@ -29,7 +29,7 @@ const BoothItemList = () => {
             </span>
             <p className="title">로이카 E-18</p>
             <figure>
-              <img src="/dummy_image_02.png" alt="로이카 E-18" />
+              <img src="./dummy_image_02.png" alt="로이카 E-18" />
             </figure>
             <Link to="">홈페이지 바로가기</Link>
           </BoothItem>

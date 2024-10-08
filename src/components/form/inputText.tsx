@@ -1,5 +1,9 @@
 import { FieldValues, UseFormRegister } from "react-hook-form";
-import { InputTextWrapA, InputTextWrapB } from "./inputTextStyle";
+import {
+  InputTextWrapA,
+  InputTextWrapB,
+  InputTextWrapC,
+} from "./inputTextStyle";
 
 type Props = {
   label?: string;
@@ -41,5 +45,15 @@ export const InputTextB = ({ type, id, register, placeholder }: Props) => {
       placeholder={placeholder}
       autoComplete="off"
     />
+  );
+};
+
+//내 정보 수정 페이지 사용
+export const InputTextC = ({ label, type, id, placeholder }: Props) => {
+  return (
+    <InputTextWrapC>
+      <label htmlFor={id}>{label}</label>
+      <input type={type} id={id} placeholder={placeholder} autoComplete="off" />
+    </InputTextWrapC>
   );
 };

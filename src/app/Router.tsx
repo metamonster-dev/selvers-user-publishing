@@ -75,8 +75,8 @@ const router = createHashRouter(
       element: <LinkPage />,
       errorElement: <div style={{ color: "#fff" }}>없는 페이지 입니다.</div>,
     },
-  ],
-  { basename: import.meta.env.DEV ? "/" : "/micemate-front" }
+  ]
+  // { basename: import.meta.env.DEV ? "/" : "/micemate-front" }
 );
 const Router = () => {
   return (
