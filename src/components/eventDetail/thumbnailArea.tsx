@@ -1,4 +1,4 @@
-import { ThumbnailWrap, InfoBox } from "./thumbnailStyle";
+import { ThumbnailWrap, InfoBox } from "./thumbnailAreaStyle";
 import WishIcon from "@/assets/icon/heart_btn.svg?react";
 import ShardIcon from "@/assets/icon/shard_btn.svg?react";
 import StarIcon from "@/assets/icon/star_fill.svg?react";

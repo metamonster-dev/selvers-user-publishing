@@ -4,7 +4,7 @@ import {
   ContentWrap,
   SideTab,
 } from "./eventDetailPageStyle";
-import Thumbnail from "@components/eventDetail/thumbNail";
+import Thumbnail from "@components/eventDetail/thumbnailArea";
 import Content from "@components/eventDetail/content";
 import Community from "@components/eventDetail/community";
 import EventSwiper from "@components/eventSwiper";

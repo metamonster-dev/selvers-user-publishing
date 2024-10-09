@@ -1,4 +1,4 @@
-import { CompanyListWrap } from "./CompanyListStyle";
+import { CompanyListWrap } from "./companyListStyle";
 
 const CompanyList = () => {
   return (
