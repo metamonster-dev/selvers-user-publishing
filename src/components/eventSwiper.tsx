@@ -7,8 +7,8 @@ import EventCard from "./eventCard";
 import { EventList } from "@/type";
 
 type Props = {
-  title?: string;
-  subTitle: string;
+  title: string;
+  subTitle?: string;
   eventList: EventList[];
 };
 

@@ -54,6 +54,9 @@ const LinkPageWrap = styled.div`
       background: #f2f2f2 !important;
       height: 36px;
     }
+    & .ing {
+      color: #e50000;
+    }
   }
 `;
 
@@ -78,9 +81,13 @@ const LinkPage = () => {
                 <td>{data.gubun}</td>
                 <td>{data.name}</td>
                 <td>
-                  <Link to={data.link} target="_blank">
-                    바로가기
-                  </Link>
+                  {data.link.length > 0 ? (
+                    <Link to={data.link} target="_blank">
+                      바로가기
+                    </Link>
+                  ) : (
+                    "작업예정"
+                  )}
                 </td>
               </tr>
             );
@@ -95,9 +102,13 @@ const LinkPage = () => {
                 <td>{data.gubun}</td>
                 <td>{data.name}</td>
                 <td>
-                  <Link to={data.link} target="_blank">
-                    바로가기
-                  </Link>
+                  {data.link.length > 0 ? (
+                    <Link to={data.link} target="_blank">
+                      바로가기
+                    </Link>
+                  ) : (
+                    "작업예정"
+                  )}
                 </td>
               </tr>
             );
@@ -112,9 +123,37 @@ const LinkPage = () => {
                 <td>{data.gubun}</td>
                 <td>{data.name}</td>
                 <td>
-                  <Link to={data.link} target="_blank">
-                    바로가기
-                  </Link>
+                  {data.link.length > 0 ? (
+                    <Link to={data.link} target="_blank">
+                      바로가기
+                    </Link>
+                  ) : (
+                    "작업예정"
+                  )}
+                </td>
+              </tr>
+            );
+          })}
+          <tr>
+            <td colSpan={4} className="space"></td>
+          </tr>
+          {siteMap.eventDetail.map((data) => {
+            return (
+              <tr key={data.id}>
+                <td>{data.id}</td>
+                <td>{data.gubun}</td>
+                <td>{data.name}</td>
+                <td>
+                  {data.ing && (
+                    <span className="ing">작업진행중&nbsp;&nbsp;</span>
+                  )}
+                  {data.link.length > 0 ? (
+                    <Link to={data.link} target="_blank">
+                      바로가기
+                    </Link>
+                  ) : (
+                    "작업예정"
+                  )}
                 </td>
               </tr>
             );
@@ -129,9 +168,34 @@ const LinkPage = () => {
                 <td>{data.gubun}</td>
                 <td>{data.name}</td>
                 <td>
-                  <Link to={data.link} target="_blank">
-                    바로가기
-                  </Link>
+                  {data.link.length > 0 ? (
+                    <Link to={data.link} target="_blank">
+                      바로가기
+                    </Link>
+                  ) : (
+                    "작업예정"
+                  )}
+                </td>
+              </tr>
+            );
+          })}
+          <tr>
+            <td colSpan={4} className="space"></td>
+          </tr>
+          {siteMap.agree.map((data) => {
+            return (
+              <tr key={data.id}>
+                <td>{data.id}</td>
+                <td>{data.gubun}</td>
+                <td>{data.name}</td>
+                <td>
+                  {data.link.length > 0 ? (
+                    <Link to={data.link} target="_blank">
+                      바로가기
+                    </Link>
+                  ) : (
+                    "작업예정"
+                  )}
                 </td>
               </tr>
             );

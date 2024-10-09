@@ -98,12 +98,14 @@ const GlobalStyles = createGlobalStyle`
     color:#000;
     font-size: 18px;
   }
-  input{
+  input,textarea,textarea::placeholder, input::placeholder{
     border: none;
     font-family: 'Pretendard';
     outline: none;
     font-size: 18px;
+    padding: 0;
   }
+
   table, th, tr, td{
     font-family: 'Pretendard';
   }
