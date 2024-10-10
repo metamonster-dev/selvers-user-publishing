@@ -3,14 +3,16 @@ import {
   InputTextWrapA,
   InputTextWrapB,
   InputTextWrapC,
+  InputTextWrapD,
 } from "./inputTextStyle";
 
 type Props = {
   label?: string;
   type: string;
   id: string;
-  placeholder: string;
+  placeholder?: string;
   register?: UseFormRegister<FieldValues>;
+  required?: boolean;
 };
 
 // 로그인 페이지 사용
@@ -55,5 +57,22 @@ export const InputTextC = ({ label, type, id, placeholder }: Props) => {
       <label htmlFor={id}>{label}</label>
       <input type={type} id={id} placeholder={placeholder} autoComplete="off" />
     </InputTextWrapC>
+  );
+};
+
+// 신청하기 페이지 사용
+export const InputTextD = ({ label, type, id, required }: Props) => {
+  return (
+    <InputTextWrapD>
+      <div className="input_box">
+        <label htmlFor={id} className="label">
+          <span className="txt">{label}</span>
+          {required && <span className="req">&nbsp;*</span>}
+        </label>
+        <div className="input_area">
+          <input type={type} id={id} autoComplete="off" className="input" />
+        </div>
+      </div>
+    </InputTextWrapD>
   );
 };

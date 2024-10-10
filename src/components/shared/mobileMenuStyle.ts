@@ -6,7 +6,7 @@ export const MobileMenuWrap = styled.div`
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 9;
+  z-index: 999;
   background-color: #000;
 `;
 export const MobileMenuHeader = styled.div`

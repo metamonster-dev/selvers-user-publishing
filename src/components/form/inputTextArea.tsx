@@ -1,13 +1,30 @@
-import { InputTextAreaWrap } from "./inputTextAreaStyle";
+import { InputTextAreaWrapA, InputTextAreaWrapB } from "./inputTextAreaStyle";
 
 type Props = {
-  placeholder: string;
+  label?: string;
+  placeholder?: string;
+  required?: boolean;
+};
+//리뷰 페이지 사용
+export const InputTextAreaA = ({ placeholder }: Props) => {
+  return (
+    <InputTextAreaWrapA>
+      <textarea placeholder={placeholder} />
+    </InputTextAreaWrapA>
+  );
 };
 
-export const InputTextArea = ({ placeholder }: Props) => {
+//신청하기 페이지 사용
+export const InputTextAreaB = ({ label, required }: Props) => {
   return (
-    <InputTextAreaWrap>
-      <textarea placeholder={placeholder} />
-    </InputTextAreaWrap>
+    <InputTextAreaWrapB>
+      <p className="label">
+        <span className="txt">{label}</span>
+        {required && <span className="req">&nbsp;*</span>}
+      </p>
+      <div className="select_box">
+        <textarea />
+      </div>
+    </InputTextAreaWrapB>
   );
 };

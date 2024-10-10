@@ -3,7 +3,17 @@ import { CompanyListWrap } from "./companyListStyle";
 const CompanyList = () => {
   return (
     <CompanyListWrap>
-      <p>참여기업</p>
+      <ul>
+        {Array.from({ length: 12 }).map((_, index) => {
+          return (
+            <li key={index}>
+              <span className="text">
+                기업명 기업명 기업명 기업명 기업명 기업명
+              </span>
+            </li>
+          );
+        })}
+      </ul>
     </CompanyListWrap>
   );
 };

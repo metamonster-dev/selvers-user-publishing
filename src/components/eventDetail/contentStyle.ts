@@ -5,12 +5,25 @@ export const TabNav = styled.div`
   align-items: center;
   margin-bottom: 37px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  & button {
+  position: sticky;
+  top: 0;
+  background-color: #000;
+  z-index: 99;
+  & a {
+    cursor: pointer;
+    display: block;
     min-width: 162px;
-    padding: 15px 10px;
+    padding: 14px 10px;
     color: #fff;
     font-weight: 600;
     font-size: 18px;
+    text-align: center;
+    @media (max-width: 1024px) {
+      min-width: auto;
+      width: 100%;
+      font-size: 15px;
+      padding: 15px 2px;
+    }
   }
   & .active {
     position: relative;
@@ -32,27 +45,50 @@ export const ContentWrap = styled.div`
   background-color: rgba(41, 46, 55, 0.5);
   border-radius: 10px;
   color: #fff;
-  padding: 83px 55px 100px;
+  padding: 0 55px 100px;
+  @media (max-width: 1300px) {
+    padding: 0px 20px 100px;
+  }
+  @media (max-width: 1300px) {
+    padding: 0px 20px 40px;
+  }
   & section {
     padding-top: 100px;
+    @media (max-width: 1024px) {
+      padding-top: 40px;
+    }
   }
   & section:first-child {
-    padding-top: 0;
+    padding-top: 83px;
+    @media (max-width: 1024px) {
+      padding-top: 40px;
+    }
   }
   & section h3 {
     color: #fff;
     font-weight: 800;
     padding-bottom: 20px;
+    @media (max-width: 1024px) {
+      font-size: 16px;
+    }
   }
 
   & .info_list {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    @media (max-width: 1024px) {
+      gap: 14px;
+    }
     & .item {
       display: flex;
       font-weight: 500;
       align-items: center;
+      @media (max-width: 1024px) {
+        font-size: 14px;
+        align-items: flex-start;
+        word-break: keep-all;
+      }
       & .tit {
         min-width: 100px;
         color: rgba(176, 184, 193, 1);
@@ -68,7 +104,7 @@ export const BasicInfo = styled.section``;
 export const DetailInfo = styled.section`
   & .detail_box {
     position: relative;
-    height: 800px;
+    /* height: 800px; */
     overflow: hidden;
     & .image {
       width: 100%;
@@ -101,22 +137,45 @@ export const DetailInfo = styled.section`
           font-weight: 600;
           background-color: rgba(49, 111, 233, 1);
           border-radius: 10px;
+          @media (max-width: 1024px) {
+            font-size: 16px;
+          }
         }
       }
     }
   }
 `;
 export const FaQ = styled.section`
+  & .icon {
+    @media (max-width: 1024px) {
+      width: 16px;
+      height: 16px;
+    }
+    & svg {
+      @media (max-width: 1024px) {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+    }
+  }
   & .question {
     cursor: pointer;
   }
   & .faq_item {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     padding: 25px 0;
+    @media (max-width: 1024px) {
+      padding: 16px 0;
+      line-height: 1.3;
+    }
   }
   & .faq_item:first-child {
     padding: 0;
     padding-bottom: 25px;
+    @media (max-width: 1024px) {
+      padding-bottom: 16px;
+    }
   }
   & .faq_item > div {
     display: flex;
@@ -124,9 +183,16 @@ export const FaQ = styled.section`
     gap: 46px;
     font-size: 22px;
     font-weight: 500;
+    @media (max-width: 1024px) {
+      font-size: 14px;
+      gap: 11px;
+    }
   }
   & .answer {
     padding-top: 25px;
+    @media (max-width: 1024px) {
+      padding-top: 16px;
+    }
   }
 `;
 export const ContactUs = styled.section``;

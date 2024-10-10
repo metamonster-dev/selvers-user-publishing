@@ -15,7 +15,7 @@ const EventDetailPage = () => {
     <EventDetailPageWrap className="maxframe">
       <MainContentWrap>
         <ContentWrap>
-          <Thumbnail />
+          <Thumbnail applyBtn={true} />
           <Content />
         </ContentWrap>
         <SideTab>

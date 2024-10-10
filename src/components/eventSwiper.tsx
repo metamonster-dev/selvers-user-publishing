@@ -14,8 +14,8 @@ type Props = {
 
 const EventSwiper = ({ title, subTitle, eventList }: Props) => {
   return (
-    <EventSliderWrap className="maxframe">
-      <TitleBox>
+    <EventSliderWrap className="maxframe EventSliderWrap">
+      <TitleBox className="TitleBox">
         {title && <h3>{title}</h3>}
         <span>{subTitle}</span>
       </TitleBox>

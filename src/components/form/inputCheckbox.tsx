@@ -10,7 +10,7 @@ type Props = {
 
 export const InputCheckboxA = ({ label, id, register }: Props) => {
   return (
-    <InputCheckboxWrapA>
+    <InputCheckboxWrapA className="InputCheckboxA">
       <input type="checkbox" id={id} {...(register && register(id))} />
       <label htmlFor={id}>{label}</label>
     </InputCheckboxWrapA>

@@ -85,55 +85,49 @@
       "id": 16,
       "gubun": "행사 상세페이지",
       "name": "행사 상세페이지",
-      "link": "/detail/01",
-      "ing": "작업중"
+      "link": "/detail/01"
     },
     {
       "id": 17,
       "gubun": "행사 상세페이지",
-      "name": "행사 상세페이지 > 신청하기(개인신청)",
-      "link": ""
+      "name": "행사 상세페이지 > 신청하기",
+      "link": "/detail/01/apply",
+      "ing": "작업중"
     },
     {
       "id": 18,
       "gubun": "행사 상세페이지",
-      "name": "행사 상세페이지 > 신청하기(단체신청)",
-      "link": ""
-    },
-    {
-      "id": 19,
-      "gubun": "행사 상세페이지",
       "name": "행사 상세페이지 > 신청하기 > 신청완료",
-      "link": ""
+      "link": "/detail/01/finish"
     }
   ],
   "review": [
-    { "id": 20, "gubun": "리뷰", "name": "리뷰 남기기", "link": "/edit-review" }
+    { "id": 19, "gubun": "리뷰", "name": "리뷰 남기기", "link": "/edit-review" }
   ],
   "agree": [
     {
-      "id": 21,
+      "id": 20,
       "gubun": "이용약관",
       "name": "개인정보 수집 동의",
-      "link": ""
+      "link": "/personal-information"
+    },
+    {
+      "id": 21,
+      "gubun": "이용약관",
+      "name": "개인정보처리방침",
+      "link": "/privacy-policy"
     },
     {
       "id": 22,
       "gubun": "이용약관",
-      "name": "개인정보처리방침",
-      "link": ""
+      "name": "마케팅정보 제3자 동의",
+      "link": "/markeyting-information"
     },
     {
       "id": 23,
       "gubun": "이용약관",
-      "name": "마케팅정보 제3자 동의",
-      "link": ""
-    },
-    {
-      "id": 24,
-      "gubun": "이용약관",
       "name": "서비스 이용약관",
-      "link": ""
+      "link": "/terms-service"
     }
   ]
 }

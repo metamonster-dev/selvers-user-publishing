@@ -5,7 +5,7 @@ import StarIcon from "@/assets/icon/star_fill.svg?react";
 import { useState } from "react";
 // import { Link } from "react-router-dom";
 
-const Thumbnail = () => {
+const Thumbnail = ({ applyBtn }: { applyBtn: boolean }) => {
   const [btnTest, setBtnTest] = useState(true);
 
   return (
@@ -30,32 +30,34 @@ const Thumbnail = () => {
           <span className="count">&#40;4,423&#41;</span>
         </div>
         <div className="public_btn_box">
-          <button>
+          <div className="icon_btn">
             <WishIcon />
-          </button>
-          <button>
+          </div>
+          <div className="icon_btn">
             <ShardIcon />
-          </button>
+          </div>
         </div>
-        <div className="apply_btn_box">
-          {btnTest && (
-            <button
-              onClick={() => setBtnTest((prev) => !prev)}
-              className="btn primary"
-            >
-              사전 신청하기
-            </button>
-          )}
-          {!btnTest && (
-            <button
-              onClick={() => setBtnTest((prev) => !prev)}
-              // disabled
-              className="btn disable"
-            >
-              모집이 종료되었습니다.
-            </button>
-          )}
-        </div>
+        {applyBtn && (
+          <div className="apply_btn_box">
+            {btnTest && (
+              <div
+                onClick={() => setBtnTest((prev) => !prev)}
+                className="btn primary"
+              >
+                사전 신청하기
+              </div>
+            )}
+            {!btnTest && (
+              <div
+                onClick={() => setBtnTest((prev) => !prev)}
+                // disabled
+                className="btn disable"
+              >
+                모집이 종료되었습니다.
+              </div>
+            )}
+          </div>
+        )}
       </InfoBox>
     </ThumbnailWrap>
   );

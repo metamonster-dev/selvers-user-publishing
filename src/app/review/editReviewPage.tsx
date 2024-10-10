@@ -4,7 +4,7 @@ import {
   ReviewForm,
 } from "./editReviewPageStyle";
 import StarRating from "@components/form/starRating";
-import { InputTextArea } from "@components/form/inputTextArea";
+import { InputTextAreaA } from "@components/form/inputTextArea";
 
 const EditReviewPage = () => {
   return (
@@ -22,7 +22,7 @@ const EditReviewPage = () => {
         </div>
         <StarRating />
         <div className="input_text_area">
-          <InputTextArea placeholder="참여한 행사에 대해 더 남겨주실 의견이 있으신가요?" />
+          <InputTextAreaA placeholder="참여한 행사에 대해 더 남겨주실 의견이 있으신가요?" />
         </div>
         <div className="submit_area">
           <button>리뷰 남기기</button>

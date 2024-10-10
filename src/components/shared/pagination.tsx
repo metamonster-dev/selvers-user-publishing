@@ -4,7 +4,7 @@ import NextIcon from "@/assets/icon/page_next.svg?react";
 
 const Pagination = () => {
   return (
-    <PaginationWrap>
+    <PaginationWrap className="pagination">
       <button className="icon">
         <PrevIcon />
       </button>

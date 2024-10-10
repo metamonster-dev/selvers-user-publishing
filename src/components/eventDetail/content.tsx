@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, RefObject } from "react";
+import { useState } from "react";
 import {
   TabNav,
   ContentWrap,
@@ -7,8 +7,16 @@ import {
   FaQ,
   ContactUs,
 } from "./contentStyle";
+import { Link } from "react-scroll";
 import QIcon from "@/assets/icon/question.svg?react";
 import FIcon from "@/assets/icon/answer.svg?react";
+
+const detailNav = [
+  { id: 1, name: "기본 정보" },
+  { id: 2, name: "상세 정보" },
+  { id: 3, name: "FAQ" },
+  { id: 4, name: "문의하기" },
+];
 
 const faq = [
   {
@@ -35,50 +43,6 @@ const faq = [
 
 const Content = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const section1Ref = useRef<HTMLElement>(null);
-  const section2Ref = useRef<HTMLElement>(null);
-  const section3Ref = useRef<HTMLElement>(null);
-  const section4Ref = useRef<HTMLElement>(null);
-  const [activeSection, setActiveSection] = useState("");
-
-  const scrollToSection = (sectionRef: RefObject<HTMLElement>) => {
-    sectionRef.current &&
-      sectionRef.current.scrollIntoView({ behavior: "smooth" });
-  };
-
-  useEffect(() => {
-    const sections = [
-      section1Ref.current,
-      section2Ref.current,
-      section3Ref.current,
-      section4Ref.current,
-    ];
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.7 }
-    );
-
-    sections.forEach((section) => {
-      if (section) {
-        observer.observe(section);
-      }
-    });
-
-    return () => {
-      sections.forEach((section) => {
-        if (section) {
-          observer.unobserve(section);
-        }
-      });
-    };
-  }, []);
 
   const accordionheadler = (idx: number) => {
     if (activeIndex === idx) {
@@ -91,33 +55,23 @@ const Content = () => {
   return (
     <>
       <TabNav>
-        <button
-          onClick={() => scrollToSection(section1Ref)}
-          className={activeSection === "section1" ? "active" : ""}
-        >
-          기본 정보
-        </button>
-        <button
-          onClick={() => scrollToSection(section2Ref)}
-          className={activeSection === "section2" ? "active" : ""}
-        >
-          상세 정보
-        </button>
-        <button
-          onClick={() => scrollToSection(section3Ref)}
-          className={activeSection === "section3" ? "active" : ""}
-        >
-          FAQ
-        </button>
-        <button
-          onClick={() => scrollToSection(section4Ref)}
-          className={activeSection === "section4" ? "active" : ""}
-        >
-          문의하기
-        </button>
+        {detailNav.map((data) => {
+          return (
+            <Link
+              to={`section${data.id}`}
+              spy={true}
+              smooth={true}
+              offset={-70}
+              duration={500}
+              key={data.id}
+            >
+              {data.name}
+            </Link>
+          );
+        })}
       </TabNav>
       <ContentWrap>
-        <BasicInfo ref={section1Ref} id="section1">
+        <BasicInfo id="section1">
           <h3>기본 정보</h3>
           <ul className="info_list">
             <li className="item">
@@ -144,7 +98,7 @@ const Content = () => {
             </li>
           </ul>
         </BasicInfo>
-        <DetailInfo ref={section2Ref} id="section2">
+        <DetailInfo id="section2">
           <h3>상세 정보</h3>
           <div className="detail_box">
             <div className="image">
@@ -157,7 +111,7 @@ const Content = () => {
             </div>
           </div>
         </DetailInfo>
-        <FaQ ref={section3Ref} id="section3">
+        <FaQ id="section3">
           <h3>FAQ</h3>
           <ul className="faq_list">
             {faq.map((data, index) => {
@@ -185,7 +139,7 @@ const Content = () => {
             })}
           </ul>
         </FaQ>
-        <ContactUs ref={section3Ref} id="section4">
+        <ContactUs id="section4">
           <h3>문의하기</h3>
           <ul className="info_list">
             <li className="item">

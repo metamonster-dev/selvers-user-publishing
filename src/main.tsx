@@ -4,9 +4,7 @@ import { RecoilRoot } from "recoil";
 import App from "@/app/App.tsx";
 
 createRoot(document.getElementById("root")!).render(
-  // <StrictMode>
   <RecoilRoot>
     <App />
   </RecoilRoot>
-  // </StrictMode>
 );

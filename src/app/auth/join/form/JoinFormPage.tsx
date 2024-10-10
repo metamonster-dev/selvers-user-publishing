@@ -223,7 +223,7 @@ const JoinFormPage = () => {
                 register={register}
               />
               <p className="link">
-                <Link to={""}>내용 확인</Link>
+                <Link to="/privacy-policy">내용 확인</Link>
               </p>
             </div>
           </div>

@@ -15,11 +15,17 @@ import PastListPage from "./mypage/pastListPage";
 import UserModifyPage from "./mypage/userModifyPage";
 import EventListPage from "@/app/eventList/eventListPage";
 import EventDetailPage from "@/app/eventDetail/eventDetailPage";
+import ApplyPage from "@/app/apply/applyPage";
+import FinishApplyPage from "@/app/apply/finishApplyPage";
 import BoothSelectPage from "@/app/mypage/boothSelectPage";
 import BoothCheckPage from "@/app/mypage/boothCheckPage";
 import WithdrawPage from "@/app/mypage/withdrawPage";
 import WithdrawFinishPage from "@/app/mypage/withdrawFinishPage";
-import EditReviewPage from "@/app//review/editReviewPage";
+import EditReviewPage from "@/app/review/editReviewPage";
+import PersonalInformation from "@/app/agree/personalInformation";
+import PrivacyPolicy from "@/app/agree/privacyPolicy";
+import MarketingInformation from "@/app/agree/marketingInformation";
+import TermsService from "@/app/agree/termsService";
 
 import LinkPage from "./link";
 
@@ -71,7 +77,13 @@ const router = createHashRouter(
         },
         { path: "/list", element: <EventListPage /> },
         { path: "/detail/:id", element: <EventDetailPage /> },
+        { path: "/detail/:id/apply", element: <ApplyPage /> },
+        { path: "/detail/:id/finish", element: <FinishApplyPage /> },
         { path: "/with-draw-finish", element: <WithdrawFinishPage /> },
+        { path: "/personal-information", element: <PersonalInformation /> },
+        { path: "/privacy-policy", element: <PrivacyPolicy /> },
+        { path: "/markeyting-information", element: <MarketingInformation /> },
+        { path: "/terms-service", element: <TermsService /> },
       ],
       errorElement: <div style={{ color: "#fff" }}>없는 페이지 입니다.</div>,
     },
@@ -89,11 +101,7 @@ const router = createHashRouter(
   // { basename: import.meta.env.DEV ? "/" : "/micemate-front" }
 );
 const Router = () => {
-  return (
-    <>
-      <RouterProvider router={router} />
-    </>
-  );
+  return <RouterProvider router={router} />;
 };
 
 export default Router;

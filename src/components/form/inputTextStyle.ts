@@ -80,3 +80,33 @@ export const InputTextWrapC = styled.div`
     display: none;
   }
 `;
+
+export const InputTextWrapD = styled.div`
+  & .input_box {
+    background-color: rgba(18, 18, 18, 1);
+    border-radius: 10px;
+    padding: 32px 67px 32px 46px;
+    line-height: 1.3;
+  }
+  & .input_box .label {
+    font-size: 24px;
+    display: block;
+    margin-bottom: 15px;
+    font-weight: 700;
+    color: #fff;
+    & .req {
+      color: rgba(255, 0, 0, 1);
+    }
+  }
+  & .input_area .input {
+    color: #fff;
+    width: 100%;
+    padding: 10px 15px;
+    display: block;
+    font-size: 24px;
+    font-weight: 500;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+  }
+`;
