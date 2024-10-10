@@ -144,9 +144,6 @@ const LinkPage = () => {
                 <td>{data.gubun}</td>
                 <td>{data.name}</td>
                 <td>
-                  {data.ing && (
-                    <span className="ing">작업진행중&nbsp;&nbsp;</span>
-                  )}
                   {data.link.length > 0 ? (
                     <Link to={data.link} target="_blank">
                       바로가기

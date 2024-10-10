@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, Dispatch } from "react";
 import { ReactNode } from "react";
 import {
   SelectWrapA,
@@ -18,8 +18,9 @@ type Props = {
 type SelectProps = {
   label: string;
   required: boolean;
-  ontionList: string[];
+  optionList: string[];
   children?: ReactNode;
+  setState?: Dispatch<React.SetStateAction<string>>;
 };
 
 //회원가입 페이지 사용(관심분야)
@@ -43,9 +44,14 @@ export const SelectBoxA = ({ text, children }: Props) => {
 };
 
 //신청하기 페이지 사용(단일 선택)
-export const SelectBoxB = ({ label, required, ontionList }: SelectProps) => {
+export const SelectBoxB = ({
+  label,
+  required,
+  optionList,
+  setState,
+}: SelectProps) => {
   const [isOn, setIsOn] = useState(false);
-  const [targetOption, setTargetOption] = useState(ontionList[0]);
+  const [targetOption, setTargetOption] = useState(optionList[0]);
   const selectBoxRef = useRef<HTMLDivElement>(null);
   const toggleDropdown = () => {
     setIsOn((prev) => !prev);
@@ -53,6 +59,7 @@ export const SelectBoxB = ({ label, required, ontionList }: SelectProps) => {
   const handleSelect = (target: string) => {
     setTargetOption(target);
     setIsOn(false);
+    setState && setState(target);
   };
   const handleClickOutside = (event: MouseEvent) => {
     if (
@@ -82,7 +89,7 @@ export const SelectBoxB = ({ label, required, ontionList }: SelectProps) => {
           </span>
         </div>
         <ul className="option_box">
-          {ontionList.map((data, index) => {
+          {optionList.map((data, index) => {
             return (
               <li
                 key={index}
@@ -103,7 +110,7 @@ export const SelectBoxB = ({ label, required, ontionList }: SelectProps) => {
 export const SelectBoxC = ({
   label,
   required,
-  ontionList,
+  optionList,
   children,
 }: SelectProps) => {
   const [isOn, setIsOn] = useState(false);
@@ -134,7 +141,7 @@ export const SelectBoxC = ({
       <div className="select_box">
         <div onClick={toggleDropdown} className="select">
           <div>
-            {ontionList.map((data, index) => {
+            {optionList.map((data, index) => {
               return <span key={index}>{data}/</span>;
             })}
           </div>

@@ -6,13 +6,17 @@ type Props = {
   id: string;
   register?: UseFormRegister<FieldValues>;
   onChange?: (e: FormEvent<HTMLInputElement>) => void;
+  required?: boolean;
 };
 
-export const InputCheckboxA = ({ label, id, register }: Props) => {
+export const InputCheckboxA = ({ label, id, register, required }: Props) => {
   return (
     <InputCheckboxWrapA className="InputCheckboxA">
-      <input type="checkbox" id={id} {...(register && register(id))} />
-      <label htmlFor={id}>{label}</label>
+      <input required type="checkbox" id={id} {...(register && register(id))} />
+      <label htmlFor={id}>
+        {label}
+        {required && <span className="req">&nbsp;*</span>}
+      </label>
     </InputCheckboxWrapA>
   );
 };

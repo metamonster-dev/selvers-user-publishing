@@ -11,6 +11,9 @@ export const InputCheckboxWrapA = styled.div`
     cursor: pointer;
     color: #fff;
     line-height: 1.4;
+    & .req {
+      color: rgba(255, 0, 0, 1);
+    }
     @media (max-width: 1024px) {
       font-size: 14px;
     }

@@ -22,16 +22,15 @@ export const InputTextAreaWrapA = styled.div`
 `;
 
 export const InputTextAreaWrapB = styled.div`
-  background-color: rgba(18, 18, 18, 1);
-  border-radius: 10px;
-  padding: 32px 67px 32px 46px;
-
   & .label {
     font-size: 24px;
     display: block;
     margin-bottom: 15px;
     font-weight: 700;
     color: #fff;
+    @media (max-width: 1024px) {
+      font-size: 16px;
+    }
     & .req {
       color: rgba(255, 0, 0, 1);
     }
@@ -48,5 +47,8 @@ export const InputTextAreaWrapB = styled.div`
     border-radius: 5px;
     resize: none;
     min-height: 120px;
+    @media (max-width: 1024px) {
+      font-size: 16px;
+    }
   }
 `;

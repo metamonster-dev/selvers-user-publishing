@@ -56,16 +56,15 @@ export const Option = styled.li`
 `;
 
 export const SelectWrapB = styled.div<{ $isOn?: boolean }>`
-  background-color: rgba(18, 18, 18, 1);
-  border-radius: 10px;
-  padding: 32px 67px 32px 46px;
-
   & .label {
     font-size: 24px;
     display: block;
     margin-bottom: 15px;
     font-weight: 700;
     color: #fff;
+    @media (max-width: 1024px) {
+      font-size: 16px;
+    }
     & .req {
       color: rgba(255, 0, 0, 1);
     }
@@ -76,6 +75,9 @@ export const SelectWrapB = styled.div<{ $isOn?: boolean }>`
     color: #fff;
     font-weight: 500;
     line-height: 1.3;
+    @media (max-width: 1024px) {
+      font-size: 16px;
+    }
   }
   & .select {
     display: flex;
@@ -84,7 +86,7 @@ export const SelectWrapB = styled.div<{ $isOn?: boolean }>`
     cursor: pointer;
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 5px;
-    padding: 10px 15px;
+    padding: 10px 20px 10px 15px;
     & .icon {
       width: 18px;
       height: 9px;
@@ -110,19 +112,21 @@ export const SelectWrapB = styled.div<{ $isOn?: boolean }>`
   & .option {
     cursor: pointer;
     padding: 10px 0;
+    @media (max-width: 1024px) {
+      font-size: 16px;
+    }
   }
 `;
 export const SelectWrapC = styled.div<{ $isOn?: boolean }>`
-  background-color: rgba(18, 18, 18, 1);
-  border-radius: 10px;
-  padding: 32px 67px 32px 46px;
-
   & .label {
     font-size: 24px;
     display: block;
     margin-bottom: 15px;
     font-weight: 700;
     color: #fff;
+    @media (max-width: 1024px) {
+      font-size: 16px;
+    }
     & .req {
       color: rgba(255, 0, 0, 1);
     }
@@ -133,6 +137,9 @@ export const SelectWrapC = styled.div<{ $isOn?: boolean }>`
     color: #fff;
     font-weight: 500;
     line-height: 1.3;
+    @media (max-width: 1024px) {
+      font-size: 16px;
+    }
   }
   & .select {
     display: flex;

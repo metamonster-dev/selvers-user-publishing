@@ -82,18 +82,15 @@ export const InputTextWrapC = styled.div`
 `;
 
 export const InputTextWrapD = styled.div`
-  & .input_box {
-    background-color: rgba(18, 18, 18, 1);
-    border-radius: 10px;
-    padding: 32px 67px 32px 46px;
-    line-height: 1.3;
-  }
-  & .input_box .label {
+  & .label {
     font-size: 24px;
     display: block;
     margin-bottom: 15px;
     font-weight: 700;
     color: #fff;
+    @media (max-width: 1024px) {
+      font-size: 16px;
+    }
     & .req {
       color: rgba(255, 0, 0, 1);
     }
@@ -108,5 +105,8 @@ export const InputTextWrapD = styled.div`
     background-color: transparent;
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 5px;
+    @media (max-width: 1024px) {
+      font-size: 16px;
+    }
   }
 `;

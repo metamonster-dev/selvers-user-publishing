@@ -64,14 +64,12 @@ export const InputTextC = ({ label, type, id, placeholder }: Props) => {
 export const InputTextD = ({ label, type, id, required }: Props) => {
   return (
     <InputTextWrapD>
-      <div className="input_box">
-        <label htmlFor={id} className="label">
-          <span className="txt">{label}</span>
-          {required && <span className="req">&nbsp;*</span>}
-        </label>
-        <div className="input_area">
-          <input type={type} id={id} autoComplete="off" className="input" />
-        </div>
+      <label htmlFor={id} className="label">
+        <span className="txt">{label}</span>
+        {required && <span className="req">&nbsp;*</span>}
+      </label>
+      <div className="input_area">
+        <input type={type} id={id} autoComplete="off" className="input" />
       </div>
     </InputTextWrapD>
   );
