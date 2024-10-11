@@ -4,7 +4,7 @@ import { AgreeWrap } from "./agreePageStyle";
 const GenderBirthInformation = () => {
   return (
     <AgreeWrap>
-      <h2 className="title">[성별 생년 정보 제공 동의]</h2>
+      <h2 className="title">&#91;성별 생년 정보 제공 동의&#93;</h2>
       <table className="table">
         <thead>
           <tr>

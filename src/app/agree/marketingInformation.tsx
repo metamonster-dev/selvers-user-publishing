@@ -3,12 +3,12 @@ import { AgreeWrap } from "./agreePageStyle";
 const MarketingInformation = () => {
   return (
     <AgreeWrap>
-      <h2 className="title">[마케팅 정보 수신 동의]</h2>
+      <h2 className="title">&#91;마케팅 정보 수신 동의&#93;</h2>
       <div className="desc pb_20">
         마케팅 정보 수신 동의
         <br />
         <br />
-        마이스메이트 (주식회사 마인즈그라운드)는 개인정보보호법 및
+        마이스메이트 &#40;주식회사 마인즈그라운드&#41;는 개인정보보호법 및
         정보통신망이용촉진 및 정보보호 등에 관한 법률 등 관계법령에 따라 광고성
         정보를 전송하기 위해 이용자의 사전 수신 동의를 받고 있습니다. 마케팅
         정보 수신 동의 시 마케팅 수신에 일괄 동의한 것으로 처리됩니다.

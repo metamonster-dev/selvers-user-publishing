@@ -1,4 +1,4 @@
-import { ThumbnailWrap, InfoBox } from "./thumbnailAreaStyle";
+import { ThumbnailWrap, InfoBox, Toast } from "./thumbnailAreaStyle";
 import WishIcon from "@/assets/icon/heart_btn.svg?react";
 import ShardIcon from "@/assets/icon/shard_btn.svg?react";
 import StarIcon from "@/assets/icon/star_fill.svg?react";
@@ -7,6 +7,20 @@ import { useState } from "react";
 
 const Thumbnail = ({ applyBtn }: { applyBtn: boolean }) => {
   const [btnTest, setBtnTest] = useState(true);
+  const [toast, setToast] = useState(false);
+  console.log(toast);
+
+  const handleCopyClipBoard = async (text: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setToast(true);
+      setTimeout(() => {
+        setToast(false);
+      }, 5000);
+    } catch {
+      setToast(false);
+    }
+  };
 
   return (
     <ThumbnailWrap>
@@ -33,7 +47,7 @@ const Thumbnail = ({ applyBtn }: { applyBtn: boolean }) => {
           <div className="icon_btn">
             <WishIcon />
           </div>
-          <div className="icon_btn">
+          <div onClick={() => handleCopyClipBoard("url")} className="icon_btn">
             <ShardIcon />
           </div>
         </div>
@@ -59,6 +73,7 @@ const Thumbnail = ({ applyBtn }: { applyBtn: boolean }) => {
           </div>
         )}
       </InfoBox>
+      <Toast $on={toast}>URL 이 복사되었습니다.</Toast>
     </ThumbnailWrap>
   );
 };

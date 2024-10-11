@@ -4,13 +4,13 @@ import { AgreeWrap } from "./agreePageStyle";
 const PersonalInformation = () => {
   return (
     <AgreeWrap>
-      <h2 className="title">[개인정보 수집 이용 동의]</h2>
+      <h2 className="title">&#91;개인정보 수집 이용 동의&#93;</h2>
       <div className="desc">
         회원가입 수집·이용 동의서
         <br />
         <br />
-        마이스메이트 (주식회사 마인즈그라운드)의 개인정보 수집 이용 목적은
-        다음과 같습니다.
+        마이스메이트 &#40;주식회사 마인즈그라운드&#41;의 개인정보 수집 이용
+        목적은 다음과 같습니다.
         <br />
         내용을 자세히 읽어 보신 후 동의 여부를 결정하여 주시기 바랍니다.
         <br />
@@ -31,7 +31,7 @@ const PersonalInformation = () => {
         <br />
         보유·이용기간: 회원탈퇴 까지
         <br />
-        수집 목적: 고객 관계 관리(CRM)
+        수집 목적: 고객 관계 관리&#40;CRM&#41;
         <br />
         필수수집 항목: 이름, 이메일
         <br />
@@ -49,7 +49,8 @@ const PersonalInformation = () => {
         보유·이용기간: 회원탈퇴 까지
         <br />
         <br />
-        자세한 내용은 <Link to="/privacy-policy">개인정보처리방침(링크)</Link>을
+        자세한 내용은{" "}
+        <Link to="/privacy-policy">개인정보처리방침&#40;링크&#41;</Link>을
         확인해주세요.
         <br />
         귀하는 위와 같이 개인정보를 수집·이용하는데 동의를 거부할 권리가

@@ -9,7 +9,7 @@ export const MainSwiperWrap = styled.div`
   }
   & > .main_swiper .swiper-slide figure {
     position: relative;
-    padding-top: 43.79%;
+    aspect-ratio: 1920/840;
     overflow: hidden;
     border-radius: 30px;
     @media (max-width: 1024px) {

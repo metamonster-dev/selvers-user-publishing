@@ -139,6 +139,7 @@ export const InfoBox = styled.div`
       gap: 20px;
     }
     & .icon_btn {
+      cursor: pointer;
       width: 55px;
       height: 55px;
       @media (max-width: 1024px) {
@@ -181,5 +182,26 @@ export const InfoBox = styled.div`
       background-color: #495057;
       color: rgba(255, 255, 255, 0.5);
     }
+  }
+`;
+
+export const Toast = styled.div<{ $on: boolean }>`
+  display: ${(props) => (props.$on ? "block" : "none")};
+  position: fixed;
+  bottom: 48px;
+  color: #fff;
+  background-color: rgba(41, 46, 55, 1);
+  border-radius: 50rem;
+  padding: 15px 50px;
+  font-size: 16px;
+  font-weight: 500;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 1s;
+  z-index: 999;
+  @media (max-width: 1024px) {
+    font-size: 14px;
+    padding: 10px 30px;
+    bottom: 30px;
   }
 `;
