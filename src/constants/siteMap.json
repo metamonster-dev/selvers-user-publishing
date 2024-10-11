@@ -107,23 +107,35 @@
     {
       "id": 20,
       "gubun": "이용약관",
-      "name": "개인정보 수집 동의",
-      "link": "/personal-information"
+      "name": "성별 생년 정보 제공 동의",
+      "link": "/gender-birth-information"
     },
     {
       "id": 21,
+      "gubun": "이용약관",
+      "name": "개인정보 수집 이용 동의",
+      "link": "/personal-information"
+    },
+    {
+      "id": 22,
       "gubun": "이용약관",
       "name": "개인정보처리방침",
       "link": "/privacy-policy"
     },
     {
-      "id": 22,
+      "id": 23,
       "gubun": "이용약관",
-      "name": "마케팅정보 제3자 동의",
+      "name": "제 3자 제공 동의",
+      "link": "/onward-transfer"
+    },
+    {
+      "id": 24,
+      "gubun": "이용약관",
+      "name": "마케팅 정보 수신 동의",
       "link": "/markeyting-information"
     },
     {
-      "id": 23,
+      "id": 25,
       "gubun": "이용약관",
       "name": "서비스 이용약관",
       "link": "/terms-service"

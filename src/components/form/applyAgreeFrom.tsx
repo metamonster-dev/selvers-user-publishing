@@ -25,25 +25,33 @@ const ApplyAgreeFrom = ({ pageState }: { pageState: string }) => {
         <div>
           <InputCheckboxA label="(필수) 성별 생년 정보 제공 동의" id="agree1" />
           <p className="link">
-            <Link to="">자세히 보기</Link>
+            <Link to="/gender-birth-information" target="blank_">
+              자세히 보기
+            </Link>
           </p>
         </div>
         <div>
           <InputCheckboxA label="(필수) 개인정보 수집 이용 동의" id="agree2" />
           <p className="link">
-            <Link to="">자세히 보기</Link>
+            <Link to="/personal-information" target="blank_">
+              자세히 보기
+            </Link>
           </p>
         </div>
         <div>
           <InputCheckboxA label="(필수) 제 3자 제공 동의" id="agree3" />
           <p className="link">
-            <Link to="">자세히 보기</Link>
+            <Link to="/onward-transfer" target="blank_">
+              자세히 보기
+            </Link>
           </p>
         </div>
         <div>
           <InputCheckboxA label="(선택) 마케팅 정보 수신 동의" id="agree4" />
           <p className="link">
-            <Link to="">자세히 보기</Link>
+            <Link to="/markeyting-information" target="blank_">
+              자세히 보기
+            </Link>
           </p>
         </div>
       </div>

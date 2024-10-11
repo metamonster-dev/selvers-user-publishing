@@ -22,8 +22,10 @@ import BoothCheckPage from "@/app/mypage/boothCheckPage";
 import WithdrawPage from "@/app/mypage/withdrawPage";
 import WithdrawFinishPage from "@/app/mypage/withdrawFinishPage";
 import EditReviewPage from "@/app/review/editReviewPage";
+import GenderBirthInformation from "@/app/agree/genderBirthInformation";
 import PersonalInformation from "@/app/agree/personalInformation";
 import PrivacyPolicy from "@/app/agree/privacyPolicy";
+import OnwardTransfer from "@/app/agree/onwardTransfer";
 import MarketingInformation from "@/app/agree/marketingInformation";
 import TermsService from "@/app/agree/termsService";
 
@@ -80,8 +82,13 @@ const router = createHashRouter(
         { path: "/detail/:id/apply", element: <ApplyPage /> },
         { path: "/detail/:id/finish", element: <FinishApplyPage /> },
         { path: "/with-draw-finish", element: <WithdrawFinishPage /> },
+        {
+          path: "/gender-birth-information",
+          element: <GenderBirthInformation />,
+        },
         { path: "/personal-information", element: <PersonalInformation /> },
         { path: "/privacy-policy", element: <PrivacyPolicy /> },
+        { path: "/onward-transfer", element: <OnwardTransfer /> },
         { path: "/markeyting-information", element: <MarketingInformation /> },
         { path: "/terms-service", element: <TermsService /> },
       ],

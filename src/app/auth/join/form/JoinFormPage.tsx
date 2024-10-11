@@ -198,7 +198,9 @@ const JoinFormPage = () => {
                 register={register}
               />
               <p className="link">
-                <Link to={""}>약관 보기</Link>
+                <Link to="/terms-service" target="blank_">
+                  약관 보기
+                </Link>
               </p>
             </div>
             <InputCheckboxB
@@ -213,7 +215,9 @@ const JoinFormPage = () => {
                 register={register}
               />
               <p className="link">
-                <Link to={""}>내용 확인</Link>
+                <Link to="/gender-birth-information" target="blank_">
+                  내용 확인
+                </Link>
               </p>
             </div>
             <div className="required_box">
@@ -223,7 +227,9 @@ const JoinFormPage = () => {
                 register={register}
               />
               <p className="link">
-                <Link to="/privacy-policy">내용 확인</Link>
+                <Link to="/personal-information" target="blank_">
+                  내용 확인
+                </Link>
               </p>
             </div>
           </div>

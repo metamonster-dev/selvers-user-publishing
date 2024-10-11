@@ -69,7 +69,7 @@ const Footer = () => {
             -6499-7513&nbsp;&nbsp;|&nbsp;&nbsp;E-mail : admin@mindsground.com
           </p>
           <p>
-            <Link to={""}>개인정보처리방침</Link>
+            <Link to="/privacy-policy">개인정보처리방침</Link>
           </p>
           <p className="copyright">
             Copyright © 마인즈그라운드 주식회사. All Rights Reserved.
