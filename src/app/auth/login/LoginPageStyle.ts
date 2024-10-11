@@ -30,13 +30,14 @@ export const TitleBox = styled.div`
 export const LoginFormWrap = styled.form`
   width: 384px;
   margin: 0 auto;
-  & > div:first-child {
+  & > .input_box {
     display: flex;
     flex-direction: column;
     gap: 25px;
+    margin-bottom: 10px;
   }
-  & > div:nth-child(2) {
-    padding: 30px 0 15px;
+  & > .login_stay {
+    padding: 20px 0 15px;
   }
   @media (max-width: 1024px) {
     width: 100%;

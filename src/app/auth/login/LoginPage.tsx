@@ -19,7 +19,7 @@ import NaverIcon from "@/assets/icon/round_naver.svg?react";
 import KakaoIcon from "@/assets/icon/round_kakao.svg?react";
 
 const schema = z.object({
-  id: z.string().email({ message: "이메일 또는 비밀번호를 확인해주세요." }),
+  email: z.string().email({ message: "이메일 또는 비밀번호를 확인해주세요." }),
   password: z.string(),
 });
 
@@ -42,11 +42,11 @@ const LoginPage = () => {
         <span>즐거운 만남을 시작해보세요!</span>
       </TitleBox>
       <LoginFormWrap onSubmit={onSubmit}>
-        <div>
+        <div className="input_box">
           <InputTextA
             label="이메일(ID)"
             type="text"
-            id="id"
+            id="email"
             placeholder="이메일 입력"
             register={register}
           />
@@ -57,10 +57,14 @@ const LoginPage = () => {
             placeholder="비밀번호 입력"
             register={register}
           />
-          <p className="err_msg">{errors.id?.message?.toString()}</p>
         </div>
-
-        <div>
+        {errors.email && (
+          <p className="err_msg">{errors.email?.message?.toString()}</p>
+        )}
+        {errors.password && (
+          <p className="err_msg">{errors.password?.message?.toString()}</p>
+        )}
+        <div className="login_stay">
           <InputCheckboxA
             label="로그인유지"
             id="loginStayed"
