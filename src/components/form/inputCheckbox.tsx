@@ -26,13 +26,13 @@ export const InputCheckboxB = ({ label, id, register, onChange }: Props) => {
     <InputCheckboxWrapB>
       <input
         type="checkbox"
-        id={id}
-        {...(register && register(id))}
+        id={`${id}`}
+        {...(register && register(`${id}`))}
         onChange={onChange}
         value={label}
       />
 
-      <label htmlFor={id}>{label}</label>
+      <label htmlFor={`${id}`}>{label}</label>
     </InputCheckboxWrapB>
   );
 };

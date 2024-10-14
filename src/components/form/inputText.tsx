@@ -4,11 +4,12 @@ import {
   InputTextWrapB,
   InputTextWrapC,
   InputTextWrapD,
+  InputDateAWrap,
 } from "./inputTextStyle";
 
 type Props = {
   label?: string;
-  type: string;
+  type?: string;
   id: string;
   placeholder?: string;
   register?: UseFormRegister<FieldValues>;
@@ -47,6 +48,20 @@ export const InputTextB = ({ type, id, register, placeholder }: Props) => {
       placeholder={placeholder}
       autoComplete="off"
     />
+  );
+};
+
+export const InputDateA = ({ id, register, placeholder }: Props) => {
+  return (
+    <InputDateAWrap>
+      <input
+        type="text"
+        id={id}
+        {...(register && register(id))}
+        placeholder={placeholder}
+        autoComplete="off"
+      />
+    </InputDateAWrap>
   );
 };
 

@@ -16,12 +16,13 @@ import {
   AgreeBox,
   SubmitBtn,
 } from "./joinFormPageStyle";
-import { FormEvent, useState } from "react";
-import favoriteList from "@/mockData/favoritList.json";
+import { FormEvent, useEffect, useState } from "react";
+import { getCategory } from "@/api/getCategoryAPI";
+import { CategoryListType } from "@/type";
 
 interface FavorList {
-  id: string;
-  label: string;
+  id: number;
+  name: string;
 }
 
 const schema = z
@@ -36,7 +37,11 @@ const schema = z
       ),
     passwordChk: z.string().trim().min(1, "비밀번호를 확인해주세요."),
     name: z.string(),
-    birth: z.coerce.number().gte(8),
+    birth: z
+      .string()
+      .date()
+      .min(10, "Date must be in the format YYYY-MM-DD")
+      .regex(/^\d{4}-\d{2}-\d{2}$/, "Date must be in the format YYYY-MM-DD"),
     gender: z.string(),
     agree_01: z.literal(true),
   })
@@ -51,7 +56,10 @@ const schema = z
   });
 
 const JoinFormPage = () => {
+  const [category, setCategory] = useState<CategoryListType[]>();
+  const [interestList, setInterestList] = useState<number[]>([]);
   const [favorList, setFavorList] = useState<FavorList[]>([]);
+  console.log(interestList, favorList);
   // 약관동의 전체선택(임시)
   const selectAllHandler = (e: FormEvent<HTMLInputElement>) => {
     if (e.currentTarget.checked) {
@@ -77,21 +85,40 @@ const JoinFormPage = () => {
   } = useForm({
     resolver: zodResolver(schema),
   });
-  const onSubmit = handleSubmit((data) => console.log(data));
 
-  const favoriteLists = (e: FormEvent<HTMLInputElement>) => {
-    const label = e.currentTarget.value;
-    const id = e.currentTarget.id;
+  // 카테고리 API
+  useEffect(() => {
+    getCategory().then((res) => setCategory(res));
+  }, []);
+
+  // 관심 분야 체크 or 체크 해제시
+  const interests = (e: FormEvent<HTMLInputElement>) => {
+    const name = e.currentTarget.value;
+    const id = Number(e.currentTarget.id);
     if (e.currentTarget.checked) {
-      setFavorList((prev) => [...prev, { id: id, label: label }]);
+      setInterestList((prev) => (prev ? [...prev, id] : [id]));
+      setFavorList((prev) => [...prev, { id: id, name: name }]);
     } else {
-      setFavorList((prev) => prev.filter((item) => console.log(item)));
+      setInterestList((prev) => prev.filter((item) => item !== id));
+      setFavorList((prev) => prev.filter((item) => item.id !== id));
     }
   };
-  const hashDeleteHandler = (id: string) => {
-    setValue(id, false);
+  // 관심 분야 해시 박스 삭제 버튼 클릭시
+  const hashDeleteHandler = (id: number) => {
+    setValue(`${id}`, false);
     setFavorList((prev) => prev.filter((item) => item.id !== id));
   };
+
+  const onSubmit = handleSubmit((data) => {
+    const joinData = {
+      name: data.name,
+      email: data.email,
+      password: data.password,
+      c_password: data.passwordChk,
+      birth: data.birth,
+    };
+    console.log(joinData);
+  });
 
   return (
     <JoinFormWrap>
@@ -139,12 +166,7 @@ const JoinFormPage = () => {
           <p className="err_msg">{errors.name?.message?.toString()}</p>
         )}
         <TdForm>
-          <InputTextB
-            type="number"
-            id="birth"
-            register={register}
-            placeholder="생년월일"
-          />
+          <InputTextB id="birth" register={register} placeholder="생년월일" />
           <InputRadioWrap>
             <InputRadioA
               id="man"
@@ -166,17 +188,18 @@ const JoinFormPage = () => {
         <TdForm>
           <SelectBoxA text="관심 분야">
             <FavoriteListBox>
-              {favoriteList.favoriteList.map((data) => {
-                return (
-                  <InputCheckboxB
-                    key={data.id}
-                    label={data.label}
-                    id={data.id}
-                    register={register}
-                    onChange={favoriteLists}
-                  />
-                );
-              })}
+              {category &&
+                category.map((data) => {
+                  return (
+                    <InputCheckboxB
+                      key={data.id}
+                      label={data.name}
+                      id={`${data.id}`}
+                      register={register}
+                      onChange={interests}
+                    />
+                  );
+                })}
             </FavoriteListBox>
           </SelectBoxA>
         </TdForm>
@@ -234,7 +257,6 @@ const JoinFormPage = () => {
             </div>
           </div>
         </AgreeBox>
-
         <SubmitBtn className="btn">회원가입</SubmitBtn>
       </JoinForm>
     </JoinFormWrap>

@@ -45,6 +45,35 @@ export const InputTextWrapB = styled.input`
       font-size: 12px;
     }
   }
+  &[type="date"]::-webkit-calendar-picker-indicator {
+    /* display: none; */
+    color: #738096;
+  }
+`;
+
+export const InputDateAWrap = styled.div`
+  & input {
+    width: 100%;
+    padding: 15px 16px;
+    font-size: 14px;
+    background-color: #fff;
+    border-radius: 4px;
+    border: 1px solid #d6deeb;
+    @media (max-width: 1024px) {
+      font-size: 12px;
+    }
+    &::placeholder {
+      color: #738096;
+      font-size: 14px;
+      @media (max-width: 1024px) {
+        font-size: 12px;
+      }
+    }
+    &[type="date"]::-webkit-calendar-picker-indicator {
+      /* display: none; */
+      color: #738096;
+    }
+  }
 `;
 
 export const InputTextWrapC = styled.div`

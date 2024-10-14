@@ -52,6 +52,9 @@ export const SubmitBtn = styled.button`
   color: #09338c;
   font-weight: 700;
   padding: 15px 0;
+  &[disabled] {
+    cursor: auto;
+  }
   @media (max-width: 1024px) {
     font-size: 14px;
   }

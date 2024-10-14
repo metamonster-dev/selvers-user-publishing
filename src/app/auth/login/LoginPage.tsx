@@ -1,7 +1,9 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { postLogin } from "@/api/auth/postLoginAPI";
 import { InputTextA } from "@components/form/inputText";
 import { InputCheckboxA } from "@components/form/inputCheckbox";
 import {
@@ -13,27 +15,91 @@ import {
   LoginFormWrap,
   SubmitBtn,
 } from "./loginPageStyle";
+import { LoginType } from "@/type";
 import { Link } from "react-router-dom";
 import GoogleIcon from "@/assets/icon/round_google.svg?react";
 import NaverIcon from "@/assets/icon/round_naver.svg?react";
 import KakaoIcon from "@/assets/icon/round_kakao.svg?react";
+import { useSetRecoilState } from "recoil";
+import { userState } from "@/store/UserState";
 
 const schema = z.object({
-  email: z.string().email({ message: "이메일 또는 비밀번호를 확인해주세요." }),
+  email: z.string().email({ message: "올바른 이메일을 입력해주세요." }),
   password: z.string(),
+  remember: z.boolean(),
 });
 
 const LoginPage = () => {
-  //react hook form
+  const [isFormValid, setIsFormValid] = useState(false);
+  const setUser = useSetRecoilState(userState);
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
+    setError,
+    watch,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(schema),
   });
 
-  const onSubmit = handleSubmit((data) => console.log(data));
+  const email = watch("email");
+  const password = watch("password");
+  useEffect(() => {
+    if (email?.trim() && password?.trim() !== undefined) {
+      setIsFormValid(true);
+    } else {
+      setIsFormValid(false);
+    }
+  }, [email, password]);
+
+  const onSubmit = handleSubmit((data) => {
+    const loginData: LoginType = {
+      email: data.email,
+      password: data.password,
+      remember: data.remember,
+    };
+    postLogin("POST", loginData)
+      .then((res) => {
+        // 로그인 성공
+        if (res.success === true) {
+          const userResponse = {
+            isLogin: true,
+            isLoginError: false,
+            data: {
+              user_id: res.data.user_id,
+              name: res.data.name,
+              token: res.data.token,
+            },
+          };
+          setUser({ ...userResponse });
+          navigate("/");
+        }
+      })
+      .catch((error) => {
+        if (error.response.data.data.error === "Unauthorised") {
+          //일치하는 계정 없을때
+          setError("apiError", {
+            type: "manual",
+            message: "이메일 또는 비밀번호를 확인해주세요.",
+          });
+        } else if (
+          error.response.data.data.error === "Not authenticate your email"
+        ) {
+          //회원가입 했는데 이메일 인증 안했을때
+          setError("apiError", {
+            type: "manual",
+            message: "이메일 인증이 필요합니다.",
+          });
+        } else {
+          setError("apiError", {
+            type: "manual",
+            message: "로그인 실패 다시 시도해주세요.",
+          });
+        }
+      });
+  });
 
   return (
     <LoginPageWrap>
@@ -61,20 +127,19 @@ const LoginPage = () => {
         {errors.email && (
           <p className="err_msg">{errors.email?.message?.toString()}</p>
         )}
-        {errors.password && (
-          <p className="err_msg">{errors.password?.message?.toString()}</p>
+        {errors.apiError && (
+          <p className="err_msg">{errors.apiError?.message?.toString()}</p>
         )}
         <div className="login_stay">
           <InputCheckboxA
             label="로그인유지"
-            id="loginStayed"
+            id="remember"
             register={register}
           />
         </div>
-        <SubmitBtn>로그인</SubmitBtn>
+        <SubmitBtn disabled={!isFormValid}>로그인</SubmitBtn>
       </LoginFormWrap>
       <FindAuthWrap>
-        {/* <Link to={""}>아이디 찾기</Link>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; */}
         <Link to={"/login/password-find"}>비밀번호 찾기</Link>
         &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
         <Link to={"/join"}>회원가입</Link>

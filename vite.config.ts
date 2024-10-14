@@ -15,6 +15,14 @@ export default defineConfig({
       { find: "@", replacement: "/src" },
     ],
   },
+  server: {
+    proxy: {
+      "/api": {
+        target: "https://api-test.micemate.io",
+        changeOrigin: true,
+      },
+    },
+  },
   build: {
     rollupOptions: {
       output: {

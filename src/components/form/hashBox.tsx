@@ -2,8 +2,8 @@ import { HashBoxWrap, HashItem } from "./hashBoxStyle";
 import DeleteIcon from "@/assets/icon/hash_del.svg?react";
 
 type Props = {
-  hashList: { label: string; id: string }[];
-  onClick: (target: string) => void;
+  hashList: { name: string; id: number }[];
+  onClick: (target: number) => void;
 };
 
 const HashBox = ({ hashList, onClick }: Props) => {
@@ -15,7 +15,7 @@ const HashBox = ({ hashList, onClick }: Props) => {
             <span onClick={() => onClick(data.id)} className="close_btn">
               <DeleteIcon />
             </span>
-            <span className="label">{data.label}</span>
+            <span className="label">{data.name}</span>
           </HashItem>
         );
       })}

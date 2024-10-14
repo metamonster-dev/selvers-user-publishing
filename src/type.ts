@@ -26,3 +26,17 @@ export interface MyEventListType {
   location: string;
   linkBtn?: string;
 }
+
+//####################### fix #############################
+
+//카테고리
+export interface LoginType {
+  email: number;
+  password: string;
+  remember: boolean;
+}
+//카테고리
+export interface CategoryListType {
+  id: number;
+  name: string;
+}

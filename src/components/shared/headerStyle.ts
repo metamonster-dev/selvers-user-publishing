@@ -6,7 +6,6 @@ export const HeaderWrap = styled.header`
   background-color: #000;
   display: flex;
   align-items: center;
-
   @media (max-width: 1400px) {
     padding: 72px 70px 55px;
   }
