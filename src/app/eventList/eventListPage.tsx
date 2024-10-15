@@ -118,8 +118,8 @@ const EventListPage = () => {
             )}
             <HashBox
               hashList={[
-                { label: "무료", id: "01" },
-                { label: "뷰티/화장품", id: "02" },
+                { name: "무료", id: 1 },
+                { name: "뷰티/화장품", id: 2 },
               ]}
               onClick={(target) => console.log(target)}
             />

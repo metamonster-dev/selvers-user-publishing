@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import { postJoin } from "@/api/usersAPI";
 import { Link } from "react-router-dom";
 import { InputTextB } from "@components/form/inputText";
 import { InputRadioA } from "@components/form/inputRadio";
@@ -16,16 +17,17 @@ import {
   AgreeBox,
   SubmitBtn,
 } from "./joinFormPageStyle";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect, useState, ChangeEvent } from "react";
 import { getCategory } from "@/api/getCategoryAPI";
-import { CategoryListType } from "@/type";
+import AlretModal from "@components/modal/alretModal";
+import { CategoryListType, JoinType } from "@/type";
 
 interface FavorList {
   id: number;
   name: string;
 }
 
-const schema = z
+const joinSchema = z
   .object({
     email: z.string().email({ message: "올바른 이메일을 입력해주세요." }),
     password: z
@@ -35,15 +37,18 @@ const schema = z
         /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/,
         " 영문,숫자조합 8자리 이상 입력해주세요."
       ),
-    passwordChk: z.string().trim().min(1, "비밀번호를 확인해주세요."),
+    passwordChk: z.string().trim(),
     name: z.string(),
     birth: z
       .string()
-      .date()
-      .min(10, "Date must be in the format YYYY-MM-DD")
-      .regex(/^\d{4}-\d{2}-\d{2}$/, "Date must be in the format YYYY-MM-DD"),
+      .min(10)
+      .regex(/^\d{4}-\d{2}-\d{2}$/),
     gender: z.string(),
-    agree_01: z.literal(true),
+    allChk: z.boolean().default(false).optional(),
+    agree_01: z.boolean(),
+    agree_02: z.boolean().default(false).optional(),
+    agree_03: z.boolean(),
+    agree_04: z.boolean(),
   })
   .superRefine(({ passwordChk, password }, ctx) => {
     if (passwordChk !== password) {
@@ -59,37 +64,32 @@ const JoinFormPage = () => {
   const [category, setCategory] = useState<CategoryListType[]>();
   const [interestList, setInterestList] = useState<number[]>([]);
   const [favorList, setFavorList] = useState<FavorList[]>([]);
-  console.log(interestList, favorList);
-  // 약관동의 전체선택(임시)
-  const selectAllHandler = (e: FormEvent<HTMLInputElement>) => {
-    if (e.currentTarget.checked) {
-      setValue("agree_01", true);
-      setValue("agree_02", true);
-      setValue("agree_03", true);
-      setValue("agree_04", true);
-      setValue("agree_05", true);
-    } else {
-      setValue("agree_01", false);
-      setValue("agree_02", false);
-      setValue("agree_03", false);
-      setValue("agree_04", false);
-      setValue("agree_05", false);
-    }
-  };
-
+  const [isFormValid, setIsFormValid] = useState(false);
+  const [alret, setAlret] = useState(false);
   const {
     register,
     handleSubmit,
     setValue,
+    watch,
     formState: { errors },
   } = useForm({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(joinSchema),
   });
-
   // 카테고리 API
   useEffect(() => {
     getCategory().then((res) => setCategory(res));
   }, []);
+  // 생년월일 문자금지 하이픈 추가
+  const handleDateChange = (e: ChangeEvent<HTMLInputElement>) => {
+    let input = e.target.value.replace(/\D/g, "");
+    if (input.length > 4 && input.length <= 6) {
+      input = input.slice(0, 4) + "-" + input.slice(4);
+    } else if (input.length > 6) {
+      input =
+        input.slice(0, 4) + "-" + input.slice(4, 6) + "-" + input.slice(6, 8);
+    }
+    setValue("birth", input);
+  };
 
   // 관심 분야 체크 or 체크 해제시
   const interests = (e: FormEvent<HTMLInputElement>) => {
@@ -106,18 +106,63 @@ const JoinFormPage = () => {
   // 관심 분야 해시 박스 삭제 버튼 클릭시
   const hashDeleteHandler = (id: number) => {
     setValue(`${id}`, false);
+    setInterestList((prev) => prev.filter((item) => item !== id));
     setFavorList((prev) => prev.filter((item) => item.id !== id));
   };
+  // 약관동의 전체선택
+  const allChk = watch("allChk");
+  const agree01 = watch("agree_01");
+  const agree03 = watch("agree_03");
+  const agree04 = watch("agree_04");
+
+  useEffect(() => {
+    const checkList = ["agree_01", "agree_02", "agree_03", "agree_04"];
+
+    if (allChk === true) {
+      checkList.forEach((item) => setValue(item, true));
+    } else {
+      checkList.forEach((item) => setValue(item, false));
+    }
+  }, [allChk, setValue]);
+
+  //약관 동의 필수 미선택시 sumit버튼 비활성화
+  useEffect(() => {
+    if (agree01 && agree03 && agree04) {
+      setIsFormValid(true);
+    } else {
+      setIsFormValid(false);
+    }
+  }, [agree01, agree03, agree04]);
 
   const onSubmit = handleSubmit((data) => {
-    const joinData = {
+    const gender = () => {
+      if (data.gender === "man") {
+        return false;
+      } else if (data.gender === "woman") {
+        return true;
+      }
+    };
+    const joinData: JoinType = {
       name: data.name,
       email: data.email,
       password: data.password,
       c_password: data.passwordChk,
       birth: data.birth,
+      sex: gender() as boolean,
+      interests: interestList,
+      terms_of_uses: {
+        "1": data.agree_01,
+        "2": data.agree_02,
+        "3": data.agree_03,
+        "4": data.agree_04,
+      },
     };
-    console.log(joinData);
+    postJoin("POST", joinData)
+      .then((res) => {
+        console.log(res);
+        setAlret(true);
+      })
+      .catch((err) => console.log(err));
   });
 
   return (
@@ -166,7 +211,12 @@ const JoinFormPage = () => {
           <p className="err_msg">{errors.name?.message?.toString()}</p>
         )}
         <TdForm>
-          <InputTextB id="birth" register={register} placeholder="생년월일" />
+          <InputTextB
+            id="birth"
+            register={register}
+            placeholder="생년월일 8자리"
+            onChange={handleDateChange}
+          />
           <InputRadioWrap>
             <InputRadioA
               id="man"
@@ -211,7 +261,6 @@ const JoinFormPage = () => {
             label="선택 포함 전체 약관 동의"
             id="allChk"
             register={register}
-            onChange={selectAllHandler}
           />
           <div>
             <div className="required_box">
@@ -257,8 +306,19 @@ const JoinFormPage = () => {
             </div>
           </div>
         </AgreeBox>
-        <SubmitBtn className="btn">회원가입</SubmitBtn>
+        <SubmitBtn disabled={!isFormValid} className="btn">
+          회원가입
+        </SubmitBtn>
       </JoinForm>
+      {alret && (
+        <AlretModal
+          setAlret={setAlret}
+          text={
+            "회원가입이 완료되었습니다.\n이메일 인증 후 서비스를 이용할 수 있습니다."
+          }
+          navigatePath="/login"
+        />
+      )}
     </JoinFormWrap>
   );
 };

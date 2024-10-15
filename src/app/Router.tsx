@@ -77,7 +77,7 @@ const router = createHashRouter(
             { path: "user-modify/with-draw", element: <WithdrawPage /> },
           ],
         },
-        { path: "/list", element: <EventListPage /> },
+        { path: "/event-list", element: <EventListPage /> },
         { path: "/detail/:id", element: <EventDetailPage /> },
         { path: "/detail/:id/apply", element: <ApplyPage /> },
         { path: "/detail/:id/finish", element: <FinishApplyPage /> },

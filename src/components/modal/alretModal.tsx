@@ -1,15 +1,19 @@
 import { Dispatch, SetStateAction } from "react";
 import { AlretModalWrap, Alret } from "./alretModalStyle";
 import CloseBtn from "@/assets/icon/modal_close.svg?react";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   text: string;
   setAlret: Dispatch<SetStateAction<boolean>>;
+  navigatePath: string;
 };
 
-const AlretModal = ({ text, setAlret }: Props) => {
+const AlretModal = ({ text, setAlret, navigatePath }: Props) => {
+  const navigate = useNavigate();
   const closeAlret = () => {
     setAlret(false);
+    navigate(navigatePath);
   };
   return (
     <AlretModalWrap>

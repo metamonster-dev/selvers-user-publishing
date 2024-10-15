@@ -24,15 +24,20 @@ export const InputCheckboxA = ({ label, id, register, required }: Props) => {
 export const InputCheckboxB = ({ label, id, register, onChange }: Props) => {
   return (
     <InputCheckboxWrapB>
-      <input
-        type="checkbox"
-        id={`${id}`}
-        {...(register && register(`${id}`))}
-        onChange={onChange}
-        value={label}
-      />
+      {onChange && (
+        <input
+          type="checkbox"
+          id={id}
+          {...(register && register(id))}
+          onChange={onChange}
+          value={label}
+        />
+      )}
+      {!onChange && (
+        <input type="checkbox" id={id} {...(register && register(id))} />
+      )}
 
-      <label htmlFor={`${id}`}>{label}</label>
+      <label htmlFor={id}>{label}</label>
     </InputCheckboxWrapB>
   );
 };

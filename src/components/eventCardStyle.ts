@@ -46,7 +46,7 @@ export const LikeBtn = styled.button`
 export const Thumbnail = styled.figure`
   position: relative;
   overflow: hidden;
-  padding-top: 141.66%;
+  aspect-ratio: 432/612;
   border-radius: 20px;
   & > img {
     position: absolute;

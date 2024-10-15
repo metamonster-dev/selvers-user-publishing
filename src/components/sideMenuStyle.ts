@@ -33,8 +33,8 @@ export const MenuItem = styled.li<{ $isOn?: boolean; $target?: boolean }>`
   width: 100%;
   position: relative;
   font-size: 18px;
-  color: rgba(255, 255, 255, 0.5);
-  color: ${(props) => props.$isOn && "rgba(255, 255, 255, 1);"};
+
+  color: ${(props) => (props.$isOn ? "#fff" : "rgba(255, 255, 255, 0.5)")};
   padding: 10px 25px;
   border-radius: 50rem;
   font-weight: 600;
@@ -45,9 +45,10 @@ export const MenuItem = styled.li<{ $isOn?: boolean; $target?: boolean }>`
     font-weight: 500;
     padding: 10px 25px;
   }
-  & a {
+  & a,
+  & button {
     display: block;
-    color: ${(props) => props.$target && "#fff"};
+    color: ${(props) => (props.$target ? "#fff" : "rgba(255, 255, 255, 0.5)")};
   }
   & > span {
     position: absolute;

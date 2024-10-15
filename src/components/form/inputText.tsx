@@ -6,6 +6,7 @@ import {
   InputTextWrapD,
   InputDateAWrap,
 } from "./inputTextStyle";
+import { ChangeEvent } from "react";
 
 type Props = {
   label?: string;
@@ -14,6 +15,7 @@ type Props = {
   placeholder?: string;
   register?: UseFormRegister<FieldValues>;
   required?: boolean;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
 // 로그인 페이지 사용
@@ -39,7 +41,13 @@ export const InputTextA = ({
 };
 
 // 회원가입 페이지 사용
-export const InputTextB = ({ type, id, register, placeholder }: Props) => {
+export const InputTextB = ({
+  type,
+  id,
+  register,
+  placeholder,
+  onChange,
+}: Props) => {
   return (
     <InputTextWrapB
       type={type}
@@ -47,6 +55,7 @@ export const InputTextB = ({ type, id, register, placeholder }: Props) => {
       {...(register && register(id))}
       placeholder={placeholder}
       autoComplete="off"
+      onChange={onChange}
     />
   );
 };

@@ -4,12 +4,12 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import { EventSliderWrap, TitleBox, SliderArea } from "./eventSwiperStyle";
 import EventCard from "./eventCard";
-import { EventList } from "@/type";
+import { EventListType } from "@/type";
 
 type Props = {
   title: string;
   subTitle?: string;
-  eventList: EventList[];
+  eventList?: EventListType[];
 };
 
 const EventSwiper = ({ title, subTitle, eventList }: Props) => {
@@ -41,23 +41,24 @@ const EventSwiper = ({ title, subTitle, eventList }: Props) => {
           }}
           className="event_swiper"
         >
-          {eventList.map((data) => {
-            return (
-              <SwiperSlide key={data.id}>
-                <EventCard
-                  id={data.id}
-                  imgUrl={data.imgUrl}
-                  title={data.title}
-                  date={data.date}
-                  location={data.location}
-                  dDay={data.dDay}
-                  price={data.price}
-                  likeNum={data.likeNum}
-                  like={data.like}
-                />
-              </SwiperSlide>
-            );
-          })}
+          {eventList &&
+            eventList.map((data) => {
+              return (
+                <SwiperSlide key={data.id}>
+                  <EventCard
+                    id={data.id}
+                    title={data.title}
+                    img={data.img}
+                    event_start_date={data.event_start_date}
+                    event_end_date={data.event_end_date}
+                    position={data.position}
+                    price={data.price}
+                    likes={data.likes}
+                    like_state={data.like_state}
+                  />
+                </SwiperSlide>
+              );
+            })}
         </Swiper>
       </SliderArea>
     </EventSliderWrap>

@@ -15,16 +15,16 @@ const Footer = () => {
         </p>
         <ul className="footer_nav">
           <li>
-            <Link to={""}>이번주 행사</Link>
+            <Link to="/event-list?page=1&date=1">이번주 행사</Link>
           </li>
           <li>
-            <Link to={""}>무료 행사</Link>
+            <Link to="/event-list?page=1&price=2">무료 행사</Link>
           </li>
           <li>
-            <Link to={""}>온라인 행사</Link>
+            <Link to="/event-list?page=1&progress=2">온라인 행사</Link>
           </li>
           <li>
-            <Link to={""}>메이트 PICK</Link>
+            <Link to="/event-list">메이트 PICK</Link>
           </li>
         </ul>
       </LeftArea>

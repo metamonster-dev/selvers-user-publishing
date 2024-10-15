@@ -47,8 +47,10 @@ export const Alret = styled.div`
   }
   & .desc {
     word-break: keep-all;
+    white-space: pre-line;
     padding: 25px 0 30px;
     text-align: center;
+    line-height: 1.3;
     font-size: 16px;
     font-weight: 700;
     color: #000;

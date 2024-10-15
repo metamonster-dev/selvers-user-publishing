@@ -75,16 +75,16 @@ const MobileHeader = () => {
         <NavWrap>
           <Nav>
             <NavItem>
-              <Link to="/list">이번주 행사</Link>
+              <Link to="/event-list?page=1&date=1">이번주 행사</Link>
             </NavItem>
             <NavItem>
-              <Link to="/list">무료 행사</Link>
+              <Link to="/event-list?page=1&price=2">무료 행사</Link>
             </NavItem>
             <NavItem>
-              <Link to="/list">온라인 행사</Link>
+              <Link to="/event-list?page=1&progress=2">온라인 행사</Link>
             </NavItem>
             <NavItem>
-              <Link to="/list">메이트 PICK</Link>
+              <Link to="/event-list">메이트 PICK</Link>
             </NavItem>
           </Nav>
         </NavWrap>

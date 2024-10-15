@@ -1,7 +1,12 @@
 {
   "main": [
     { "id": 1, "gubun": "메인", "name": "메인페이지", "link": "/" },
-    { "id": 2, "gubun": "메인", "name": "메인페이지 > 검색", "link": "/list" }
+    {
+      "id": 2,
+      "gubun": "메인",
+      "name": "메인페이지 > 검색",
+      "link": "/event-list"
+    }
   ],
   "loginJoin": [
     { "id": 3, "gubun": "로그인&회원가입", "name": "로그인", "link": "/login" },

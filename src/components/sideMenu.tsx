@@ -1,11 +1,20 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { SideMenuWrap, OptionBox, MenuList, MenuItem } from "./sideMenuStyle";
 import ToggleIcon from "@/assets/icon/arrow_toggle.svg?react";
 import { useEffect, useState } from "react";
+import { useResetRecoilState } from "recoil";
+import { userState } from "@/store/UserState";
 
 const SideMenu = () => {
   const [isOn, setIsOn] = useState(false);
   const location = useLocation();
+  const resetUserState = useResetRecoilState(userState);
+  const navigate = useNavigate();
+
+  const logoutHandler = () => {
+    resetUserState();
+    navigate("/");
+  };
 
   const sideMenuItems = [
     {
@@ -19,8 +28,6 @@ const SideMenu = () => {
         { id: "00-03", path: "/mypage/past-list", name: "지난 행사" },
       ],
     },
-    { id: "01", path: "/mypage/user-modify", name: "내 정보 수정" },
-    { id: "02", name: "로그아웃", type: "button" },
   ];
 
   const toggleDropdown = () => {
@@ -37,57 +44,46 @@ const SideMenu = () => {
     <SideMenuWrap>
       <h2>마이페이지</h2>
       <MenuList>
+        {/* 토글링크 */}
         {sideMenuItems.map((data) => {
-          if (data.type === "toggleButton") {
-            return (
-              <div key={data.id}>
-                {/* 메인 토글 버튼 */}
-                <MenuItem onClick={toggleDropdown} $isOn={isOn}>
-                  참여 행사 관리
-                  <span>
-                    <ToggleIcon />
-                  </span>
-                </MenuItem>
-                {/* 토글 서브 메뉴 */}
-                <OptionBox $isOn={isOn}>
-                  {data.subMenu &&
-                    data.subMenu.map((data) => {
-                      return (
-                        <MenuItem
-                          $target={
-                            location.pathname.indexOf(data.path) >= 0
-                              ? true
-                              : false
-                          }
-                          key={data.id}
-                        >
-                          <Link to={data.path}>{data.name}</Link>
-                        </MenuItem>
-                      );
-                    })}
-                </OptionBox>
-              </div>
-            );
-          } else {
-            // 메인 메뉴
-            if (data.type !== "button") {
-              return (
-                <MenuItem
-                  $target={
-                    data.path && location.pathname.indexOf(data.path) >= 0
-                      ? true
-                      : false
-                  }
-                  key={data.id}
-                >
-                  <Link to={data.path as string}>{data.name}</Link>
-                </MenuItem>
-              );
-            } else {
-              return <MenuItem key={data.id}>{data.name}</MenuItem>;
-            }
-          }
+          return (
+            <div key={data.id}>
+              <MenuItem onClick={toggleDropdown} $isOn={isOn}>
+                참여 행사 관리
+                <span>
+                  <ToggleIcon />
+                </span>
+              </MenuItem>
+              <OptionBox $isOn={isOn}>
+                {data.subMenu &&
+                  data.subMenu.map((data) => {
+                    return (
+                      <MenuItem
+                        $target={
+                          location.pathname.indexOf(data.path) >= 0
+                            ? true
+                            : false
+                        }
+                        key={data.id}
+                      >
+                        <Link to={data.path}>{data.name}</Link>
+                      </MenuItem>
+                    );
+                  })}
+              </OptionBox>
+            </div>
+          );
         })}
+        <MenuItem
+          $target={
+            location.pathname.indexOf("/mypage/user-modify") >= 0 ? true : false
+          }
+        >
+          <Link to="/mypage/user-modify">내 정보 수정</Link>
+        </MenuItem>
+        <MenuItem>
+          <button onClick={logoutHandler}>로그아웃</button>
+        </MenuItem>
       </MenuList>
     </SideMenuWrap>
   );
