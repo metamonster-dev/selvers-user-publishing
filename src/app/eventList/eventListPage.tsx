@@ -1,5 +1,5 @@
 import EventCard from "@components/eventCard";
-import eventList from "@/mockData/eventList.json";
+import { useEventSearch } from "@/api/events/events.query";
 import {
   EventListPageWrap,
   ContentWrap,
@@ -10,12 +10,14 @@ import {
 } from "./eventListPageStyle";
 import CategoryList from "@components/categoryList";
 import FilterIcon from "@/assets/icon/filter.svg?react";
-import categoryList from "@/mockData/categoryList.json";
+import { useCategoryQuery } from "@/api/etc/category.query";
 import { useState } from "react";
 import { InputRadioB } from "@components/form/inputRadio";
 import HashBox from "@components/form/hashBox";
 import SearchBar from "@components/searchBar";
 import { useMediaQuery } from "usehooks-ts";
+import LoadingScreen from "@components/shared/LoadingScreen";
+import { EventListType } from "@/type";
 
 const EventListPage = () => {
   const [filterOn, setFilterOn] = useState(false);
@@ -28,10 +30,21 @@ const EventListPage = () => {
       document.body.style.overflow = "auto";
     }
   };
+  const token = localStorage.getItem("token");
+  const { data: searchData, isLoading, isError } = useEventSearch(token);
+  const { data: category } = useCategoryQuery();
+
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
+  if (isError) {
+    return <div style={{ color: "#fff" }}>데이터 불러오기 실패</div>;
+  }
+
   return (
     <EventListPageWrap>
       {isMobile && <SearchBar />}
-      <CategoryList categoryList={categoryList.categoryList} />
+      <CategoryList categoryList={category} />
       <ContentWrap>
         <PageInfo className="maxframe">
           <h2>검색결과</h2>
@@ -126,22 +139,23 @@ const EventListPage = () => {
           </FilterWrap>
         </PageInfo>
         <EventListWrap className="maxframe">
-          {eventList.eventList.map((data) => {
-            return (
-              <EventCard
-                key={data.id}
-                id={data.id}
-                imgUrl={data.imgUrl}
-                title={data.title}
-                date={data.date}
-                location={data.location}
-                dDay={data.dDay}
-                price={data.price}
-                likeNum={data.likeNum}
-                like={data.like}
-              />
-            );
-          })}
+          {searchData.data.items &&
+            searchData.data.items.map((data: EventListType) => {
+              return (
+                <EventCard
+                  key={data.id}
+                  id={data.id}
+                  title={data.title}
+                  img={data.img}
+                  event_start_date={data.event_start_date}
+                  event_end_date={data.event_end_date}
+                  position={data.position}
+                  price={data.price}
+                  likes={data.likes}
+                  like_state={data.like_state}
+                />
+              );
+            })}
         </EventListWrap>
       </ContentWrap>
     </EventListPageWrap>

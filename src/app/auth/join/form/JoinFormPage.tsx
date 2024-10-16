@@ -1,7 +1,9 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { postJoin } from "@/api/usersAPI";
+import { useJoinMutation } from "@/api/auth/auth.query";
+import { useCategoryQuery } from "@/api/etc/category.query";
+import { FormEvent, useEffect, useState, ChangeEvent } from "react";
 import { Link } from "react-router-dom";
 import { InputTextB } from "@components/form/inputText";
 import { InputRadioA } from "@components/form/inputRadio";
@@ -17,10 +19,8 @@ import {
   AgreeBox,
   SubmitBtn,
 } from "./joinFormPageStyle";
-import { FormEvent, useEffect, useState, ChangeEvent } from "react";
-import { getCategory } from "@/api/getCategoryAPI";
 import AlretModal from "@components/modal/alretModal";
-import { CategoryListType, JoinType } from "@/type";
+import { JoinType } from "@/type";
 
 interface FavorList {
   id: number;
@@ -61,24 +61,24 @@ const joinSchema = z
   });
 
 const JoinFormPage = () => {
-  const [category, setCategory] = useState<CategoryListType[]>();
   const [interestList, setInterestList] = useState<number[]>([]);
   const [favorList, setFavorList] = useState<FavorList[]>([]);
   const [isFormValid, setIsFormValid] = useState(false);
   const [alret, setAlret] = useState(false);
+  const useJoin = useJoinMutation();
+  //카테고리 api
+  const { data: category } = useCategoryQuery();
+
   const {
     register,
     handleSubmit,
     setValue,
     watch,
+    setError,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(joinSchema),
   });
-  // 카테고리 API
-  useEffect(() => {
-    getCategory().then((res) => setCategory(res));
-  }, []);
   // 생년월일 문자금지 하이픈 추가
   const handleDateChange = (e: ChangeEvent<HTMLInputElement>) => {
     let input = e.target.value.replace(/\D/g, "");
@@ -157,14 +157,25 @@ const JoinFormPage = () => {
         "4": data.agree_04,
       },
     };
-    postJoin("POST", joinData)
-      .then((res) => {
-        console.log(res);
-        setAlret(true);
-      })
-      .catch((err) => console.log(err));
+    //api 요청
+    useJoin.mutate(joinData);
   });
 
+  //회원가입 완료
+  useEffect(() => {
+    if (useJoin.isSuccess) {
+      setAlret(true);
+    }
+  }, [useJoin.isSuccess]);
+
+  useEffect(() => {
+    if (useJoin.isError) {
+      setError("apiError", {
+        type: "manual",
+        message: "이미 존재하는 메일 주소입니다.",
+      });
+    }
+  }, [useJoin.isError, setError]);
   return (
     <JoinFormWrap>
       <JoinForm onSubmit={onSubmit}>
@@ -306,6 +317,9 @@ const JoinFormPage = () => {
             </div>
           </div>
         </AgreeBox>
+        {errors.apiError && (
+          <p className="err_msg">{errors.apiError?.message?.toString()}</p>
+        )}
         <SubmitBtn disabled={!isFormValid} className="btn">
           회원가입
         </SubmitBtn>

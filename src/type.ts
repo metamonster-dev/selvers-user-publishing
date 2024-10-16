@@ -28,7 +28,13 @@ export interface MyEventListType {
 }
 
 //####################### fix #############################
-
+export interface CustomError extends Error {
+  response?: {
+    data: any;
+    status: number;
+    headers: string;
+  };
+}
 //로그인 data
 export interface LoginType {
   email: number;

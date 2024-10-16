@@ -19,15 +19,22 @@ const EventCard = ({
 }: EventListType) => {
   return (
     <EventItemWrap>
+      <LikeBtn
+        onClick={() => {
+          console.log("asdf");
+        }}
+      >
+        <span>{likes}</span>
+        <span className="heart_icon">
+          {like_state ? <LikeIcon /> : <UnLikeIcon />}
+        </span>
+      </LikeBtn>
       <Link to={`detail/${id}`}>
-        <LikeBtn>
-          <span>{likes}</span>
-          <span className="heart_icon">
-            {like_state ? <LikeIcon /> : <UnLikeIcon />}
-          </span>
-        </LikeBtn>
         <Thumbnail>
-          <img src={img} />
+          <img src={`https://api-test.micemate.io/storage/${img}`} />
+          {ddayCount(event_end_date) === -1 && (
+            <p className="end_event">종료행사</p>
+          )}
         </Thumbnail>
         <TextBox>
           <div>

@@ -1,8 +1,9 @@
 import { userState } from "@/store/UserState";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useResetRecoilState } from "recoil";
 import { Link, useLocation } from "react-router-dom";
 import MobileHeader from "./mobileHeader";
 import SearchBar from "@components/searchBar";
+import { useTokenValidationQuery } from "@/api/auth/auth.query";
 import {
   HeaderWrap,
   LogoImg,
@@ -18,13 +19,22 @@ import Logo from "@/assets/logo_w.svg?react";
 import Cart from "@/assets/icon/cart.svg?react";
 import Calendar from "@/assets/icon/calendar.svg?react";
 import Person from "@/assets/icon/person.svg?react";
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 
 const Header = () => {
-  const user = useRecoilValue(userState);
   const [mainPage, setMainPage] = useState(true);
-  const loginState = user.isLogin;
   const location = useLocation();
+  const user = useRecoilValue(userState);
+  const resetUserState = useResetRecoilState(userState);
+  const token = localStorage.getItem("token");
+  const { data, isError } = useTokenValidationQuery(token);
+  const loginState = user.isLogin;
+
+  useEffect(() => {
+    if (isError && data === undefined) {
+      resetUserState();
+    }
+  }, [data, isError, resetUserState]);
 
   useLayoutEffect(() => {
     if (location.pathname === "/") {
@@ -35,7 +45,7 @@ const Header = () => {
   }, [location.pathname]);
 
   return (
-    <>
+    <div>
       <HeaderWrap className="maxframe">
         <LogoImg>
           <Link to="/">
@@ -105,7 +115,7 @@ const Header = () => {
       </HeaderWrap>
       {/* 모바일 헤더 */}
       <MobileHeader />
-    </>
+    </div>
   );
 };
 

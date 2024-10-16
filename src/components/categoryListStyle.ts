@@ -3,6 +3,13 @@ import styled from "styled-components";
 export const CategoryListWrap = styled.ul`
   display: flex;
   justify-content: space-around;
+
+  & .none_swiper_wrap {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
 `;
 
 export const CategorySwiper = styled.div`

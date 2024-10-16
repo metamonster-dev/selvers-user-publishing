@@ -8,7 +8,6 @@ import { useState } from "react";
 const Thumbnail = ({ applyBtn }: { applyBtn: boolean }) => {
   const [btnTest, setBtnTest] = useState(true);
   const [toast, setToast] = useState(false);
-  console.log(toast);
 
   const handleCopyClipBoard = async (text: string) => {
     try {

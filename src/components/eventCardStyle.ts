@@ -13,7 +13,7 @@ export const LikeBtn = styled.button`
   top: 26px;
   right: 27px;
   border-radius: 50rem;
-  z-index: 1;
+  z-index: 2;
   color: #fff;
   padding: 8px 10px;
   font-size: 18px;
@@ -48,12 +48,25 @@ export const Thumbnail = styled.figure`
   overflow: hidden;
   aspect-ratio: 432/612;
   border-radius: 20px;
+  background-color: #ddd;
   & > img {
     position: absolute;
     width: 100%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+  & .end_event {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   @media (max-width: 1024px) {
     border-radius: 10px;

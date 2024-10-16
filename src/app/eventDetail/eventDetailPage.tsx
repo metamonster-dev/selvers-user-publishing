@@ -1,6 +1,3 @@
-import { useState, useEffect } from "react";
-import { useRecoilState } from "recoil";
-import { userState } from "@/store/UserState";
 import {
   EventDetailPageWrap,
   MainContentWrap,
@@ -11,19 +8,23 @@ import Thumbnail from "@components/eventDetail/thumbnailArea";
 import Content from "@components/eventDetail/content";
 import Community from "@components/eventDetail/community";
 import EventSwiper from "@components/eventSwiper";
-import { getEventList } from "@/api/events/eventsAPI";
-import { EventListType } from "@/type";
+import { useEventList } from "@/api/events/events.query";
+import LoadingScreen from "@components/shared/LoadingScreen";
 
 const EventDetailPage = () => {
-  const [aiEventList, setAiEventList] = useState<EventListType[]>([]);
-  const user = useRecoilState(userState);
-  const token = user[0].data.token;
+  const token = localStorage.getItem("token");
+  const {
+    data: aiEventList,
+    isLoading: isLoadingAI,
+    error: errorAI,
+  } = useEventList(1, token);
 
-  useEffect(() => {
-    getEventList(1, token)
-      .then((res) => setAiEventList(res.data.items))
-      .catch((err) => console.log(err));
-  }, []);
+  if (isLoadingAI) {
+    return <LoadingScreen />;
+  }
+  if (errorAI) {
+    return <div>데이터 없음</div>;
+  }
 
   return (
     <EventDetailPageWrap className="maxframe">
@@ -38,7 +39,7 @@ const EventDetailPage = () => {
       </MainContentWrap>
       <EventSwiper
         title="AI 메이트가 맞추는 ‘OOOO’님의 취향저격 전시 "
-        eventList={aiEventList}
+        eventList={aiEventList.data.items}
       />
     </EventDetailPageWrap>
   );
