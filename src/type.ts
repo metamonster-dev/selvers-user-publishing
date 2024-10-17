@@ -16,17 +16,6 @@ export interface Category {
   label: string;
 }
 
-//나의 이벤트 리스트
-export interface MyEventListType {
-  id?: string;
-  state: string;
-  applyDate: string;
-  title: string;
-  date: string;
-  location: string;
-  linkBtn?: string;
-}
-
 //####################### fix #############################
 export interface CustomError extends Error {
   response?: {
@@ -71,3 +60,31 @@ export interface EventListType {
 }
 
 // 행사 검색 및 필터링
+
+// 관심있는 행사 data
+export interface WishEventType {
+  token: string;
+  user_id: string;
+  event_id: number;
+}
+
+// 마이페이지
+export interface MyEventQueryType {
+  token: string;
+  user_id: string;
+  type: number;
+  page: number;
+}
+
+//사용자 이벤트 리스트
+export interface MyEventListType {
+  id: number;
+  title: string;
+  img: string;
+  event_start_date: string;
+  event_end_date: string;
+  position: string;
+  date?: string;
+  is_booth: boolean;
+  url: string;
+}

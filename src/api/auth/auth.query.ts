@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useSetRecoilState } from "recoil";
-import { userState } from "@/store/UserState";
+import { userState } from "@/store/userState";
 import { JoinType, LoginType } from "@/type";
 
 /*회원가입(사용자 등록)*/

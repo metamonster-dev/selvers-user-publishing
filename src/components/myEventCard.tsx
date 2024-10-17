@@ -5,103 +5,108 @@ import {
   InfoArea,
   TextBox,
   EditButtonBox,
-  LinkBox,
   WishBtnBox,
+  LinkBox,
 } from "./myEventCardStyle";
 import { MyEventListType } from "@/type";
 import WishIcon from "@/assets/icon/heart_fill.svg?react";
-import ConfirmModal from "./modal/confirmModal";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { dateFormat } from "@/util/stringTransition";
+import { useConfirm } from "@/hook/useConfirm";
+
 const MyEventCard = ({
-  applyDate,
-  state,
+  id,
   title,
+  img,
+  event_start_date,
+  event_end_date,
+  position,
   date,
-  location,
-  linkBtn,
+  is_booth,
+  url,
 }: MyEventListType) => {
   const [eventState, setEventState] = useState("");
-  const [_confirm, setConfirm] = useState(false);
-  const [showConfirm, setShowConfirm] = useState(false);
+  const location = useLocation();
+  const { openModal } = useConfirm();
+  const confirmData = {
+    text: "취소하시겠습니까? 취소 확정 후에는 복구하실 수 없습니다.",
+    onConfirm: () => {
+      console.log("Confirmed");
+    },
+  };
+  const eventCancelHandler = () => {
+    openModal(confirmData);
+  };
+
   useLayoutEffect(() => {
-    if (state === "apply") {
+    if (location.pathname === "/mypage/apply-list") {
       setEventState("참가 신청 완료");
-    } else if (state === "cancel") {
+    } else if (location.pathname === "/mypage/cancel-list") {
       setEventState("취소 완료");
-    } else if (state === "wish") {
+    } else if (location.pathname === "/mypage/wish-list") {
       setEventState("관심 행사");
-    } else if (state === "past") {
+    } else if (location.pathname === "/mypage/past-list") {
       setEventState("종료 행사");
     }
-  }, []);
+  }, [location]);
 
   return (
-    <>
-      <MyEventCardWrap>
-        <ThumbnailArea>
-          <Link to="/detail/01">
-            {(state === "cancel" || state === "past") && (
-              <span className="blind">{eventState}</span>
-            )}
-
-            <img src="./dummy_image_01.png" />
-          </Link>
-        </ThumbnailArea>
-        <InfoArea>
-          <TextBox>
-            {(state === "apply" || state === "cancel") && (
-              <div className="apply">
-                <span className="state">{eventState}</span>
-                <span className="date">신청일 : {applyDate}</span>
-              </div>
-            )}
-
-            <div className="txt_box">
-              <span className="title">{title}</span>
-              <span className="date">{date}</span>
-              <span className="location">{location}</span>
+    <MyEventCardWrap>
+      <ThumbnailArea>
+        <Link to={`/detail/${id}`}>
+          {location.pathname === "/mypage/cancel-list" && (
+            <span className="blind">{eventState}</span>
+          )}
+          <img src={`https://api-test.micemate.io/storage/${img}`} />
+        </Link>
+      </ThumbnailArea>
+      <InfoArea>
+        <TextBox>
+          {date && (
+            <div className="apply">
+              <span className="state">{eventState}</span>
+              <span className="date">신청일 : {date}</span>
             </div>
-          </TextBox>
-          {state === "apply" && (
-            <EditButtonBox>
-              <button>수정</button>&nbsp;&nbsp;|&nbsp;&nbsp;
-              <button
-                onClick={() => {
-                  setShowConfirm(true);
-                }}
-              >
-                취소
-              </button>
-            </EditButtonBox>
           )}
 
-          {linkBtn && (
-            <LinkBox>
-              {linkBtn === "AI 추천 부스 받기" && (
-                <Link to="/mypage/apply-list/booth-select/01">{linkBtn}</Link>
-              )}
-              {linkBtn === "AI 추천 부스 확인" && (
-                <Link to="/mypage/apply-list/booth-check/01">{linkBtn}</Link>
-              )}
-            </LinkBox>
-          )}
-          {eventState.length <= 0 && (
-            <WishBtnBox>
-              <button>
-                <WishIcon />
-              </button>
-            </WishBtnBox>
-          )}
-        </InfoArea>
-      </MyEventCardWrap>
-      {showConfirm && (
-        <ConfirmModal
-          text="취소하시겠습니까? 취소 확정 후에는 복구하실 수 없습니다."
-          setConfirm={setConfirm}
-          setShowConfirm={setShowConfirm}
-        />
-      )}
-    </>
+          <div className="txt_box">
+            <span className="title">{title}</span>
+            <span className="date">{`${dateFormat(
+              event_start_date
+            )} ~ ${dateFormat(event_end_date)}`}</span>
+            <span className="location">{position}</span>
+          </div>
+        </TextBox>
+        {location.pathname === "/mypage/apply-list" && (
+          <EditButtonBox>
+            <button>수정</button>&nbsp;&nbsp;|&nbsp;&nbsp;
+            <button onClick={eventCancelHandler}>취소</button>
+          </EditButtonBox>
+        )}
+        {location.pathname === "/mypage/apply-list" && (
+          <LinkBox>
+            {is_booth && (
+              <Link to="/mypage/apply-list/booth-select/01">
+                AI 추천 부스 받기
+              </Link>
+            )}
+            {url && (
+              <Link to={url} target="_blank">
+                행사 접속하기
+              </Link>
+            )}
+          </LinkBox>
+        )}
+
+        {location.pathname === "/mypage/wish-list" && (
+          <WishBtnBox>
+            <button>
+              <WishIcon />
+            </button>
+          </WishBtnBox>
+        )}
+      </InfoArea>
+    </MyEventCardWrap>
   );
 };
 

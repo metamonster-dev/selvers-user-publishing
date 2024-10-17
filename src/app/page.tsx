@@ -51,7 +51,9 @@ const MainPage = () => {
   return (
     <MainPageWrap>
       <SearchBar />
+
       <MainSwiper bannerImgs={bannerImgs} />
+
       <EventSwiper
         title="AI 메이트가 맞추는 취향저격 전시"
         subTitle="마이스 메이트가 추천해드려요! 회원가입하면 더 정확한 추천을 받을 수 있어요 ✨"

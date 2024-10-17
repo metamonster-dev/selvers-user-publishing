@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useLocation } from "react-router-dom";
 
 /*행사 리스트 조회*/
-export const useEventList = (type: number, token: string | null) => {
+export const useEventList = (type: number, token: string) => {
   return useQuery({
     queryKey: ["eventList", type, token],
     queryFn: async () => {
@@ -12,7 +12,7 @@ export const useEventList = (type: number, token: string | null) => {
         url: `/api/events?type=${type}`,
         headers: {
           "Content-Type": "application/json",
-          authorization: `bearer ${token}`,
+          authorization: `Bearer ${token}`,
         },
       });
       return response.data;
@@ -21,7 +21,7 @@ export const useEventList = (type: number, token: string | null) => {
 };
 
 /*사용자 행사 검색*/
-export const useEventSearch = (token: string | null) => {
+export const useEventSearch = (token: string) => {
   const location = useLocation();
   return useQuery({
     queryKey: ["eventSearch", location.search],
@@ -31,7 +31,7 @@ export const useEventSearch = (token: string | null) => {
         url: `/api/events/search${location.search}`,
         headers: {
           "Content-Type": "application/json",
-          authorization: `bearer ${token}`,
+          authorization: `Bearer ${token}`,
         },
       });
       return response.data;

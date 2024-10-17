@@ -1,22 +1,25 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import AlretModal from "@components/modal/alretModal";
 import {
   PasswordFindWrap,
   TitleBox,
   FindFormWrap,
   SubmitBtn,
 } from "./passwordFindPageStyle";
+import { useAlret } from "@/hook/useAlret";
 import { InputTextA } from "@components/form/inputText";
-import { useState } from "react";
 
 const schema = z.object({
   email: z.string().email({ message: "올바른 이메일을 입력해주세요." }),
 });
 
 const PasswordFindPage = () => {
-  const [alret, setAlret] = useState(false);
+  const { openModal } = useAlret();
+
+  const alretData = {
+    text: "메일로 임시 비밀번호를 발송했습니다.",
+  };
   //react hook form
   const {
     register,
@@ -26,7 +29,7 @@ const PasswordFindPage = () => {
     resolver: zodResolver(schema),
   });
 
-  const onSubmit = handleSubmit(() => setAlret(true));
+  const onSubmit = handleSubmit(() => openModal(alretData));
   console.log(isValid);
   return (
     <PasswordFindWrap>
@@ -47,12 +50,6 @@ const PasswordFindPage = () => {
 
         <SubmitBtn>임시 비밀번호 받기</SubmitBtn>
       </FindFormWrap>
-      {alret && (
-        <AlretModal
-          text="메일로 임시 비밀번호를 발송했습니다."
-          setAlret={setAlret}
-        />
-      )}
     </PasswordFindWrap>
   );
 };

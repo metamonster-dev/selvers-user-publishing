@@ -9,5 +9,9 @@ export const ddayCount = (endDay: string) => {
   // 밀리초를 일(day)로 변환
   const daysLeft = Math.floor(difference / (1000 * 60 * 60 * 24));
 
-  return daysLeft;
+  if (daysLeft > 0) {
+    return `-${daysLeft}`;
+  } else {
+    return `+${Math.abs(daysLeft)}`;
+  }
 };

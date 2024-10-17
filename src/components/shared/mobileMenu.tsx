@@ -1,4 +1,4 @@
-import { userState } from "@/store/UserState";
+import { userState } from "@/store/userState";
 import { useRecoilValue } from "recoil";
 import React, { ReactNode } from "react";
 import {

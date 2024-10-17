@@ -1,4 +1,4 @@
-import { userState } from "@/store/UserState";
+import { userState } from "@/store/userState";
 import { useRecoilValue, useResetRecoilState } from "recoil";
 import { Link, useLocation } from "react-router-dom";
 import MobileHeader from "./mobileHeader";

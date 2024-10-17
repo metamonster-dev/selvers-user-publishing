@@ -17,7 +17,7 @@ const CategoryList = ({
       {!isSwiper && (
         <ul className="none_swiper_wrap">
           {categoryList.map((data) => {
-            return <CateItem>{data.name}</CateItem>;
+            return <CateItem key={data.id}>{data.name}</CateItem>;
           })}
         </ul>
       )}

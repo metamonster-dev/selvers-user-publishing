@@ -4,11 +4,12 @@ import * as z from "zod";
 import { useJoinMutation } from "@/api/auth/auth.query";
 import { useCategoryQuery } from "@/api/etc/category.query";
 import { FormEvent, useEffect, useState, ChangeEvent } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { InputTextB } from "@components/form/inputText";
 import { InputRadioA } from "@components/form/inputRadio";
 import { InputCheckboxB } from "@components/form/inputCheckbox";
 import { SelectBoxA } from "@components/form/selectBox";
+import { useAlret } from "@/hook/useAlret";
 import HashBox from "@components/form/hashBox";
 import {
   JoinFormWrap,
@@ -19,8 +20,7 @@ import {
   AgreeBox,
   SubmitBtn,
 } from "./joinFormPageStyle";
-import AlretModal from "@components/modal/alretModal";
-import { JoinType } from "@/type";
+import { JoinType, CustomError } from "@/type";
 
 interface FavorList {
   id: number;
@@ -29,21 +29,31 @@ interface FavorList {
 
 const joinSchema = z
   .object({
-    email: z.string().email({ message: "올바른 이메일을 입력해주세요." }),
+    email: z
+      .string()
+      .trim()
+      .min(1, "아이디를 입력해주세요.")
+      .email({ message: "올바른 이메일을 입력해주세요." }),
     password: z
       .string()
       .trim()
+      .min(1, "비밀번호를 입력해주세요.")
       .regex(
         /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/,
         " 영문,숫자조합 8자리 이상 입력해주세요."
       ),
-    passwordChk: z.string().trim(),
-    name: z.string(),
+    passwordChk: z.string(),
+    name: z
+      .string()
+      .trim()
+      .min(1, "이름을 입력해주세요.")
+      .min(2, "이름을 확인해주세요."),
     birth: z
       .string()
-      .min(10)
+      .trim()
+      .min(1, "생년월일을 입력해주세요.")
       .regex(/^\d{4}-\d{2}-\d{2}$/),
-    gender: z.string(),
+    gender: z.string({ message: "성별을 선택해주세요." }),
     allChk: z.boolean().default(false).optional(),
     agree_01: z.boolean(),
     agree_02: z.boolean().default(false).optional(),
@@ -64,8 +74,10 @@ const JoinFormPage = () => {
   const [interestList, setInterestList] = useState<number[]>([]);
   const [favorList, setFavorList] = useState<FavorList[]>([]);
   const [isFormValid, setIsFormValid] = useState(false);
-  const [alret, setAlret] = useState(false);
   const useJoin = useJoinMutation();
+  const { openModal } = useAlret();
+  const navigate = useNavigate();
+
   //카테고리 api
   const { data: category } = useCategoryQuery();
 
@@ -142,6 +154,7 @@ const JoinFormPage = () => {
         return true;
       }
     };
+
     const joinData: JoinType = {
       name: data.name,
       email: data.email,
@@ -163,19 +176,35 @@ const JoinFormPage = () => {
 
   //회원가입 완료
   useEffect(() => {
-    if (useJoin.isSuccess) {
-      setAlret(true);
-    }
-  }, [useJoin.isSuccess]);
+    const alretData = {
+      text: "회원가입이 완료되었습니다.\n이메일 인증 후 서비스를 이용할 수 있습니다.",
+      callback: () => {
+        navigate("/login");
+      },
+    };
 
+    if (useJoin.isSuccess) {
+      openModal(alretData);
+    }
+  }, [useJoin.isSuccess, openModal, navigate]);
+
+  // 회원가입 실패
   useEffect(() => {
     if (useJoin.isError) {
-      setError("apiError", {
-        type: "manual",
-        message: "이미 존재하는 메일 주소입니다.",
-      });
+      //이메일 인증
+      const customError = useJoin.error as CustomError;
+      if (
+        customError.response?.data.data.error ===
+        "The email has already been taken."
+      ) {
+        setError("apiError", {
+          type: "manual",
+          message: "사용중인 이메일 입니다.",
+        });
+      }
     }
-  }, [useJoin.isError, setError]);
+  }, [useJoin.isError, setError, useJoin.error]);
+
   return (
     <JoinFormWrap>
       <JoinForm onSubmit={onSubmit}>
@@ -243,8 +272,11 @@ const JoinFormPage = () => {
             />
           </InputRadioWrap>
         </TdForm>
-        {errors.name?.message && (
-          <p className="err_msg">{errors.name?.message?.toString()}</p>
+        {errors.birth?.message && (
+          <p className="err_msg">{errors.birth?.message?.toString()}</p>
+        )}
+        {errors.gender?.message && (
+          <p className="err_msg">{errors.gender?.message?.toString()}</p>
         )}
         <TdForm>
           <SelectBoxA text="관심 분야">
@@ -266,6 +298,11 @@ const JoinFormPage = () => {
         </TdForm>
         {favorList.length >= 1 && (
           <HashBox hashList={favorList} onClick={hashDeleteHandler} />
+        )}
+        {errors.interestListError && (
+          <p className="err_msg">
+            {errors.interestListError?.message?.toString()}
+          </p>
         )}
         <AgreeBox>
           <InputCheckboxB
@@ -324,15 +361,6 @@ const JoinFormPage = () => {
           회원가입
         </SubmitBtn>
       </JoinForm>
-      {alret && (
-        <AlretModal
-          setAlret={setAlret}
-          text={
-            "회원가입이 완료되었습니다.\n이메일 인증 후 서비스를 이용할 수 있습니다."
-          }
-          navigatePath="/login"
-        />
-      )}
     </JoinFormWrap>
   );
 };

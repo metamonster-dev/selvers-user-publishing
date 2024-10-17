@@ -1,47 +1,30 @@
 import { CancelListPageWrap } from "./cancelListPageStyle";
 import Pagination from "@components/shared/pagination";
 import MyEventList from "@components/myEventList";
-
-const cencelList = [
-  {
-    id: "0",
-    state: "cancel",
-    applyDate: "2024.08.24",
-    title: "2024 케이펫페어",
-    date: "2024/08/24 ~ 2024/08/24",
-    location: "SETEC 제1전시장",
-  },
-  {
-    id: "1",
-    state: "cancel",
-    applyDate: "2024.08.24",
-    title: "2024 케이펫페어",
-    date: "2024/08/24 ~ 2024/08/24",
-    location: "SETEC 제1전시장",
-  },
-  {
-    id: "2",
-    state: "cancel",
-    applyDate: "2024.08.24",
-    title: "2024 케이펫페어",
-    date: "2024/08/24 ~ 2024/08/24",
-    location: "SETEC 제1전시장",
-  },
-  {
-    id: "3",
-    state: "cancel",
-    applyDate: "2024.08.24",
-    title: "2024 케이펫페어",
-    date: "2024/08/24 ~ 2024/08/24",
-    location: "SETEC 제1전시장",
-  },
-];
+import { useMyEventQuery } from "@/api/users/users.query";
+import { MyEventQueryType } from "@/type";
+import { useState } from "react";
 
 const CancelListPage = () => {
+  const [page, setPage] = useState<number>(1);
+  const token = localStorage.getItem("token");
+  const userId = localStorage.getItem("user_id");
+  const data: MyEventQueryType = {
+    token: token,
+    user_id: userId,
+    type: 2,
+    page: page,
+  };
+  const useMyEvent = useMyEventQuery(data);
   return (
     <CancelListPageWrap>
-      <MyEventList list={cencelList} />
-      <Pagination />
+      <MyEventList list={useMyEvent.data?.data.items} />
+      <Pagination
+        totalItem={useMyEvent.data?.total}
+        page={page}
+        setPage={setPage}
+        pageCount={4}
+      />
     </CancelListPageWrap>
   );
 };

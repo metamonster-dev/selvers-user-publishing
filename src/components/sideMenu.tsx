@@ -3,7 +3,7 @@ import { SideMenuWrap, OptionBox, MenuList, MenuItem } from "./sideMenuStyle";
 import ToggleIcon from "@/assets/icon/arrow_toggle.svg?react";
 import { useEffect, useState } from "react";
 import { useResetRecoilState } from "recoil";
-import { userState } from "@/store/UserState";
+import { userState } from "@/store/userState";
 
 const SideMenu = () => {
   const [isOn, setIsOn] = useState(false);

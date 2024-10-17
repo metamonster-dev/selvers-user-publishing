@@ -5,6 +5,9 @@ import { EventListType } from "@/type";
 import { dateFormat, priceFormat } from "@/util/stringTransition";
 import { ddayCount } from "@/util/ddayCount";
 import { Link } from "react-router-dom";
+import { useWishEventMutation } from "@/api/users/users.query";
+import { useAlret } from "@/hook/useAlret";
+import { WishEventType } from "@/type";
 
 const EventCard = ({
   id,
@@ -17,13 +20,31 @@ const EventCard = ({
   likes,
   like_state,
 }: EventListType) => {
+  const useWishEvent = useWishEventMutation();
+  const token = localStorage.getItem("token");
+  const userId = localStorage.getItem("user_id");
+  const { openModal } = useAlret();
+
+  const alretData = {
+    text: "로그인이 필요한 기능입니다.",
+  };
+
+  const wishEventHandler = (eventId: number) => {
+    if (token && userId) {
+      const data: WishEventType = {
+        token: token,
+        user_id: userId,
+        event_id: eventId,
+      };
+      useWishEvent.mutate(data);
+    } else {
+      openModal(alretData);
+    }
+  };
+
   return (
     <EventItemWrap>
-      <LikeBtn
-        onClick={() => {
-          console.log("asdf");
-        }}
-      >
+      <LikeBtn onClick={() => wishEventHandler(id)}>
         <span>{likes}</span>
         <span className="heart_icon">
           {like_state ? <LikeIcon /> : <UnLikeIcon />}
@@ -32,7 +53,7 @@ const EventCard = ({
       <Link to={`detail/${id}`}>
         <Thumbnail>
           <img src={`https://api-test.micemate.io/storage/${img}`} />
-          {ddayCount(event_end_date) === -1 && (
+          {Number(ddayCount(event_end_date)) > 0 && (
             <p className="end_event">종료행사</p>
           )}
         </Thumbnail>
@@ -48,8 +69,8 @@ const EventCard = ({
             </p>
           </div>
           <div>
-            <p className="dday">{`D-${ddayCount(event_end_date)}`}</p>
-            <p className="price">{`${priceFormat(price.toString())}원`}</p>
+            <p className="dday">{`D${ddayCount(event_end_date)}`}</p>
+            <p className="price">{`${priceFormat(price.toString())}`}</p>
           </div>
         </TextBox>
       </Link>
