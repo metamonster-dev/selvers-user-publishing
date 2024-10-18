@@ -6,6 +6,13 @@ type AlretType = {
   callBack?: () => void;
 };
 
+type ConfirmType = {
+  isOpen: boolean;
+  text: string;
+  callBack?: void;
+  confirm?: boolean;
+};
+
 export const alretState = atom<AlretType>({
   key: "alretState",
   default: {
@@ -14,10 +21,11 @@ export const alretState = atom<AlretType>({
   },
 });
 
-export const confirmState = atom<AlretType>({
+export const confirmState = atom<ConfirmType>({
   key: "confirmState",
   default: {
     isOpen: false,
     text: "",
+    confirm: false,
   },
 });

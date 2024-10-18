@@ -1,4 +1,3 @@
-import { useLayoutEffect, useState } from "react";
 import {
   MyEventCardWrap,
   ThumbnailArea,
@@ -8,11 +7,19 @@ import {
   WishBtnBox,
   LinkBox,
 } from "./myEventCardStyle";
-import { MyEventListType } from "@/type";
+import { MyEventListType, CancelEventRequest } from "@/type";
 import WishIcon from "@/assets/icon/heart_fill.svg?react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { dateFormat } from "@/util/stringTransition";
 import { useConfirm } from "@/hook/useConfirm";
+import { useCancelEvent } from "@/api/events/events.query";
+import { useRecoilValue } from "recoil";
+import { confirmState } from "@/store/modalState";
+import { useEffect, useState } from "react";
+
+interface Props extends MyEventListType {
+  eventState: { state: string; label: string };
+}
 
 const MyEventCard = ({
   id,
@@ -24,38 +31,52 @@ const MyEventCard = ({
   date,
   is_booth,
   url,
-}: MyEventListType) => {
-  const [eventState, setEventState] = useState("");
-  const location = useLocation();
-  const { openModal } = useConfirm();
-  const confirmData = {
-    text: "취소하시겠습니까? 취소 확정 후에는 복구하실 수 없습니다.",
-    onConfirm: () => {
-      console.log("Confirmed");
-    },
-  };
-  const eventCancelHandler = () => {
-    openModal(confirmData);
+  eventState,
+}: Props) => {
+  const useCancel = useCancelEvent();
+  const { openConfirm } = useConfirm();
+  const [confirmAgree, setConfirmAgree] = useState(false);
+  const [targetEvent, setTargetEvent] = useState("");
+  const confirmValue = useRecoilValue(confirmState);
+
+  const cancelBtnHandler = (eventId: string) => {
+    const cancelConfirmData = {
+      text: "취소하시겠습니까? 취소 확정 후에는 복구하실 수 없습니다.",
+    };
+    setTargetEvent(eventId);
+    openConfirm(cancelConfirmData);
   };
 
-  useLayoutEffect(() => {
-    if (location.pathname === "/mypage/apply-list") {
-      setEventState("참가 신청 완료");
-    } else if (location.pathname === "/mypage/cancel-list") {
-      setEventState("취소 완료");
-    } else if (location.pathname === "/mypage/wish-list") {
-      setEventState("관심 행사");
-    } else if (location.pathname === "/mypage/past-list") {
-      setEventState("종료 행사");
+  useEffect(() => {
+    setConfirmAgree(confirmValue.confirm);
+  }, [confirmValue.confirm]);
+
+  useEffect(() => {
+    if (confirmAgree === true) {
+      const token = localStorage.getItem("token");
+      const cancelData: CancelEventRequest = {
+        token: token,
+        event_id: targetEvent,
+      };
+      // 취소 api요청
+      useCancel.mutate(cancelData);
     }
-  }, [location]);
+    console.log(useCancel);
+  }, [confirmAgree]);
+
+  useEffect(() => {
+    if (useCancel.status === "success") {
+      setConfirmAgree(false);
+      setTargetEvent("");
+    }
+  }, [useCancel.status]);
 
   return (
     <MyEventCardWrap>
       <ThumbnailArea>
         <Link to={`/detail/${id}`}>
-          {location.pathname === "/mypage/cancel-list" && (
-            <span className="blind">{eventState}</span>
+          {eventState.state === "cancel" && (
+            <span className="blind">취소완료</span>
           )}
           <img src={`https://api-test.micemate.io/storage/${img}`} />
         </Link>
@@ -64,7 +85,7 @@ const MyEventCard = ({
         <TextBox>
           {date && (
             <div className="apply">
-              <span className="state">{eventState}</span>
+              <span className="state">{eventState.label}</span>
               <span className="date">신청일 : {date}</span>
             </div>
           )}
@@ -77,13 +98,15 @@ const MyEventCard = ({
             <span className="location">{position}</span>
           </div>
         </TextBox>
-        {location.pathname === "/mypage/apply-list" && (
+        {eventState.state === "apply" && (
           <EditButtonBox>
             <button>수정</button>&nbsp;&nbsp;|&nbsp;&nbsp;
-            <button onClick={eventCancelHandler}>취소</button>
+            <button onClick={() => cancelBtnHandler(JSON.stringify(id))}>
+              취소
+            </button>
           </EditButtonBox>
         )}
-        {location.pathname === "/mypage/apply-list" && (
+        {eventState.state === "apply" && (
           <LinkBox>
             {is_booth && (
               <Link to="/mypage/apply-list/booth-select/01">
@@ -98,7 +121,7 @@ const MyEventCard = ({
           </LinkBox>
         )}
 
-        {location.pathname === "/mypage/wish-list" && (
+        {eventState.state === "wish" && (
           <WishBtnBox>
             <button>
               <WishIcon />

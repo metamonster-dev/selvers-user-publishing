@@ -17,15 +17,13 @@ const WishListPage = () => {
   };
   const useMyEvent = useMyEventQuery(data);
 
-  console.log(useMyEvent.data?.data);
   return (
     <WishListPageWrap>
       <MyEventList list={useMyEvent.data?.data.items} />
       <Pagination
-        totalItem={useMyEvent.data?.total}
+        total={useMyEvent.data?.data.total}
         page={page}
         setPage={setPage}
-        pageCount={4}
       />
     </WishListPageWrap>
   );

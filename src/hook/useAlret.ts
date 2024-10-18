@@ -11,7 +11,7 @@ export const useAlret = () => {
   const [alretData, setAlretData] = useRecoilState(alretState);
 
   // 모달 닫기 함수
-  const closeModal = useCallback(() => {
+  const closeAlret = useCallback(() => {
     setAlretData((prev) => ({
       ...prev,
       isOpen: false,
@@ -22,7 +22,7 @@ export const useAlret = () => {
     }
   }, [setAlretData, alretData]);
 
-  const openModal = useCallback(
+  const openAlret = useCallback(
     ({ text, callback }: OpenModalType) =>
       setAlretData({
         isOpen: true,
@@ -32,5 +32,5 @@ export const useAlret = () => {
     [setAlretData]
   );
 
-  return { alretData, closeModal, openModal };
+  return { alretData, closeAlret, openAlret };
 };

@@ -23,7 +23,7 @@ const EventCard = ({
   const useWishEvent = useWishEventMutation();
   const token = localStorage.getItem("token");
   const userId = localStorage.getItem("user_id");
-  const { openModal } = useAlret();
+  const { openAlret } = useAlret();
 
   const alretData = {
     text: "로그인이 필요한 기능입니다.",
@@ -38,7 +38,7 @@ const EventCard = ({
       };
       useWishEvent.mutate(data);
     } else {
-      openModal(alretData);
+      openAlret(alretData);
     }
   };
 

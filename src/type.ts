@@ -88,3 +88,9 @@ export interface MyEventListType {
   is_booth: boolean;
   url: string;
 }
+
+/* api 요청 */
+export interface CancelEventRequest {
+  token: string;
+  event_id: string;
+}

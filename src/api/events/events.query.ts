@@ -1,6 +1,8 @@
 import axios from "axios";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useLocation } from "react-router-dom";
+import { CancelEventRequest } from "@/type";
+import { useAlret } from "@/hook/useAlret";
 
 /*행사 리스트 조회*/
 export const useEventList = (type: number, token: string) => {
@@ -35,6 +37,32 @@ export const useEventSearch = (token: string) => {
         },
       });
       return response.data;
+    },
+  });
+};
+
+/*행사 취소*/
+export const useCancelEvent = () => {
+  const { openAlret } = useAlret();
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: async (data: CancelEventRequest) => {
+      const response = await axios({
+        method: "DELETE",
+        url: `/api/events/${data.event_id}/cancel`,
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${data.token}`,
+        },
+      });
+      return response.data;
+    },
+    onSuccess: async () => {
+      const cancelSuccessData = {
+        text: "취소가 완료되었습니다.",
+      };
+      openAlret(cancelSuccessData);
+      await queryClient.invalidateQueries({ queryKey: ["myEvent"] });
     },
   });
 };

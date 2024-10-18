@@ -15,7 +15,7 @@ const schema = z.object({
 });
 
 const PasswordFindPage = () => {
-  const { openModal } = useAlret();
+  const { openAlret } = useAlret();
 
   const alretData = {
     text: "메일로 임시 비밀번호를 발송했습니다.",
@@ -29,7 +29,7 @@ const PasswordFindPage = () => {
     resolver: zodResolver(schema),
   });
 
-  const onSubmit = handleSubmit(() => openModal(alretData));
+  const onSubmit = handleSubmit(() => openAlret(alretData));
   console.log(isValid);
   return (
     <PasswordFindWrap>

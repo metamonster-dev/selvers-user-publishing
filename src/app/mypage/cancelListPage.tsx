@@ -16,15 +16,18 @@ const CancelListPage = () => {
     page: page,
   };
   const useMyEvent = useMyEventQuery(data);
+
   return (
     <CancelListPageWrap>
       <MyEventList list={useMyEvent.data?.data.items} />
-      <Pagination
-        totalItem={useMyEvent.data?.total}
-        page={page}
-        setPage={setPage}
-        pageCount={4}
-      />
+      {useMyEvent.data?.data.total >= 4 && (
+        <Pagination
+          totalItem={useMyEvent.data?.total}
+          page={page}
+          setPage={setPage}
+          pageCount={4}
+        />
+      )}
     </CancelListPageWrap>
   );
 };

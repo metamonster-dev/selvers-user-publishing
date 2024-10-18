@@ -1,52 +1,49 @@
 import { PaginationWrap } from "./paginationStyle";
 import PrevIcon from "@/assets/icon/page_prev.svg?react";
 import NextIcon from "@/assets/icon/page_next.svg?react";
-import { Dispatch, SetStateAction, useState, useEffect } from "react";
+import { Dispatch, SetStateAction } from "react";
 
 type PaginationProps = {
-  totalItem: number;
-  page: number;
-  setPage: Dispatch<SetStateAction<number>>;
-  pageCount: number;
+  total: number; //총 이벤트 수
+  page: number; //현재 페이지
+  setPage: Dispatch<SetStateAction<number>>; //현재 페이지 set
+  limit?: number;
+  size?: number; // 보여질 페이지 버튼의 개수
 };
 
-const Pagination = ({
-  totalItem,
-  page,
-  setPage,
-  pageCount,
-}: PaginationProps) => {
-  const totalPages = Math.ceil(totalItem / pageCount);
-  const [start, setStart] = useState(1); // 시작 페이지
-  const noPrev = start === 1; //이전 페이지가 없는 경우
-  const noNext = start + pageCount - 1 >= totalPages; // 다음 페이지가 없는 경우
-
-  useEffect(() => {
-    if (page === start + pageCount) {
-      setStart((prev) => prev + pageCount);
-    }
-    if (page < start) {
-      setStart((prev) => prev - pageCount);
-    }
-  }, [page, pageCount, start]);
-
+const Pagination = ({ total, page, setPage, size = 4 }: PaginationProps) => {
+  const currentSet = Math.ceil(page / size); //현재 버튼이 몇번째 세트인지 나타내는 수
+  const startPage = (currentSet - 1) * size + 1; // 현재 보여질 버튼의 첫번째 수
+  const endPage = startPage + size - 1; // 현재 보여질 끝 버튼의 수
+  console.log(total);
   return (
     <PaginationWrap className="pagination">
-      <button onClick={() => setPage((state) => state - 1)} className="icon">
+      <button
+        type="button"
+        onClick={() => setPage(startPage - 1)}
+        className="icon"
+      >
         <PrevIcon />
       </button>
-      {Array.from({ length: pageCount }).map((_, index) => {
-        return (
-          <button
-            onClick={() => setPage(start + index)}
-            key={index}
-            className={`${page === start + index && "on"}`}
-          >
-            {start + index}
-          </button>
-        );
-      })}
-      <button onClick={() => setPage((state) => state + 1)} className="icon">
+
+      {Array(size)
+        .fill(startPage)
+        .map((_, i) => {
+          return (
+            <button
+              key={i}
+              onClick={() => setPage(startPage + i)}
+              className={page === startPage + i ? "on" : ""}
+            >
+              {startPage + i}
+            </button>
+          );
+        })}
+      <button
+        type="button"
+        onClick={() => setPage(endPage + 1)}
+        className="icon"
+      >
         <NextIcon />
       </button>
     </PaginationWrap>

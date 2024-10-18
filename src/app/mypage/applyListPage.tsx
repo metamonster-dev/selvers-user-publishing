@@ -20,12 +20,14 @@ const ApplyListPage = () => {
   return (
     <ApplyListPageWrap>
       <MyEventList list={useMyEvent.data?.data.items} />
-      <Pagination
-        totalItem={useMyEvent.data?.total}
-        page={page}
-        setPage={setPage}
-        pageCount={4}
-      />
+      {useMyEvent.data?.data.total >= 4 && (
+        <Pagination
+          total={useMyEvent.data?.data.total}
+          page={page}
+          setPage={setPage}
+          limit={4}
+        />
+      )}
     </ApplyListPageWrap>
   );
 };

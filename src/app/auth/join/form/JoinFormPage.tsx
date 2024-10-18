@@ -75,7 +75,7 @@ const JoinFormPage = () => {
   const [favorList, setFavorList] = useState<FavorList[]>([]);
   const [isFormValid, setIsFormValid] = useState(false);
   const useJoin = useJoinMutation();
-  const { openModal } = useAlret();
+  const { openAlret } = useAlret();
   const navigate = useNavigate();
 
   //카테고리 api
@@ -184,9 +184,9 @@ const JoinFormPage = () => {
     };
 
     if (useJoin.isSuccess) {
-      openModal(alretData);
+      openAlret(alretData);
     }
-  }, [useJoin.isSuccess, openModal, navigate]);
+  }, [useJoin.isSuccess, openAlret, navigate]);
 
   // 회원가입 실패
   useEffect(() => {
