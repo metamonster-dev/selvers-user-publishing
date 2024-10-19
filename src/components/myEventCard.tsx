@@ -12,10 +12,12 @@ import WishIcon from "@/assets/icon/heart_fill.svg?react";
 import { Link } from "react-router-dom";
 import { dateFormat } from "@/util/stringTransition";
 import { useConfirm } from "@/hook/useConfirm";
+import { useAlret } from "@/hook/useAlret";
 import { useCancelEvent } from "@/api/events/events.query";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useResetRecoilState } from "recoil";
 import { confirmState } from "@/store/modalState";
 import { useEffect, useState } from "react";
+import { useQueryClient } from "@tanstack/react-query";
 
 interface Props extends MyEventListType {
   eventState: { state: string; label: string };
@@ -35,9 +37,12 @@ const MyEventCard = ({
 }: Props) => {
   const useCancel = useCancelEvent();
   const { openConfirm } = useConfirm();
+  const { openAlret } = useAlret();
+  const queryClient = useQueryClient();
   const [confirmAgree, setConfirmAgree] = useState(false);
   const [targetEvent, setTargetEvent] = useState("");
   const confirmValue = useRecoilValue(confirmState);
+  const confirmReset = useResetRecoilState(confirmState);
 
   const cancelBtnHandler = (eventId: string) => {
     const cancelConfirmData = {
@@ -52,24 +57,34 @@ const MyEventCard = ({
   }, [confirmValue.confirm]);
 
   useEffect(() => {
-    if (confirmAgree === true) {
+    if (confirmAgree === true && targetEvent.length > 0) {
       const token = localStorage.getItem("token");
       const cancelData: CancelEventRequest = {
         token: token,
         event_id: targetEvent,
       };
-      // 취소 api요청
       useCancel.mutate(cancelData);
     }
-    console.log(useCancel);
   }, [confirmAgree]);
 
   useEffect(() => {
-    if (useCancel.status === "success") {
+    if (useCancel.isSuccess) {
+      const cancelSuccessData = {
+        text: "취소가 완료되었습니다.",
+      };
+
+      setConfirmAgree(false);
+      confirmReset();
+      setTargetEvent("");
+
+      openAlret(cancelSuccessData);
+      queryClient.invalidateQueries({ queryKey: ["myEvent"] });
+    }
+    if (useCancel.isError) {
       setConfirmAgree(false);
       setTargetEvent("");
     }
-  }, [useCancel.status]);
+  }, [useCancel.isSuccess, useCancel.isError]);
 
   return (
     <MyEventCardWrap>

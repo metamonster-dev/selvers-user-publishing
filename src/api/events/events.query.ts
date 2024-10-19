@@ -43,8 +43,6 @@ export const useEventSearch = (token: string) => {
 
 /*행사 취소*/
 export const useCancelEvent = () => {
-  const { openAlret } = useAlret();
-  const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async (data: CancelEventRequest) => {
       const response = await axios({
@@ -56,13 +54,6 @@ export const useCancelEvent = () => {
         },
       });
       return response.data;
-    },
-    onSuccess: async () => {
-      const cancelSuccessData = {
-        text: "취소가 완료되었습니다.",
-      };
-      openAlret(cancelSuccessData);
-      await queryClient.invalidateQueries({ queryKey: ["myEvent"] });
     },
   });
 };

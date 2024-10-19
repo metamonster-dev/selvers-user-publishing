@@ -94,3 +94,18 @@ export interface CancelEventRequest {
   token: string;
   event_id: string;
 }
+
+export interface UserInformationRequest {
+  token: string;
+  user_id: string;
+}
+export interface UserMyModifyRequest extends UserInformationRequest {
+  token: string;
+  user_id: string;
+  modifyData: {
+    password: "abcdabcd123123";
+    birth: "1800-01-23";
+    sex: false;
+    interests: [1, 3, 4];
+  };
+}

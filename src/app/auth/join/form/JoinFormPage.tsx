@@ -176,6 +176,8 @@ const JoinFormPage = () => {
 
   //회원가입 완료
   useEffect(() => {
+    console.log(useJoin.isSuccess);
+    console.log(useJoin.data);
     const alretData = {
       text: "회원가입이 완료되었습니다.\n이메일 인증 후 서비스를 이용할 수 있습니다.",
       callback: () => {
@@ -287,7 +289,7 @@ const JoinFormPage = () => {
                     <InputCheckboxB
                       key={data.id}
                       label={data.name}
-                      id={`${data.id}`}
+                      id={JSON.stringify(data.id)}
                       register={register}
                       onChange={interests}
                     />

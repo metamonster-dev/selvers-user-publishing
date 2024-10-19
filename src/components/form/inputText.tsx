@@ -75,11 +75,23 @@ export const InputDateA = ({ id, register, placeholder }: Props) => {
 };
 
 //내 정보 수정 페이지 사용
-export const InputTextC = ({ label, type, id, placeholder }: Props) => {
+export const InputTextC = ({
+  label,
+  type,
+  id,
+  placeholder,
+  register,
+}: Props) => {
   return (
     <InputTextWrapC>
       <label htmlFor={id}>{label}</label>
-      <input type={type} id={id} placeholder={placeholder} autoComplete="off" />
+      <input
+        type={type}
+        id={id}
+        {...(register && register(id))}
+        placeholder={placeholder}
+        autoComplete="off"
+      />
     </InputTextWrapC>
   );
 };

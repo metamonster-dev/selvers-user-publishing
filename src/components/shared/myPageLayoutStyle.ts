@@ -73,5 +73,6 @@ export const ContentWrap = styled.div`
   }
   @media (max-width: 1024px) {
     padding: 0;
+    min-height: auto;
   }
 `;

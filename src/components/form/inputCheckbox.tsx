@@ -7,12 +7,24 @@ type Props = {
   register?: UseFormRegister<FieldValues>;
   onChange?: (e: FormEvent<HTMLInputElement>) => void;
   required?: boolean;
+  checked?: boolean;
 };
 
-export const InputCheckboxA = ({ label, id, register, required }: Props) => {
+export const InputCheckboxA = ({
+  label,
+  id,
+  register,
+  required,
+  checked,
+}: Props) => {
   return (
     <InputCheckboxWrapA className="InputCheckboxA">
-      <input type="checkbox" id={id} {...(register && register(id))} />
+      <input
+        type="checkbox"
+        id={id}
+        {...(register && register(id))}
+        checked={checked}
+      />
       <label htmlFor={id}>
         {label}
         {required && <span className="req">&nbsp;*</span>}
